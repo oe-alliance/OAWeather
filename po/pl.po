@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 12:23+0100\n"
-"PO-Revision-Date: 2022-11-09 19:48+0000\n"
+"PO-Revision-Date: 2023-01-29 19:48+0000\n"
 "Last-Translator: pololoko111 <peciek83@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
 "Language: pl\n"
@@ -25,15 +25,14 @@ msgid "Celsius"
 msgstr "Celsjusz"
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr ""
+msgstr "Wybierz, czy „przełącznik nocny” ma być aktywowany, czy nie. Niektóre ikony są wtedy wyświetlane jako ikony nocne z księżycem."
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Miasto '%s' nie znaleziono! Proszę spróbować innego sformułowania."
 
-#, fuzzy
 msgid "Configuration tool for OAWeather"
-msgstr "narzędzie openATV do konfiguracji MetrixHD"
+msgstr "Narzędzie konfiguracyjne dla OAWeather"
 
 msgid "Defaults"
 msgstr "Domyślne"
@@ -44,9 +43,8 @@ msgstr "Wyłączone"
 msgid "East"
 msgstr "Wschód"
 
-#, fuzzy
 msgid "Enable Debug"
-msgstr "Włączone"
+msgstr "Włącz debugowanie"
 
 msgid "Enabled"
 msgstr "Włączone"
@@ -96,13 +94,11 @@ msgstr "Wyszukaj ID miasta, proszę czekać..."
 msgid "Search for your City"
 msgstr "Wyszukaj swoje miasto"
 
-#, fuzzy
 msgid "Select 'Yes' to enable add debug output to log."
-msgstr "Wybierz „Tak”, aby włączyć dodawanie MetrixWeather do ekranu InfoBar."
+msgstr "Wybierz „Tak”, aby włączyć dodawanie danych wyjściowych debugowania do dziennika."
 
-#, fuzzy
 msgid "Select 'Yes' to enable the addition of Weather."
-msgstr "Wybierz „Tak”, aby włączyć dodawanie MetrixWeather do ekranu InfoBar."
+msgstr "Wybierz „Tak”, aby włączyć dodawanie pogody."
 
 msgid "Select Your Location"
 msgstr "Wybierz Swoją Lokalizację"
@@ -128,9 +124,8 @@ msgstr "Południowy wschód"
 msgid "Southwest"
 msgstr "Południowy zachód"
 
-#, fuzzy
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Określ jak często MetrixWeather pobiera swoje dane z serwera. 'Raz' oznacza, że dane będą ładowane tylko raz po uruchomieniu GUI lub systemu."
+msgstr "Określ, jak często Weather pobiera dane z serwera. „Raz” oznacza, że dane zostaną załadowane tylko raz po uruchomieniu GUI lub systemu."
 
 msgid "Temperature unit"
 msgstr "Jednostka temperatury"
@@ -156,9 +151,8 @@ msgstr "Akcje ustawień pogodowych"
 msgid "Weather city name"
 msgstr "Nazwa miasta MetrixWeather"
 
-#, fuzzy
 msgid "Weather icon night switch"
-msgstr "Ścieżka ikony MetrixWeather"
+msgstr "Przełącznik nocny ikony pogody"
 
 msgid "Weather service"
 msgstr "Usługa MetrixWeather"
