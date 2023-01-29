@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 12:23+0100\n"
-"PO-Revision-Date: 2022-12-19 12:48+0000\n"
+"PO-Revision-Date: 2023-01-28 02:29+0200\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
 "Language: el\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, python-format
 msgid "%d Minutes"
@@ -29,15 +29,14 @@ msgid "Celsius"
 msgstr "Κελσίου"
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr ""
+msgstr "Επιλέξτε αν θα πρέπει να ενεργοποιηθεί ή όχι ο \"νυχτερινός διακόπτης\". Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστε μια άλλη διατύπωση."
 
-#, fuzzy
 msgid "Configuration tool for OAWeather"
-msgstr "openATV εργαλείο παραμετροποιήσεων για το MetrixHD"
+msgstr "Εργαλείο παραμετροποιήσεων για το OAWeather"
 
 msgid "Defaults"
 msgstr "Προεπιλογές"
@@ -48,9 +47,8 @@ msgstr "Ανενεργό"
 msgid "East"
 msgstr "Ανατολικά"
 
-#, fuzzy
 msgid "Enable Debug"
-msgstr "Ενεργό"
+msgstr "Ενεργοποίηση αποσφαλμάτωσης"
 
 msgid "Enabled"
 msgstr "Ενεργό"
@@ -100,13 +98,11 @@ msgstr "Αναζήτηση ID πόλης, περιμένετε..."
 msgid "Search for your City"
 msgstr "Αναζήτηση για την πόλη σας"
 
-#, fuzzy
 msgid "Select 'Yes' to enable add debug output to log."
-msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη του MetrixWeather στη μπάρα πληροφοριών."
+msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη της αποσφαλμάτωσης στο αρχείο καταγραφής."
 
-#, fuzzy
 msgid "Select 'Yes' to enable the addition of Weather."
-msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη του MetrixWeather στη μπάρα πληροφοριών."
+msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη του πρόσθετου."
 
 msgid "Select Your Location"
 msgstr "Επιλογή τοποθεσίας"
@@ -132,9 +128,8 @@ msgstr "Νοτιοανατολικά"
 msgid "Southwest"
 msgstr "Νοτιοδυτικά"
 
-#, fuzzy
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Καθορίστε πόσο συχνά το MetrixWeather θα ανακτά τα δεδομένα του από το διακομιστή. «Μία φορά» σημαίνει ότι τα δεδομένα θα φορτωθούν μόνο μία φορά μετά την εκκίνηση της επιφάνειας χρήστη ή του συστήματος."
+msgstr "Καθορίστε πόσο συχνά το πρόσθετο θα ανακτά τα δεδομένα του από το διακομιστή. «Μία φορά» σημαίνει ότι τα δεδομένα θα φορτωθούν μόνο μία φορά μετά την εκκίνηση της επιφάνειας χρήστη ή του συστήματος."
 
 msgid "Temperature unit"
 msgstr "Μονάδα θερμοκρασίας"
@@ -152,20 +147,19 @@ msgid "The city name is too short. More than 2 characters are needed for search.
 msgstr "Το όνομα της πόλης είναι πολύ μικρό. Απαιτούνται περισσότεροι από 2 χαρακτήρες για την αναζήτηση."
 
 msgid "Weather API key"
-msgstr "MetrixWeather κλειδί API"
+msgstr "Κλειδί API για τον καιρό"
 
 msgid "Weather Settings Actions"
 msgstr "Ενέργειες ρυθμίσεων καιρού"
 
 msgid "Weather city name"
-msgstr "MetrixWeather όνομα πόλης"
+msgstr "Όνομα πόλης καιρού"
 
-#, fuzzy
 msgid "Weather icon night switch"
-msgstr "MetrixWeather διαδρομή εικονιδίων"
+msgstr "Διακόπτης νύχτας εικονιδίου καιρού"
 
 msgid "Weather service"
-msgstr "MetrixWeather υπηρεσία"
+msgstr "Υπηρεσία καιρού"
 
 msgid "Weather settings"
 msgstr "Ρυθμίσεις καιρού"
@@ -174,4 +168,4 @@ msgid "West"
 msgstr "Δυτικά"
 
 msgid "n/a"
-msgstr ""
+msgstr "μ/δ"
