@@ -35,7 +35,8 @@ class OAWeather(Source):
 		self.valid = weatherhandler.getValid()
 		self.skydirs = weatherhandler.getSkydirs()
 		self.na = _("n/a")
-		self.tempunit = self.data.get("tempunit", self.na)
+		self.tempunit = self.getVal("tempunit")
+		self.precunit = self.getVal("precunit")
 
 	def debug(self, text: str):
 		if self.enabledebug:
@@ -44,7 +45,8 @@ class OAWeather(Source):
 	def callbackUpdate(self, data):
 		self.debug("callbackUpdate: %s" % str(data))
 		self.data = data
-		self.tempunit = self.data.get("tempunit", self.na)
+		self.tempunit = self.getVal("tempunit")
+		self.precunit = self.getVal("precunit")
 		self.changed((self.CHANGED_ALL,))
 
 	def getValid(self):
@@ -74,6 +76,10 @@ class OAWeather(Source):
 	def getSunrise(self):
 		val = self.getCurrentVal("sunrise", "")
 		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+
+	def getDate(self, day: int):
+		val = self.getKeyforDay("date", day, "")
+		return datetime.fromisoformat(val).strftime("%d. %b") if val else self.na
 
 	def getSunset(self):
 		val = self.getCurrentVal("sunset", "")
@@ -108,6 +114,9 @@ class OAWeather(Source):
 	def getWindDirShort(self):
 		return self.getCurrentVal("windDirSign").split(" ")[1]
 
+	def getCurrPrecipitation(self):
+		return "%s %s" % (self.getCurrentVal("precipitation"), self.precunit)
+
 	def getMaxTemp(self, day: int):
 		return "%s %s" % (self.getKeyforDay("maxTemp", day), self.tempunit)
 
@@ -115,7 +124,10 @@ class OAWeather(Source):
 		return "%s %s" % (self.getKeyforDay("minTemp", day), self.tempunit)
 
 	def getMaxMinTemp(self, day: int):
-		return "%s - %s" % (self.getMaxTemp(day), self.getMinTemp(day))
+		return "%s° / %s°" % (self.getKeyforDay("minTemp", day), self.getKeyforDay("maxTemp", day))
+
+	def getDayPrecipitation(self, day: int):
+		return "%s %s" % (self.getKeyforDay("precipitation", day), self.precunit)
 
 	def getYahooCode(self, day: int):
 		iconcode = self.getKeyforDay("yahooCode", day, "")
