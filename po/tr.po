@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2022-07-18 09:17+0000\n"
 "Last-Translator: tanerkaderli <taner.kaderli@live.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/openatv/metrixhd/tr/>\n"
@@ -35,6 +35,9 @@ msgstr ""
 msgid "Configuration tool for OAWeather"
 msgstr "Arayüzü Kişiselleştirme Ayarları"
 
+msgid "Current Weather"
+msgstr ""
+
 msgid "Defaults"
 msgstr "Varsayılanlar"
 
@@ -64,6 +67,12 @@ msgstr ""
 
 msgid "Fahrenheit"
 msgstr "Fahrenhayt"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr ""
@@ -116,6 +125,9 @@ msgstr ""
 msgid "Set default values"
 msgstr ""
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr ""
 
@@ -140,8 +152,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr ""
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr ""
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Hava Durumu ayarları"
 
 msgid "Weather Settings Actions"
 msgstr ""

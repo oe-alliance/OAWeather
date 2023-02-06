@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2021-08-20 04:10+0000\n"
 "Last-Translator: openATV <openatv@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/openatv/metrixhd/nb_NO/>\n"
@@ -38,6 +38,9 @@ msgstr ""
 msgid "Configuration tool for OAWeather"
 msgstr ""
 
+msgid "Current Weather"
+msgstr ""
+
 msgid "Defaults"
 msgstr "Forvalg"
 
@@ -66,6 +69,12 @@ msgid "Error in Weatherinfo"
 msgstr ""
 
 msgid "Fahrenheit"
+msgstr ""
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
 msgstr ""
 
 msgid "Location Selection"
@@ -119,6 +128,9 @@ msgstr ""
 msgid "Set default values"
 msgstr ""
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr ""
 
@@ -143,8 +155,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr ""
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr ""
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Værinnstillinger"
 
 msgid "Weather Settings Actions"
 msgstr ""

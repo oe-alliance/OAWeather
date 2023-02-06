@@ -27,6 +27,10 @@ class OAWeather(Source):
 					}
 	METEOnightswitch = {"1": "2", "3": "4", "B": "C", "H": "I", "J": "K"}
 
+	YAHOOdayswitch = {"27": "28", "29": "30", "31": "32", "33": "34", "45": "39", "46": "16", "47": "4"}
+
+	METEOdayswitch = {"2": "1", "3": "4", "C": "B", "I": "H", "K": "J"}
+
 	def __init__(self):
 		Source.__init__(self)
 		self.enabledebug = config.plugins.OAWeather.debug.value
@@ -35,7 +39,7 @@ class OAWeather(Source):
 		self.valid = weatherhandler.getValid()
 		self.skydirs = weatherhandler.getSkydirs()
 		self.na = _("n/a")
-		self.tempunit = self.data.get("tempunit", self.na)
+		self.tempunit = self.getVal("tempunit")
 
 	def debug(self, text: str):
 		if self.enabledebug:
@@ -44,7 +48,7 @@ class OAWeather(Source):
 	def callbackUpdate(self, data):
 		self.debug("callbackUpdate: %s" % str(data))
 		self.data = data
-		self.tempunit = self.data.get("tempunit", self.na)
+		self.tempunit = self.getVal("tempunit")
 		self.changed((self.CHANGED_ALL,))
 
 	def getValid(self):
@@ -75,12 +79,16 @@ class OAWeather(Source):
 		val = self.getCurrentVal("sunrise", "")
 		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
 
+	def getDate(self, day: int):
+		val = self.getKeyforDay("date", day, "")
+		return datetime.fromisoformat(val).strftime("%d. %b") if val else self.na
+
 	def getSunset(self):
 		val = self.getCurrentVal("sunset", "")
 		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
 
 	def getIsNight(self):
-		return self.getCurrentVal("isNight", "") != ""
+		return str(self.getCurrentVal("isNight", "False")) == "True"
 
 	def getTemperature(self):
 		return "%s %s" % (self.getCurrentVal("temp"), self.tempunit)
@@ -115,29 +123,36 @@ class OAWeather(Source):
 		return "%s %s" % (self.getKeyforDay("minTemp", day), self.tempunit)
 
 	def getMaxMinTemp(self, day: int):
-		return "%s - %s" % (self.getMaxTemp(day), self.getMinTemp(day))
+		return "%s / %s %s" % (self.getKeyforDay("minTemp", day), self.getKeyforDay("maxTemp", day), self.tempunit)
+
+	def getPrecipitation(self, day: int):
+		return "%s %s" % (self.getKeyforDay("precipitation", day), self.getVal("precunit"))
 
 	def getYahooCode(self, day: int):
 		iconcode = self.getKeyforDay("yahooCode", day, "")
 		if day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.YAHOOnightswitch:
 			iconcode = self.YAHOOnightswitch[iconcode]
+		else:
+			self.YAHOOdayswitch.get(iconcode, iconcode)
 		return iconcode
 
 	def getMeteoCode(self, day: int):
 		iconcode = self.getKeyforDay("meteoCode", day, "")
 		if day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.METEOnightswitch:
 			iconcode = self.METEOnightswitch[iconcode]
+		else:
+			self.METEOdayswitch.get(iconcode, iconcode)
 		return iconcode
 
 	def getKeyforDay(self, key: str, day: int, default: str = _("n/a")):
-		self.debug("getKeyforDay key:%s day:%s" % (key, day))
+		self.debug("getKeyforDay key:%s day:%s default:%s" % (key, day, default))
 		if day == 0:
 			return self.data.get("current", {}).get(key, default) if self.data else default
 		else:
-			day = day - 1
+			index = day - 1
 			forecast = self.data.get("forecast")
-			if forecast and day in forecast:
-				val = forecast.get(day).get(key, self.na)
+			if forecast and index in forecast:
+				val = forecast.get(index).get(key, default)
 				self.debug("getKeyforDay key:%s day:%s / val:%s" % (key, day, val))
 				return val
 			return default

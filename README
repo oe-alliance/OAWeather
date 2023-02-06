@@ -102,8 +102,8 @@ Description:
 
 Displaying icons with OAWeatherPixmap Renderer:
 
-"weathericon,current" --> current weather icon
-"weathericon,dayX" --> X = 1 to 5, 0 = current day
+"weathericon,current" --> current weather icon (current = now and rest of today)
+"weathericon,dayX" --> X = 1 to 5, 0 = today (= complete day)
 
 Displaying Info-data with Label Renderer:
 weathersource          # Example: "MSN Weather"
@@ -135,18 +135,18 @@ These arguments are depending of the day argument:
 temperature_heigh      # Example: "9 °C"
 temperature_low        # Example: "6 °C"
 temperature_heigh_low  # Example: "6 - 9 °C"
-temperature_text       # Example: "rain showers", HINT: OpenMeteo doesn't deliver descriptions, therefore "N/A" comes up
+temperature_text       # Example: "rain showers", HINT: OpenMeteo doesn't deliver descriptions, therefore empty string comes up
 weekday                # Example: "Friday"
 weekshortday           # Example: "Fr"
 date                   # Example: "2023-01-13"
---> to use in combination with current or dayX (X = 1 to 5) (look for the examples)
+--> to use in combination with today (= complete day) or dayX (X = 1 to 5) (look for the examples)
 
 usage example 2:
 	<widget alphatest="blend" render="OAWeatherPixmap" position="20,553" size="200,122" source="session.OAWeather" transparent="1" zPosition="5">
 		<convert type="OAWeather">weathericon,current,/etc/enigma2/weather_icons_special/</convert>
 	</widget>
 
---> weathericon, current --> current weather icon
+--> weathericon, current --> current weather icon (current = now and rest of today)
 --> /etc/enigma2/weather_icons_special/ --> folder for weather icons
 --> png --> file extensions (optional)
 
@@ -157,3 +157,6 @@ Meteofont
 	<widget font="Meteo" render="Label" position="20,553" size="200,122" source="session.OAWeather" transparent="1" zPosition="5">
 		<convert type="OAWeather">meteocode</convert>
 	</widget>
+
+The weather icons are from:
+https://www.deviantart.com/lavana/art/Flat-Weather-Icons-32021664

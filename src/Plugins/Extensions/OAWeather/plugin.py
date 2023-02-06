@@ -1,4 +1,4 @@
-# Copyright (C) 2023 jbleyel
+# Copyright (C) 2023 jbleyel, Mr.Servo, Stein17
 #
 # OAWeather is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,37 +13,31 @@
 # You should have received a copy of the GNU General Public License
 # along with OAWeather.  If not, see <http://www.gnu.org/licenses/>.
 
-# Some parts are taken from MetrixHD skin.
+# Some parts are taken from MetrixHD skin and MSNWeather Plugin.
 
 from os import remove
-from os.path import isfile, getmtime
+from os.path import isfile, getmtime, join
 from pickle import dump, load
 from time import time
-from enigma import eTimer
-
 from twisted.internet.reactor import callInThread
-
-from Components.ActionMap import HelpableActionMap
-from Components.config import config
+from xml.etree.ElementTree import tostring, parse
+from enigma import eTimer
+from Components.ActionMap import ActionMap, HelpableActionMap
+from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Sources.StaticText import StaticText
+from Plugins.Plugin import PluginDescriptor
 from Screens.ChoiceBox import ChoiceBox
 from Screens.Setup import Setup
+from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
+from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, resolveFilename
 from Tools.Weatherinfo import Weatherinfo
 from . import _
 
-from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText, ConfigNumber, NoSave
-
-from Plugins.Plugin import PluginDescriptor
-from Tools.Directories import SCOPE_CONFIG, resolveFilename
-from Tools.Weatherinfo import Weatherinfo
-
-
-#############################################################
 config.plugins.OAWeather = ConfigSubsection()
 config.plugins.OAWeather.enabled = ConfigYesNo(default=True)
 config.plugins.OAWeather.nighticons = ConfigYesNo(default=True)
-config.plugins.OAWeather.cachedata = ConfigSelection(default="60", choices=[("0", _("Disabled"))] + [(str(x), _("%d Minutes") % x) for x in (30, 60, 120)])
+config.plugins.OAWeather.cachedata = ConfigSelection(default="0", choices=[("0", _("Disabled"))] + [(str(x), _("%d Minutes") % x) for x in (30, 60, 120)])
 config.plugins.OAWeather.refreshInterval = ConfigSelectionNumber(0, 1440, 30, default=120, wraparound=True)
 config.plugins.OAWeather.apikey = ConfigText(default="")
 GEODATA = ("Hamburg, DE", "10.000654,53.550341")
@@ -53,12 +47,9 @@ config.plugins.OAWeather.tempUnit = ConfigSelection(default="Celsius", choices=[
 config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("openweather", _("OpenWeatherMap"))])
 config.plugins.OAWeather.debug = ConfigYesNo(default=False)
 
-
-#######################################################################
-
 MODULE_NAME = "OAWeather"
-
 CACHEFILE = resolveFilename(SCOPE_CONFIG, "OAWeather.dat")
+PLUGINPATH = join(resolveFilename(SCOPE_PLUGINS), 'Extensions/OAWeather')
 
 
 class WeatherSettingsView(Setup):
@@ -163,7 +154,6 @@ class WeatherHandler():
 		mode = modes.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.WI = Weatherinfo(mode, config.plugins.OAWeather.apikey.value)
 		self.geocode = config.plugins.OAWeather.owm_geocode.value.split(",")
-		self.oldmode = mode
 		self.weathercity = None
 		self.trialcounter = 0
 		self.currentWeatherDataValid = 3  # 0= green (data available), 1= yellow (still working), 2= red (no data available, wait on next refresh) 3=startup
@@ -172,6 +162,7 @@ class WeatherHandler():
 		self.wetterdata = None
 		self.onUpdate = []
 		self.skydirs = {"N": _("North"), "NE": _("Northeast"), "E": _("East"), "SE": _("Southeast"), "S": _("South"), "SW": _("Southwest"), "W": _("West"), "NW": _("Northwest")}
+		self.msnFullData = None
 
 	def sessionStart(self):
 		self.debug("sessionStart")
@@ -248,6 +239,7 @@ class WeatherHandler():
 				self.refreshTimer.start(300000, True)
 			return
 		self.writeData(data)
+		self.msnFullData = self.WI.info if config.plugins.OAWeather.weatherservice.value == "MSN" else None
 		# TODO write cache only on close
 		if config.plugins.OAWeather.cachedata.value != "0":
 			with open(CACHEFILE, "wb") as fd:
@@ -257,6 +249,13 @@ class WeatherHandler():
 		self.refreshTimer.stop()
 		if isfile(CACHEFILE):
 			remove(CACHEFILE)
+		modes = {"MSN": "msn", "openweather": "owm", "OpenMeteo": "omw"}
+		mode = modes.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		self.WI.setmode(mode, config.plugins.OAWeather.apikey.value)
+		if self.WI.error:
+			print(self.WI.error)
+			self.WI.setmode()  # fallback to MSN
+
 		self.refreshWeatherData()
 
 	def debug(self, text: str):
@@ -265,7 +264,17 @@ class WeatherHandler():
 
 
 def main(session, **kwargs):
+	session.open(OAWeatherPlugin)
+
+
+def setup(session, **kwargs):
 	session.open(WeatherSettingsView)
+
+
+def menu(menuid, **kwargs):
+	if menuid == "system":
+		return [("OAWeather", setup, "oaweather", 1)]
+	return []
 
 
 def sessionstart(session, **kwargs):
@@ -277,8 +286,92 @@ def sessionstart(session, **kwargs):
 def Plugins(**kwargs):
 	pluginList = []
 	pluginList.append(PluginDescriptor(name="OAWeather", where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=sessionstart, needsRestart=False))
-	pluginList.append(PluginDescriptor(name="OAWeather", description=_("Configuration tool for OAWeather"), icon="plugin.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main))
+	pluginList.append(PluginDescriptor(name="Weather Plugin", description=_("Show Weather Forecast"), icon="plugin.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main))
+#	pluginList.append(PluginDescriptor(name="OAWeather", description=_("Configuration tool for OAWeather"), where=PluginDescriptor.WHERE_MENU, fnc=menu))
 	return pluginList
+
+
+class OAWeatherPlugin(Screen):
+	def __init__(self, session):
+		params = {
+			"picpath": join(PLUGINPATH, "Images"),
+			"iconpath": join(PLUGINPATH, "Icons"),
+			"current": _("Current Weather"),
+			"update": _("Update"),
+			"feelslike": _("Feels like"),
+			"humidity": _("Humidity")
+		}
+		skintext = ""
+		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
+		for screen in xml.findall('screen'):
+			if screen.get("name") == "OAWeatherPlugin":
+				skintext = tostring(screen).decode()
+				for key in params.keys():
+					try:
+						skintext = skintext.replace('{%s}' % key, params[key])
+					except Exception as e:
+						print("%s@key=%s" % (str(e), key))
+				break
+		self.skin = skintext
+		Screen.__init__(self, session)
+		self.title = _("Weather Plugin")
+		self["actions"] = ActionMap(["SetupActions", "DirectionActions"],
+		{
+			"cancel": self.close,
+			"menu": self.config,
+		}, -1)
+
+		self["statustext"] = StaticText()
+
+		for i in range(1, 6):
+			self["weekday%s_temp" % i] = StaticText()
+
+		self.data = None
+		self.na = _("n/a")
+
+		self.onLayoutFinish.append(self.startRun)
+
+	def startRun(self):
+		self.data = weatherhandler.getData() or {}
+		if self.data:
+			self.getWeatherDataCallback()
+
+	def clearFields(self):
+		for i in range(1, 6):
+			self["weekday%s_temp" % i].text = ""
+
+	def getVal(self, key: str):
+		return self.data.get(key, self.na) if self.data else self.na
+
+	def getCurrentVal(self, key: str, default: str = _("n/a")):
+		value = default
+		if self.data and "current" in self.data:
+			current = self.data.get("current", {})
+			if key in current:
+				value = current.get(key, default)
+		return value
+
+	def getWeatherDataCallback(self):
+		self["statustext"].text = ""
+		forecast = self.data.get("forecast")
+		tempunit = self.data.get("tempunit", self.na)
+		for day in range(1, 6):
+			item = forecast.get(day)
+			lowTemp = item.get("minTemp")
+			highTemp = item.get("maxTemp")
+			text = item.get("text")
+			self["weekday%s_temp" % day].text = "%s %s|%s %s\n%s" % (highTemp, tempunit, lowTemp, tempunit, text)
+
+	def config(self):
+		self.session.openWithCallback(self.setupFinished, WeatherSettingsView)
+
+	def setupFinished(self, result=None):
+		self.clearFields()
+		self.startRun()
+
+	def error(self, errortext):
+		self.clearFields()
+		self["statustext"].text = errortext
 
 
 weatherhandler = WeatherHandler()

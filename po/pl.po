@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2023-01-29 19:48+0000\n"
 "Last-Translator: pololoko111 <peciek83@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
@@ -34,6 +34,10 @@ msgstr "Miasto '%s' nie znaleziono! Proszę spróbować innego sformułowania."
 msgid "Configuration tool for OAWeather"
 msgstr "Narzędzie konfiguracyjne dla OAWeather"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Błąd w Weatherinfo"
+
 msgid "Defaults"
 msgstr "Domyślne"
 
@@ -63,6 +67,12 @@ msgstr "Błąd w Weatherinfo"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheita"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Wybór lokalizacji"
@@ -115,6 +125,9 @@ msgstr "Wybierz tę opcję, aby zapisać ostatnio uzyskane dane pogodowe lokalni
 msgid "Set default values"
 msgstr "Ustaw wartości domyślne"
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr "Południe"
 
@@ -142,8 +155,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Nazwa miasta jest zbyt krótka. Do wyszukiwania potrzebne są więcej niż 2 znaki."
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "Klucz API MetrixWeather"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Ustawienia pogody"
 
 msgid "Weather Settings Actions"
 msgstr "Akcje ustawień pogodowych"

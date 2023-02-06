@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2022-12-10 09:48+0000\n"
 "Last-Translator: Petr Turek <turekdesign99@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/openatv/metrixhd/cs/>\n"
@@ -35,6 +35,10 @@ msgstr "Město '%s' nebylo nalezeno! Zkuste prosím jiné znění."
 msgid "Configuration tool for OAWeather"
 msgstr "konfigurační nástroj OAWeather"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Chyba v aplikaci Weatherinfo"
+
 msgid "Defaults"
 msgstr "Výchozí"
 
@@ -65,6 +69,12 @@ msgstr "Chyba v aplikaci Weatherinfo"
 
 msgid "Fahrenheit"
 msgstr "Stupně Fahrenheita"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Výběr umístění"
@@ -119,6 +129,9 @@ msgstr "Výběrem této možnosti uložíte naposledy získaná data o lokální
 msgid "Set default values"
 msgstr "Nastavit výchozí hodnoty"
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr "Jih"
 
@@ -147,8 +160,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Název města je příliš krátký. Pro vyhledávání je potřeba více než 2 znaky."
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "API Klíč MetrixWeather"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Nastavení počasí"
 
 msgid "Weather Settings Actions"
 msgstr "Akce s nastavením počasí"

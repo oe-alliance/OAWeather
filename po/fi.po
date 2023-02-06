@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2022-12-07 12:48+0000\n"
 "Last-Translator: tomppaa <tomzza89@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/openatv/metrixhd/fi/>\n"
@@ -35,6 +35,10 @@ msgstr "Kaupunki '%s' ei löytynyt! Kokeile toista sanamuotoa."
 msgid "Configuration tool for OAWeather"
 msgstr "openATV määritystyökalu Metrix teemalle"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Virhe säätiedoissa"
+
 msgid "Defaults"
 msgstr "Oletusarvot"
 
@@ -65,6 +69,12 @@ msgstr "Virhe säätiedoissa"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Sijainnin valinta"
@@ -119,6 +129,9 @@ msgstr "Valitse tämä vaihtoehto, jos haluat tallentaa viimeksi saadut säätie
 msgid "Set default values"
 msgstr "Aseta oletusarvot"
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr "Etelä"
 
@@ -147,8 +160,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Kaupungin nimi on liian lyhyt. Hakuun tarvitaan yli 2 merkkiä."
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "MetrixSää API avain"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Sää palvelu asetukset"
 
 msgid "Weather Settings Actions"
 msgstr "Sää Asetukset"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2022-12-14 19:48+0000\n"
 "Last-Translator: kvinto <badsystem@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/openatv/metrixhd/uk/>\n"
@@ -34,6 +34,10 @@ msgstr "Місто '%s' не знайдено! Спробуйте інше фо�
 msgid "Configuration tool for OAWeather"
 msgstr "openATV налаштування для MetrixHD"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Помилка в Weatherinfo"
+
 msgid "Defaults"
 msgstr "За замовчуванням"
 
@@ -64,6 +68,12 @@ msgstr "Помилка в Weatherinfo"
 
 msgid "Fahrenheit"
 msgstr "Фарентгейт"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Вибір місця розташування"
@@ -118,6 +128,9 @@ msgstr ""
 msgid "Set default values"
 msgstr ""
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr ""
 
@@ -142,8 +155,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr ""
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "Ключ API MetrixWeather"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Налаштування погоди"
 
 msgid "Weather Settings Actions"
 msgstr ""

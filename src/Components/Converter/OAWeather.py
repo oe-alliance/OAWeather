@@ -63,6 +63,15 @@ class OAWeather(Converter, object):
 	YAHOOCODE = 34              # Example: "9" (matching the extended weather icon code: YAHOO+)
 	METEOCODE = 35              # Example: "Q" (matching the character set: MetrixIcons.ttf)
 
+	DAYS = {
+		"current": CURRENT,
+		"day1": DAY1,
+		"day2": DAY2,
+		"day3": DAY3,
+		"day4": DAY4,
+		"day5": DAY5
+	}
+
 	def __init__(self, type: str):
 		self.enabledebug = config.plugins.OAWeather.debug.value
 		Converter.__init__(self, type)
@@ -71,96 +80,21 @@ class OAWeather(Converter, object):
 		self.mode = None
 		self.path = None
 		self.extension = "png"
-		if type == "weathersource":
-			self.mode = self.WEATHERSOURCE
-		elif type == "city":
-			self.mode = self.CITY
-		elif type == "longitude":
-			self.mode = self.LONGITUDE
-		elif type == "latitude":
-			self.mode = self.LATITUDE
-		elif type == "observationpoint":
-			self.mode = self.OBSERVATIONPOINT
-		elif type == "observationtime":
-			self.mode = self.OBSERVATIONTIME
-		elif type == "sunrise":
-			self.mode = self.SUNRISE
-		elif type == "sunset":
-			self.mode = self.SUNSET
-		elif type == "isnight":
-			self.mode = self.ISNIGHT
-		elif type == "tempunit":
-			self.mode = self.TEMPUNIT
-		elif type == "windunit":
-			self.mode = self.WINDUNIT
-		elif type == "temperature_current":
-			self.mode = self.TEMPERATURE_CURRENT
-		elif type == "feelslike":
-			self.mode = self.FEELSLIKE
-		elif type == "humidity":
-			self.mode = self.HUMIDITY
-		elif type == "winddisplay":
-			self.mode = self.WINDDISPLAY
-		elif type == "windspeed":
-			self.mode = self.WINDSPEED
-		elif type == "winddir":
-			self.mode = self.WINDDIR
-		elif type == "winddirsign":
-			self.mode = self.WINDDIRSIGN
-		elif type == "winddirarrow":
-			self.mode = self.WINDDIRARROW
-		elif type == "winddirname":
-			self.mode = self.WINDDIRNAME
-		elif type == "winddirshort":
-			self.mode = self.WINDDIRSHORT
-		else:
-			if type.startswith("weathericon"):
-				self.mode = self.ICON
-			if type.startswith("yahoocode"):
-				self.mode = self.YAHOOCODE
-			if type.startswith("meteocode"):
-				self.mode = self.METEOCODE
-			elif type.startswith("temperature_high_low"):
-				self.mode = self.TEMPERATURE_HIGH_LOW
-			elif type.startswith("temperature_high"):
-				self.mode = self.TEMPERATURE_HIGH
-			elif type.startswith("temperature_low"):
-				self.mode = self.TEMPERATURE_LOW
-			elif type.startswith("temperature_text"):
-				self.mode = self.TEMPERATURE_TEXT
-			elif type.startswith("weekday"):
-				self.mode = self.WEEKDAY
-			elif type.startswith("weekshortday"):
-				self.mode = self.WEEKSHORTDAY
-			elif type.startswith("date"):
-				self.mode = self.DATE
-			if self.mode is not None:
-				dd = type.split(",")
-				self.index = self.getIndex(dd[1].strip()) if len(dd) > 1 else None
-				if self.mode in (self.ICON, self.YAHOOCODE, self.METEOCODE) and len(dd) > 2:
-					self.path = dd[2].strip()
-					if len(dd) > 3:
-						self.extension = dd[3].strip()
+		value = type.split(",")
+		self.mode = value[0]
+		if len(value) > 1:
+			self.index = self.getIndex(value[1].strip())
+			if len(value) > 2 and self.mode in ("weathericon", "yahoocode"):
+				self.path = value[2].strip()
+				if len(value) > 3:
+					self.extension = value[3].strip()
 		self.debug("__init__ DONE self.mode:%s self.index:%s self.path:%s" % (self.mode, self.index, self.path))
 		if config.plugins.OAWeather.debug.value:
 			self.getText = self.getTextDebug
 
 	def getIndex(self, key: str):
 		self.debug("getIndex key:%s" % (key))
-		if key == "current":
-			return self.CURRENT
-		elif key == "day1":
-			return self.DAY1
-		elif key == "day2":
-			return self.DAY2
-		elif key == "day3":
-			return self.DAY3
-		elif key == "day4":
-			return self.DAY4
-		elif key == "day5":
-			return self.DAY5
-		else:
-			return None
+		return self.DAYS.get(key, None)
 
 	@cached
 	def getTextDebug(self):
@@ -171,73 +105,71 @@ class OAWeather(Converter, object):
 
 	@cached
 	def getText(self):
-		try:
-			if self.mode == self.WEATHERSOURCE:
-				return self.source.getVal("source")
-			elif self.mode == self.CITY:
-				return self.source.getVal("name")
-			elif self.mode == self.LONGITUDE:
-				return self.source.getVal("longitude")
-			elif self.mode == self.LATITUDE:
-				return self.source.getVal("latitude")
-			elif self.mode == self.OBSERVATIONPOINT:
-				return self.source.getVal("name")
-			elif self.mode == self.OBSERVATIONTIME:
-				return self.source.getObservationTime()
-			elif self.mode == self.SUNRISE:
-				return self.source.getSunrise()
-			elif self.mode == self.SUNSET:
-				return self.source.getSunset()
-			elif self.mode == self.ISNIGHT:
-				return self.source.getIsNight()
-			elif self.mode == self.TEMPUNIT:
-				return self.source.getVal("tempunit")
-			elif self.mode == self.WINDUNIT:
-				return self.source.getVal("windunit")
-			elif self.mode == self.TEMPERATURE_CURRENT:
-				return self.source.getTemperature()
-			elif self.mode == self.FEELSLIKE:
-				return self.source.getFeeltemp()
-			elif self.mode == self.HUMIDITY:
-				return self.source.getHumidity()
-			elif self.mode == self.WINDDISPLAY:
-				return "%s %s" % (self.source.getWindSpeed(), self.source.getWindDirName())
-			elif self.mode == self.WINDSPEED:
-				return self.source.getWindSpeed()
-			elif self.mode == self.WINDDIR:
-				return self.source.getWindDir()
-			elif self.mode == self.WINDDIRSIGN:
-				return self.source.getCurrentVal("windDirSign")
-			elif self.mode == self.WINDDIRARROW:
-				return self.source.getCurrentVal("windDirSign").split(" ")[0]
-			elif self.mode == self.WINDDIRNAME:
-				return self.source.getWindDirName()
-			elif self.mode == self.WINDDIRSHORT:
-				return self.source.getWindDirShort()
-			elif self.mode == self.TEMPERATURE_HIGH and self.index is not None:
-				return self.source.getMaxTemp(self.index)
-			elif self.mode == self.TEMPERATURE_LOW and self.index is not None:
-				return self.source.getMinTemp(self.index)
-			elif self.mode == self.TEMPERATURE_HIGH_LOW and self.index is not None:
-				return self.source.getMaxMinTemp(self.index)
-			elif self.mode == self.TEMPERATURE_TEXT and self.index is not None:
-				return self.source.getKeyforDay("text", self.index)
-			elif self.mode in (self.ICON, self.YAHOOCODE) and self.index is not None:
-				return self.source.getYahooCode(self.index)
-			elif self.mode == self.METEOCODE and self.index is not None:
-				return self.source.getMeteoCode(self.index)
-			elif self.mode == self.WEEKDAY and self.index is not None:
-				return self.source.getKeyforDay("day", self.index)
-			elif self.mode == self.WEEKSHORTDAY and self.index is not None:
-				return self.source.getKeyforDay("shortDay", self.index)
-			elif self.mode == self.DATE and self.index is not None:
-				return self.source.getKeyforDay("date", self.index)
-			else:
-				return ""
-		except Exception as err:
-			print("[OAWeather] Converter Error:%s" % str(err))
-			print_exc()
-			return ""
+		if self.mode:
+			try:
+				if self.index is not None:
+					if self.mode == "temperature_high":
+						return self.source.getMaxTemp(self.index)
+					elif self.mode == "temperature_low":
+						return self.source.getMinTemp(self.index)
+					elif self.mode == "temperature_high_low":
+						return self.source.getMaxMinTemp(self.index)
+					elif self.mode == "temperature_text":
+						return self.source.getKeyforDay("text", self.index, "")
+					elif self.mode in ("weathericon", "yahoocode"):
+						return self.source.getYahooCode(self.index)
+					elif self.mode == "meteocode":
+						return self.source.getMeteoCode(self.index)
+					elif self.mode == "weekday":
+						return self.source.getKeyforDay("day", self.index)
+					elif self.mode == "weekshortday":
+						return self.source.getKeyforDay("shortDay", self.index)
+					elif self.mode == "date":
+						return self.source.getDate(self.index)
+					elif self.mode == "precipitation":
+						return self.source.getPrecipitation(self.index)
+					else:
+						return ""
+
+				if self.mode == "weathersource":
+					return self.source.getVal("source")
+				elif self.mode in ("city", "observationpoint"):
+					return self.source.getVal("name")
+				elif self.mode == "observationtime":
+					return self.source.getObservationTime()
+				elif self.mode == "sunrise":
+					return self.source.getSunrise()
+				elif self.mode == "sunset":
+					return self.source.getSunset()
+				elif self.mode == "isnight":
+					return self.source.getIsNight()
+				elif self.mode == "temperature_current":
+					return self.source.getTemperature()
+				elif self.mode == "feelslike":
+					return self.source.getFeeltemp()
+				elif self.mode == "humidity":
+					return self.source.getHumidity()
+				elif self.mode == "winddisplay":
+					return "%s %s" % (self.source.getWindSpeed(), self.source.getWindDirName())
+				elif self.mode == "windspeed":
+					return self.source.getWindSpeed()
+				elif self.mode == "winddir":
+					return self.source.getWindDir()
+				elif self.mode == "winddirsign":
+					return self.source.getCurrentVal("windDirSign")
+				elif self.mode == "winddirarrow":
+					return self.source.getCurrentVal("windDirSign").split(" ")[0]
+				elif self.mode == "winddirname":
+					return self.source.getWindDirName()
+				elif self.mode == "winddirshort":
+					return self.source.getWindDirShort()
+				else:
+					return self.source.getVal(self.mode)
+
+			except Exception as err:
+				print("[OAWeather] Converter Error:%s" % str(err))
+				print_exc()
+		return ""
 
 	text = property(getText)
 

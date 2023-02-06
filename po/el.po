@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2023-01-28 02:29+0200\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
@@ -38,6 +38,10 @@ msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστ�
 msgid "Configuration tool for OAWeather"
 msgstr "Εργαλείο παραμετροποιήσεων για το OAWeather"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Σφάλμα πληροφοριών καιρού"
+
 msgid "Defaults"
 msgstr "Προεπιλογές"
 
@@ -67,6 +71,12 @@ msgstr "Σφάλμα πληροφοριών καιρού"
 
 msgid "Fahrenheit"
 msgstr "Φαρενάιτ"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Επιλογή τοποθεσίας"
@@ -119,6 +129,9 @@ msgstr "Ενεργοποιήστε αυτήν την επιλογή για να 
 msgid "Set default values"
 msgstr "Ορισμός προεπιλεγμένων τιμών"
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr "Νότια"
 
@@ -146,8 +159,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Το όνομα της πόλης είναι πολύ μικρό. Απαιτούνται περισσότεροι από 2 χαρακτήρες για την αναζήτηση."
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "Κλειδί API για τον καιρό"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Ρυθμίσεις καιρού"
 
 msgid "Weather Settings Actions"
 msgstr "Ενέργειες ρυθμίσεων καιρού"

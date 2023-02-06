@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: OAWeather VERSION\n"
+"Project-Id-Version: OAWeather 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,9 @@ msgid "City '%s' not found! Please try another wording."
 msgstr ""
 
 msgid "Configuration tool for OAWeather"
+msgstr ""
+
+msgid "Current Weather"
 msgstr ""
 
 msgid "Defaults"
@@ -65,6 +68,12 @@ msgid "Error in Weatherinfo"
 msgstr ""
 
 msgid "Fahrenheit"
+msgstr ""
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
 msgstr ""
 
 msgid "Location Selection"
@@ -118,6 +127,9 @@ msgstr ""
 msgid "Set default values"
 msgstr ""
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr ""
 
@@ -142,7 +154,13 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr ""
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
+msgstr ""
+
+msgid "Weather Plugin"
 msgstr ""
 
 msgid "Weather Settings Actions"

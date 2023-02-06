@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2021-08-21 03:35+0000\n"
 "Last-Translator: Adga56 <adga45@gmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/openatv/metrixhd/lt/>\n"
@@ -39,6 +39,9 @@ msgstr ""
 msgid "Configuration tool for OAWeather"
 msgstr "openATV konfigūravimo įrankis, skirtas Metrix HD temai"
 
+msgid "Current Weather"
+msgstr ""
+
 msgid "Defaults"
 msgstr "Numatytieji"
 
@@ -69,6 +72,12 @@ msgstr ""
 
 msgid "Fahrenheit"
 msgstr "Pagal Farenheitą"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr ""
@@ -121,6 +130,9 @@ msgstr ""
 msgid "Set default values"
 msgstr ""
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr ""
 
@@ -145,8 +157,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr ""
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr ""
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Orų nustatymai"
 
 msgid "Weather Settings Actions"
 msgstr ""

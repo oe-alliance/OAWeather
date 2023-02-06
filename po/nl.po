@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 12:23+0100\n"
+"POT-Creation-Date: 2023-01-30 11:38+0100\n"
 "PO-Revision-Date: 2022-12-31 13:47+0000\n"
 "Last-Translator: Snoete <snoete@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/openatv/metrixhd/nl/>\n"
@@ -35,6 +35,10 @@ msgstr "De woonplaats '%s' werd niet gevonden! A.u.b. de omschrijving aanpassen.
 msgid "Configuration tool for OAWeather"
 msgstr "OpenATV configuratie tool voor MetrixHD"
 
+#, fuzzy
+msgid "Current Weather"
+msgstr "Fout in Weatherinfo"
+
 msgid "Defaults"
 msgstr "Standaard waarden"
 
@@ -65,6 +69,12 @@ msgstr "Fout in Weatherinfo"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "Feels like"
+msgstr ""
+
+msgid "Humidity"
+msgstr ""
 
 msgid "Location Selection"
 msgstr "Woonplaats selectie"
@@ -119,6 +129,9 @@ msgstr "Selecteer deze optie om de laatst opgevraagde weerinformatie lokaal op t
 msgid "Set default values"
 msgstr "Standaard waarden instellen"
 
+msgid "Show Weather Forecast"
+msgstr ""
+
 msgid "South"
 msgstr "Zuid"
 
@@ -147,8 +160,15 @@ msgstr ""
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "De omschrijving voor de woonplaats is te kort. Deze moet uit meer dan 2 tekens bestaan."
 
+msgid "Update"
+msgstr ""
+
 msgid "Weather API key"
 msgstr "Weather-API-Sleutel"
+
+#, fuzzy
+msgid "Weather Plugin"
+msgstr "Weer instellingen"
 
 msgid "Weather Settings Actions"
 msgstr "Weerinstelling Acties"
