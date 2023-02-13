@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2021-08-21 03:35+0000\n"
 "Last-Translator: Adga56 <adga45@gmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/openatv/metrixhd/lt/>\n"
@@ -34,10 +34,6 @@ msgstr ""
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr ""
-
-#, fuzzy
-msgid "Configuration tool for OAWeather"
-msgstr "openATV konfigūravimo įrankis, skirtas Metrix HD temai"
 
 msgid "Current Weather"
 msgstr ""
@@ -98,6 +94,9 @@ msgid "Open-Meteo Wetter"
 msgstr ""
 
 msgid "OpenWeatherMap"
+msgstr ""
+
+msgid "Precipitation"
 msgstr ""
 
 msgid "Refresh interval"

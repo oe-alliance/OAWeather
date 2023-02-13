@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2021-08-26 04:58+0000\n"
 "Last-Translator: Bujar Tafili <bujartafili@yahoo.com>\n"
 "Language-Team: Albanian <https://hosted.weblate.org/projects/openatv/metrixhd/sq/>\n"
@@ -34,10 +34,6 @@ msgstr ""
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr ""
-
-#, fuzzy
-msgid "Configuration tool for OAWeather"
-msgstr "mjeti i konfigurimit të openATV për MetrixHD"
 
 msgid "Current Weather"
 msgstr ""
@@ -98,6 +94,9 @@ msgid "Open-Meteo Wetter"
 msgstr ""
 
 msgid "OpenWeatherMap"
+msgstr ""
+
+msgid "Precipitation"
 msgstr ""
 
 msgid "Refresh interval"

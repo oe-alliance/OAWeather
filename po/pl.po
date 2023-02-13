@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2023-01-29 19:48+0000\n"
 "Last-Translator: pololoko111 <peciek83@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
@@ -30,9 +30,6 @@ msgstr "Wybierz, czy „przełącznik nocny” ma być aktywowany, czy nie. Niek
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Miasto '%s' nie znaleziono! Proszę spróbować innego sformułowania."
-
-msgid "Configuration tool for OAWeather"
-msgstr "Narzędzie konfiguracyjne dla OAWeather"
 
 #, fuzzy
 msgid "Current Weather"
@@ -94,6 +91,9 @@ msgstr "Pogoda Open-Meteo"
 
 msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
+
+msgid "Precipitation"
+msgstr ""
 
 msgid "Refresh interval"
 msgstr "Częstotliwość odświeżania"

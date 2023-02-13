@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2022-05-25 21:18+0000\n"
 "Last-Translator: Bader <fentanyl100@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/openatv/metrixhd/ar/>\n"
@@ -33,9 +33,6 @@ msgstr ""
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
-msgstr ""
-
-msgid "Configuration tool for OAWeather"
 msgstr ""
 
 msgid "Current Weather"
@@ -97,6 +94,9 @@ msgid "Open-Meteo Wetter"
 msgstr ""
 
 msgid "OpenWeatherMap"
+msgstr ""
+
+msgid "Precipitation"
 msgstr ""
 
 msgid "Refresh interval"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2023-02-06 21:29+0200\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
@@ -34,9 +34,6 @@ msgstr "Επιλέξτε αν θα πρέπει να ενεργοποιηθεί 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστε μια άλλη διατύπωση."
-
-msgid "Configuration tool for OAWeather"
-msgstr "Εργαλείο παραμετροποιήσεων για το OAWeather"
 
 msgid "Current Weather"
 msgstr "Τρέχων καιρός"
@@ -97,6 +94,9 @@ msgstr "Καιρός Open-Meteo"
 
 msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
+
+msgid "Precipitation"
+msgstr ""
 
 msgid "Refresh interval"
 msgstr "Διάστημα ανανέωσης"
