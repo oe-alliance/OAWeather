@@ -31,9 +31,6 @@ msgstr "Wybierz, czy „przełącznik nocny” ma być aktywowany, czy nie. Niek
 msgid "City '%s' not found! Please try another wording."
 msgstr "Miasto '%s' nie znaleziono! Proszę spróbować innego sformułowania."
 
-msgid "Configuration tool for OAWeather"
-msgstr "Narzędzie konfiguracyjne dla OAWeather"
-
 msgid "Current Weather"
 msgstr "Obecna Pogoda"
 
@@ -93,6 +90,9 @@ msgstr "Pogoda Open-Meteo"
 
 msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
+
+msgid "Precipitation"
+msgstr "Opad atmosfery"
 
 msgid "Refresh interval"
 msgstr "Częstotliwość odświeżania"
