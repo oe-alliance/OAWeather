@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 11:38+0100\n"
+"POT-Creation-Date: 2023-02-09 23:16+0100\n"
 "PO-Revision-Date: 2022-11-22 15:47+0000\n"
 "Last-Translator: igorrrrr <igorzhugan66@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/ru/>\n"
@@ -30,10 +30,6 @@ msgstr ""
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Город '%s' не найден! Пожалуйста, попробуйте другую формулировку."
-
-#, fuzzy
-msgid "Configuration tool for OAWeather"
-msgstr "Тонкие настройки скина MetrixHD"
 
 #, fuzzy
 msgid "Current Weather"
@@ -96,6 +92,9 @@ msgstr "Open-Meteo Wetter погода"
 
 msgid "OpenWeatherMap"
 msgstr "Открыть карту погоды"
+
+msgid "Precipitation"
+msgstr ""
 
 msgid "Refresh interval"
 msgstr "Интервал обновления"

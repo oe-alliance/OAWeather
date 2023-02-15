@@ -24,6 +24,8 @@ from xml.etree.ElementTree import tostring, parse
 from enigma import eTimer
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
+from Components.Label import Label
+from Components.Pixmap import MultiPixmap
 from Components.Sources.StaticText import StaticText
 from Plugins.Plugin import PluginDescriptor
 from Screens.ChoiceBox import ChoiceBox
@@ -271,12 +273,6 @@ def setup(session, **kwargs):
 	session.open(WeatherSettingsView)
 
 
-def menu(menuid, **kwargs):
-	if menuid == "system":
-		return [("OAWeather", setup, "oaweather", 1)]
-	return []
-
-
 def sessionstart(session, **kwargs):
 	from Components.Sources.OAWeather import OAWeather
 	session.screen["OAWeather"] = OAWeather()
@@ -287,7 +283,6 @@ def Plugins(**kwargs):
 	pluginList = []
 	pluginList.append(PluginDescriptor(name="OAWeather", where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=sessionstart, needsRestart=False))
 	pluginList.append(PluginDescriptor(name="Weather Plugin", description=_("Show Weather Forecast"), icon="plugin.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main))
-#	pluginList.append(PluginDescriptor(name="OAWeather", description=_("Configuration tool for OAWeather"), where=PluginDescriptor.WHERE_MENU, fnc=menu))
 	return pluginList
 
 
@@ -296,10 +291,6 @@ class OAWeatherPlugin(Screen):
 		params = {
 			"picpath": join(PLUGINPATH, "Images"),
 			"iconpath": join(PLUGINPATH, "Icons"),
-			"current": _("Current Weather"),
-			"update": _("Update"),
-			"feelslike": _("Feels like"),
-			"humidity": _("Humidity")
 		}
 		skintext = ""
 		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
@@ -322,6 +313,18 @@ class OAWeatherPlugin(Screen):
 		}, -1)
 
 		self["statustext"] = StaticText()
+		self["update"] = Label(_("Update"))
+		self["current"] = Label(_("Current Weather"))
+		self["feelslike"] = Label(_("Feels like"))
+		self["humidity"] = Label(_("Humidity"))
+		self["precipitation"] = Label(_("Precipitation"))
+		self["precipitation1"] = Label(_("Precipitation"))
+		self["precipitation2"] = Label(_("Precipitation"))
+		self["precipitation3"] = Label(_("Precipitation"))
+		self["precipitation4"] = Label(_("Precipitation"))
+		self["precipitation5"] = Label(_("Precipitation"))
+		self["logo"] = MultiPixmap()
+		self["logo"].hide()
 
 		for i in range(1, 6):
 			self["weekday%s_temp" % i] = StaticText()
@@ -361,6 +364,10 @@ class OAWeatherPlugin(Screen):
 			highTemp = item.get("maxTemp")
 			text = item.get("text")
 			self["weekday%s_temp" % day].text = "%s %s|%s %s\n%s" % (highTemp, tempunit, lowTemp, tempunit, text)
+
+		logos = {"MSN": 0, "openweather": 1, "OpenMeteo": 2}
+		self["logo"].setPixmapNum(logos.get(config.plugins.OAWeather.weatherservice.value, 0))
+		self["logo"].show()
 
 	def config(self):
 		self.session.openWithCallback(self.setupFinished, WeatherSettingsView)
