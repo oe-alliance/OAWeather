@@ -110,21 +110,23 @@ Displaying icons with OAWeatherPixmap Renderer:
 --> X = 3-5 (day 2-4, means the complete 24h-day)
 
 Displaying Info-data with Label Renderer:
-weathersource          # Example: "MSN Weather"
-city                   # Example: "Hamburg, Germany"
+weathersource          # "MSN Weather" or "O-M Weather" or "OWM Weather"
+city                   # Example: "Hamburg" (shortstring without country)
 longitude              # Example: "53.5573"
 latitude               # Example: "9.996"
 sunrise                # Example: "08:30"
 sunset                 # Example: "16:27"
 isnight                # Example: "False" oder "True"
 observationtime        # Example: "16:17"
-observationpoint       # is no longer supported by the weather services, is now identical with 'CITY'.
+observationpoint       # Example: "Hamburg, Germany" (fullstring with country)
 tempunit               # "°C" or "°F"
 windunit               # "km/h" or "mph"
 precunit               # MSN "%", OMW/OWM "mm" (even when using units=IMPERIAL)
 temperature_current    # Example: "8 °C"
 feelslike              # Example: "4 °C"
+feelslikefull          # Example: "Feels like 4 °C"
 humidity               # Example: "81 %"
+humidityfull           # Example: "Humidity 81 %"
 winddisplay            # Example: "12 km/h Southwest"
 windspeed              # Example: "12 km/h"
 winddir                # Example: "230 °"
@@ -134,14 +136,18 @@ winddirname            # Example: "Southwest"
 winddirshort           # Example: "SW"
 yahoocode              # Example: "9" (matching the extended weather icon code: YAHOO+)
 meteocode              # Example: "Q" (matching the character set: MetrixIcons.ttf)
+raintext               # Example: "No rain for the next 2 hours." (HINT: MSN only, for other services an empty string is supplied)
 --> these arguments do not need any further arguments
 
 These arguments are depending of the day argument:
-precipitation          # Example: MSN "29 %", OMW/OWM "0.7 mm" (even when using units=IMPERIAL)
-temperature_heigh      # Example: "9 °C"
-temperature_low        # Example: "6 °C"
-temperature_heigh_low  # Example: "6 - 9 °C"
-temperature_text       # Example: "rain showers", HINT: OpenMeteo doesn't deliver descriptions, an empty string is now supplied (instead of "N/A")
+precipitation          # Example: MSN= "29 %", OMW/OWM= "0.7 mm" (even when using units=IMPERIAL)
+precipitationfull      # Example: MSN="Precipitation 29 %", OMW/OWM= "Precipitation 0.7 mm" (even when using units=IMPERIAL)
+temperature_high       # Example: "5 °C"
+temperature_low        # Example: "-3 °C"
+temperature_high_low   # Example: "5 / -3 °C"
+temperature_text       # Example: "rain showers" (HINT: OpenMeteo doesn't deliver descriptiontexts, therefore an empty string is supplied)
+summary0               # Example: "The skies will be cloudy." (HINT: MSN only, for other services an empty string is supplied)
+summary1               # Example: "Blustery winds will accompany a high of 6°." (HINT: MSN only, for other services an empty string is supplied)
 weekday                # Example: "Friday"
 weekshortday           # Example: "Fr"
 date                   # Example: "2023-01-13"
@@ -152,7 +158,7 @@ date                   # Example: "2023-01-13"
 --> X = 3-5 (day 2-4, means the complete 24h-day)
 
 usage example 2:
-	<widget alphatest="blend" render="OAWeatherPixmap" position="20,553" size="200,122" source="session.OAWeather" transparent="1" zPosition="5">
+	<widget alphatest="blend" render="OAWeatherPixmap" position="20,553" size="200,122" source="session.OAWeather" transparent="1">
 		<convert type="OAWeather">weathericon,current,/etc/enigma2/weather_icons_special/</convert>
 	</widget>
 
@@ -164,6 +170,12 @@ usage example 3:
 
 Meteofont
 
-	<widget font="Meteo" render="Label" position="20,553" size="200,122" source="session.OAWeather" transparent="1" zPosition="5">
+	<widget font="Meteo" render="Label" position="20,553" size="200,122" source="session.OAWeather" transparent="1">
 		<convert type="OAWeather">meteocode</convert>
+	</widget>
+
+Displaying weather service logo icon with OAWeatherPixmap Renderer:
+
+	<widget alphatest="blend" render="OAWeatherPixmap" position="20,553" size="200,30" source="session.OAWeather" transparent="1">
+		<convert type="OAWeather">logo</convert>
 	</widget>

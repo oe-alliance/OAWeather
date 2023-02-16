@@ -15,12 +15,12 @@
 
 # Some parts are taken from msnweathercomponent plugin for compatibility reasons.
 
+from os.path import join, exists, isfile
+from traceback import print_exc
 
 from Components.Converter.Converter import Converter
 from Components.config import config
 from Components.Element import cached
-from os.path import join, exists
-from traceback import print_exc
 
 
 class OAWeather(Converter, object):
@@ -30,39 +30,6 @@ class OAWeather(Converter, object):
 	DAY3 = 3
 	DAY4 = 4
 	DAY5 = 5
-	CITY = 6                    # Example: "Hamburg, Germany"
-	TEMPERATURE_HIGH = 7        # Example: "9 °C"
-	TEMPERATURE_LOW = 8         # Example: "6 °C"
-	TEMPERATURE_TEXT = 9        # Example: "rain showers", HINT: OpenMeteo doesn't deliver descriptiontexts, therefore "N/A" comes up
-	TEMPERATURE_CURRENT = 10    # Example: "8 °C"
-	WEEKDAY = 11                # Example: "Friday"
-	WEEKSHORTDAY = 12           # Example: "Fr"
-	DATE = 13                   # Example: "2023-01-13"
-	OBSERVATIONTIME = 14        # Example: "16:17"
-	OBSERVATIONPOINT = 15       # is no longer supported by the weather services, is now identical with 'CITY'.
-	FEELSLIKE = 16              # Example: "4 °C"
-	HUMIDITY = 17               # Example: "81 %"
-	WINDDISPLAY = 18            # Example: "12 km/h Southwest"
-	ICON = 19                   # Example: "9" (matching the extended weather icon code: YAHOO+)
-	TEMPERATURE_HIGH_LOW = 20   # Example: "6 - 9 °C"
-#   new entries since January 2023
-	WEATHERSOURCE = 21          # Example: "MSN Weather"
-	LONGITUDE = 22              # Example: "53.5573"
-	LATITUDE = 23               # Example: "9.996"
-	SUNRISE = 24                # Example: "08:30"
-	SUNSET = 25                 # Example: "16:27"
-	ISNIGHT = 26                # Example: "False" or "True"
-	TEMPUNIT = 27               # Example: "°C"
-	WINDUNIT = 28               # Example: "km/h"
-	WINDSPEED = 29              # Example: "12 km/h"
-	WINDDIR = 30                # Example: "230 °"
-	WINDDIRSIGN = 31            # Example: "↗ SW"
-	WINDDIRARROW = 31           # Example: "↗"
-	WINDDIRNAME = 32            # Example: "Southwest"
-	WINDDIRSHORT = 33           # Example: "SW"
-	YAHOOCODE = 34              # Example: "9" (matching the extended weather icon code: YAHOO+)
-	METEOCODE = 35              # Example: "Q" (matching the character set: MetrixIcons.ttf)
-
 	DAYS = {
 		"current": CURRENT,
 		"day1": DAY1,
@@ -79,6 +46,7 @@ class OAWeather(Converter, object):
 		self.index = None
 		self.mode = None
 		self.path = None
+		self.logo = None
 		self.extension = "png"
 		value = type.split(",")
 		self.mode = value[0]
@@ -128,6 +96,12 @@ class OAWeather(Converter, object):
 						return self.source.getDate(self.index)
 					elif self.mode == "precipitation":
 						return self.source.getPrecipitation(self.index)
+					elif self.mode == "precipitationfull":
+						return self.source.getPrecipitation(self.index, True)
+					elif self.mode == "summary0":
+						return self.source.getKeyforDay("summary0", self.index)
+					elif self.mode == "summary1":
+						return self.source.getKeyforDay("summary1", self.index)
 					else:
 						return ""
 
@@ -147,8 +121,14 @@ class OAWeather(Converter, object):
 					return self.source.getTemperature()
 				elif self.mode == "feelslike":
 					return self.source.getFeeltemp()
+				elif self.mode == "feelslikefull":
+					return self.source.getFeeltemp(True)
 				elif self.mode == "humidity":
 					return self.source.getHumidity()
+				elif self.mode == "humidityfull":
+					return self.source.getHumidity(True)
+				elif self.mode == "raintext":
+					return self.source.getCurrentVal("raintext")
 				elif self.mode == "winddisplay":
 					return "%s %s" % (self.source.getWindSpeed(), self.source.getWindDirName())
 				elif self.mode == "windspeed":
@@ -175,17 +155,24 @@ class OAWeather(Converter, object):
 
 	@cached
 	def getIconFilename(self):
-		path = ""
+		if self.mode == "logo":
+			try:
+				path = join(self.source.pluginpath, "Images", "%s_weather_logo.png" % self.source.logo)
+				if isfile(path):
+					return path
+			except Exception:
+				return ""
+
 		if self.index in (self.CURRENT, self.DAY1, self.DAY2, self.DAY3, self.DAY4, self.DAY5):
 			path = self.path
 			if path and exists(path):
 				code = self.source.getYahooCode(self.index)
 				if code:
 					path = join(path, "%s.%s" % (code, self.extension))
-					if exists(path):
+					if isfile(path):
 						return path
-		self.debug("getIconFilename mode:%s index:%s self.path:%s path:%s" % (self.mode, self.index, self.path, path))
-		return path
+			self.debug("getIconFilename not found mode:%s index:%s self.path:%s path:%s" % (self.mode, self.index, self.path, path))
+		return ""
 
 	def debug(self, text: str):
 		if self.enabledebug:

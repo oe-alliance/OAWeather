@@ -31,6 +31,8 @@ class OAWeather(Source):
 
 	METEOdayswitch = {"2": "1", "3": "4", "C": "B", "I": "H", "K": "J"}
 
+	services = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}
+
 	def __init__(self):
 		Source.__init__(self)
 		self.enabledebug = config.plugins.OAWeather.debug.value
@@ -40,6 +42,11 @@ class OAWeather(Source):
 		self.skydirs = weatherhandler.getSkydirs()
 		self.na = _("n/a")
 		self.tempunit = self.getVal("tempunit")
+		self.precipitationtext = "Precipitation"
+		self.humiditytext = "Humidity"
+		self.feelsliketext = "Feels like"
+		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		self.pluginpath = None
 
 	def debug(self, text: str):
 		if self.enabledebug:
@@ -48,6 +55,7 @@ class OAWeather(Source):
 	def callbackUpdate(self, data):
 		self.debug("callbackUpdate: %s" % str(data))
 		self.data = data
+		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.tempunit = self.getVal("tempunit")
 		self.changed((self.CHANGED_ALL,))
 
@@ -93,11 +101,13 @@ class OAWeather(Source):
 	def getTemperature(self):
 		return "%s %s" % (self.getCurrentVal("temp"), self.tempunit)
 
-	def getFeeltemp(self):
-		return "%s %s" % (self.getCurrentVal("feelsLike"), self.tempunit)
+	def getFeeltemp(self, full=False):
+		text = "%s " % self.feelsliketext if full else ""
+		return "%s%s %s" % (text, self.getCurrentVal("feelsLike"), self.tempunit)
 
-	def getHumidity(self):
-		return "%s %s" % (self.getCurrentVal("humidity"), "%")
+	def getHumidity(self, full=False):
+		text = "%s " % self.humiditytext if full else ""
+		return "%s%s %s" % (text, self.getCurrentVal("humidity"), "%")
 
 	def getWindSpeed(self):
 		return "%s %s" % (self.getCurrentVal("windSpeed"), self.getVal("windunit"))
@@ -107,8 +117,9 @@ class OAWeather(Source):
 		return ("%s °" % val) if val else self.na
 
 	def getWindDirName(self):
-		skydirection = self.getCurrentVal("windDirSign", "").split(" ")
+		skydirection = self.getCurrentVal("windDirSign", "")
 		if skydirection:
+			skydirection = skydirection.split(" ")
 			return self.skydirs[skydirection[1]] if skydirection[1] in self.skydirs else skydirection[1]
 		else:
 			return self.na
@@ -125,8 +136,9 @@ class OAWeather(Source):
 	def getMaxMinTemp(self, day: int):
 		return "%s / %s %s" % (self.getKeyforDay("minTemp", day), self.getKeyforDay("maxTemp", day), self.tempunit)
 
-	def getPrecipitation(self, day: int):
-		return "%s %s" % (self.getKeyforDay("precipitation", day), self.getVal("precunit"))
+	def getPrecipitation(self, day: int, full=False):
+		text = "%s " % self.precipitationtext if full else ""
+		return "%s%s %s" % (text, self.getKeyforDay("precipitation", day), self.getVal("precunit"))
 
 	def getYahooCode(self, day: int):
 		iconcode = self.getKeyforDay("yahooCode", day, "")

@@ -25,7 +25,6 @@ from enigma import eTimer
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Label import Label
-from Components.Pixmap import MultiPixmap
 from Components.Sources.StaticText import StaticText
 from Plugins.Plugin import PluginDescriptor
 from Screens.ChoiceBox import ChoiceBox
@@ -276,6 +275,10 @@ def setup(session, **kwargs):
 def sessionstart(session, **kwargs):
 	from Components.Sources.OAWeather import OAWeather
 	session.screen["OAWeather"] = OAWeather()
+	session.screen["OAWeather"].precipitationtext = _("Precipitation")
+	session.screen["OAWeather"].humiditytext = _("Humidity")
+	session.screen["OAWeather"].feelsliketext = _("Feels like")
+	session.screen["OAWeather"].pluginpath = PLUGINPATH
 	weatherhandler.sessionStart()
 
 
@@ -315,16 +318,6 @@ class OAWeatherPlugin(Screen):
 		self["statustext"] = StaticText()
 		self["update"] = Label(_("Update"))
 		self["current"] = Label(_("Current Weather"))
-		self["feelslike"] = Label(_("Feels like"))
-		self["humidity"] = Label(_("Humidity"))
-		self["precipitation"] = Label(_("Precipitation"))
-		self["precipitation1"] = Label(_("Precipitation"))
-		self["precipitation2"] = Label(_("Precipitation"))
-		self["precipitation3"] = Label(_("Precipitation"))
-		self["precipitation4"] = Label(_("Precipitation"))
-		self["precipitation5"] = Label(_("Precipitation"))
-		self["logo"] = MultiPixmap()
-		self["logo"].hide()
 
 		for i in range(1, 6):
 			self["weekday%s_temp" % i] = StaticText()
@@ -364,10 +357,6 @@ class OAWeatherPlugin(Screen):
 			highTemp = item.get("maxTemp")
 			text = item.get("text")
 			self["weekday%s_temp" % day].text = "%s %s|%s %s\n%s" % (highTemp, tempunit, lowTemp, tempunit, text)
-
-		logos = {"MSN": 0, "openweather": 1, "OpenMeteo": 2}
-		self["logo"].setPixmapNum(logos.get(config.plugins.OAWeather.weatherservice.value, 0))
-		self["logo"].show()
 
 	def config(self):
 		self.session.openWithCallback(self.setupFinished, WeatherSettingsView)

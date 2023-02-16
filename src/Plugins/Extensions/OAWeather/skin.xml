@@ -22,21 +22,21 @@
 		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;22" position="210,60" size="80,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
 			<convert type="OAWeather">observationtime</convert>
 		</widget>
-		<widget name="logo" alphatest="blend" pixmaps="{picpath}/msn_weather_logo.png,{picpath}/owm_weather_logo.png,{picpath}/om_weather_logo.png" position="1120,22" size="133,20" zPosition="10" scale="1" />
+		<widget alphatest="blend" render="OAWeatherPixmap" position="1113,21" size="132,24" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
+			<convert type="OAWeather">logo</convert>
+		</widget>
 		<widget noWrap="1" font="Regular; 40" position="85,210" size="240,50" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">temperature_current</convert>
 		</widget>
-		<widget noWrap="1" font="Regular;22" position="215,260" size="80,30" backgroundColor="#363b38" zPosition="3" transparent="1" valign="center" halign="center" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">feelslike</convert>
+		<widget noWrap="1" font="Regular;22" position="90,260" size="245,30" backgroundColor="#363b38" zPosition="3" transparent="1" valign="center" halign="center" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">feelslikefull</convert>
 		</widget>
-		<widget name="feelslike" font="Regular; 22" position="90,260" size="165,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
 		<widget font="Regular; 22" position="85,290" size="240,50" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">temperature_text,current</convert>
 		</widget>
-		<widget name="precipitation" font="Regular; 24" position="450,92" size="180,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
 		<ePixmap pixmap="{picpath}/precipitation.png" position="385,85" size="50,50" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular; 24" position="630,92" size="100,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,current</convert>
+		<widget font="Regular; 24" position="450,92" size="280,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,current</convert>
 		</widget>
 		<widget font="Regular;28" position="390,22" size="370,65" backgroundColor="#80000000" zPosition="3" transparent="1" halign="center" valign="top" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">city</convert>
@@ -72,21 +72,17 @@
 		<widget font="Regular;24" position="450,228" size="300,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">winddisplay</convert>
 		</widget>
-		<widget name="humidity" font="Regular; 24" position="450,291" size="165,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
 		<ePixmap pixmap="{picpath}/humidity.png" position="385,283" size="50,50" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;24" position="615,291" size="100,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">humidity</convert>
+		<widget font="Regular;24" position="450,291" size="265,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">humidityfull</convert>
 		</widget>
-		<widget name="precipitation1" font="Regular; 24" position="830,302" size="170,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
-		
-		<widget font="Regular;24" position="1000,302" size="70,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,day1</convert>
+		<widget font="Regular; 22" position="825,302" size="250,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,day1</convert>
 		</widget>
 		<!--day2 -->
-		<widget font="Regular;24" position="255,665" size="70,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,day2</convert>
+		<widget font="Regular; 22" position="80,665" size="250,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,day2</convert>
 		</widget>
-		<widget name="precipitation2" font="Regular; 24" position="85,665" size="170,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
 		<widget source="session.OAWeather" render="Label" font="Regular;28" position="65,376" size="180,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day2</convert>
 		</widget>
@@ -103,10 +99,9 @@
 			<convert type="OAWeather">temperature_text,day2</convert>
 		</widget>
 		<!-- day3 -->
-		<widget font="Regular;24" position="545,665" size="70,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,day3</convert>
+		<widget font="Regular; 22" position="370,665" size="250,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,day3</convert>
 		</widget>
-		<widget name="precipitation3" font="Regular; 24" position="375,665" size="170,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
 		<widget source="session.OAWeather" render="Label" font="Regular;28" position="355,376" size="180,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day3</convert>
 		</widget>
@@ -123,10 +118,9 @@
 			<convert type="OAWeather">temperature_text,day3</convert>
 		</widget>
 		<!--day4-->
-		<widget font="Regular;24" position="835,665" size="70,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,day4</convert>
+		<widget font="Regular; 22" position="660,665" size="250,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,day4</convert>
 		</widget>
-		<widget name="precipitation4" font="Regular; 24" position="665,665" size="170,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
 		<widget source="session.OAWeather" render="Label" font="Regular;28" position="645,376" size="180,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day4</convert>
 		</widget>
@@ -143,10 +137,9 @@
 			<convert type="OAWeather">temperature_text,day4</convert>
 		</widget>
 		<!--day5-->
-		<widget font="Regular;24" position="1125,665" size="70,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
-			<convert type="OAWeather">precipitation,day5</convert>
+		<widget font="Regular; 22" position="950,665" size="250,35" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
+			<convert type="OAWeather">precipitationfull,day5</convert>
 		</widget>
-		<widget name="precipitation5" font="Regular; 24" position="955,665" size="170,35" backgroundColor="#363b38" transparent="1" zPosition="3" halign="center" valign="center" />
 		<widget source="session.OAWeather" render="Label" font="Regular;28" position="937,376" size="180,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day5</convert>
 		</widget>
