@@ -22,7 +22,7 @@
 		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;22" position="210,60" size="80,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
 			<convert type="OAWeather">observationtime</convert>
 		</widget>
-		<widget alphatest="blend" render="OAWeatherPixmap" position="1113,21" size="132,24" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
+		<widget alphatest="blend" render="OAWeatherPixmap" position="1092,21" size="172,24" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
 			<convert type="OAWeather">logo</convert>
 		</widget>
 		<widget noWrap="1" font="Regular; 40" position="85,210" size="240,50" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
