@@ -116,6 +116,7 @@ class WeatherSettingsView(Setup):
 		self.old_weatherservice = config.plugins.OAWeather.weatherservice.value
 		self.checkcity = False
 		if self.closeonsave:
+			config.plugins.OAWeather.owm_geocode.save()
 			weatherhandler.reset()
 			Setup.keySave(self)
 
@@ -133,19 +134,21 @@ class WeatherSettingsView(Setup):
 			self.keycheckCity(True)
 			return
 		weatherhandler.reset()
+		config.plugins.OAWeather.owm_geocode.save()
 		Setup.keySave(self)
 
 	def defaults(self, SAVE=False):
 		for x in self["config"].list:
 			if len(x) > 1:
-				self.setInputToDefault(x[1])
-				if SAVE:
-					x[1].save()
+				self.setInputToDefault(x[1], SAVE)
+		self.setInputToDefault(config.plugins.OAWeather.owm_geocode, SAVE)
 		if self.session:
 			Setup.createSetup(self)
 
-	def setInputToDefault(self, configItem):
+	def setInputToDefault(self, configItem, SAVE):
 		configItem.setValue(configItem.default)
+		if SAVE:
+			configItem.save()
 
 
 class WeatherHandler():
