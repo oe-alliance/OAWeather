@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 23:16+0100\n"
+"POT-Creation-Date: 2023-02-25 12:12+0100\n"
 "PO-Revision-Date: 2022-11-14 11:47+0000\n"
 "Last-Translator: Juanjo-EA1CJ <juanjo.ea1cj@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/openatv/metrixhd/es/>\n"
@@ -28,6 +28,9 @@ msgstr "Datos en cache"
 msgid "Celsius"
 msgstr "Celsius"
 
+msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgstr ""
+
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr ""
 
@@ -38,6 +41,10 @@ msgstr "Ciudad '%s' no encontrada! Por favor prueba con otra palabta."
 #, fuzzy
 msgid "Current Weather"
 msgstr "Error en Weatherinfo"
+
+#, fuzzy
+msgid "Default"
+msgstr "Valores predefinidos"
 
 msgid "Defaults"
 msgstr "Valores predefinidos"
@@ -181,6 +188,10 @@ msgstr "Nombre de la ciudad en MetrixWeather"
 
 #, fuzzy
 msgid "Weather icon night switch"
+msgstr "Ruta del icono de MetrixWeather"
+
+#, fuzzy
+msgid "Weather icon set"
 msgstr "Ruta del icono de MetrixWeather"
 
 msgid "Weather service"

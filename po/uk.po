@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 23:16+0100\n"
+"POT-Creation-Date: 2023-02-25 12:12+0100\n"
 "PO-Revision-Date: 2022-12-14 19:48+0000\n"
 "Last-Translator: kvinto <badsystem@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/openatv/metrixhd/uk/>\n"
@@ -23,6 +23,9 @@ msgstr "Кеш даних"
 msgid "Celsius"
 msgstr "Цельсій"
 
+msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgstr ""
+
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr ""
 
@@ -33,6 +36,10 @@ msgstr "Місто '%s' не знайдено! Спробуйте інше фо�
 #, fuzzy
 msgid "Current Weather"
 msgstr "Помилка в Weatherinfo"
+
+#, fuzzy
+msgid "Default"
+msgstr "За замовчуванням"
 
 msgid "Defaults"
 msgstr "За замовчуванням"
@@ -172,6 +179,10 @@ msgstr "Назва міста MetrixWeather"
 
 #, fuzzy
 msgid "Weather icon night switch"
+msgstr "Шлях до іконок MetrixWeather"
+
+#, fuzzy
+msgid "Weather icon set"
 msgstr "Шлях до іконок MetrixWeather"
 
 msgid "Weather service"

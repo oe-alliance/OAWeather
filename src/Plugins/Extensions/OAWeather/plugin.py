@@ -15,8 +15,8 @@
 
 # Some parts are taken from MetrixHD skin and MSNWeather Plugin.
 
-from os import remove
-from os.path import isfile, getmtime, join
+from os import remove, listdir
+from os.path import isfile, exists, getmtime, join
 from pickle import dump, load
 from time import time
 from twisted.internet.reactor import callInThread
@@ -31,12 +31,21 @@ from Screens.ChoiceBox import ChoiceBox
 from Screens.Setup import Setup
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, resolveFilename
 from Tools.Weatherinfo import Weatherinfo
 from . import _
 
 config.plugins.OAWeather = ConfigSubsection()
 config.plugins.OAWeather.enabled = ConfigYesNo(default=True)
+
+ICONSETS = [("", _("Default"))]
+ICONSETROOT = join(resolveFilename(SCOPE_SKINS), "WeatherIconSets")
+if exists(ICONSETROOT):
+	for iconset in listdir(ICONSETROOT):
+		if isfile(join(ICONSETROOT, iconset, "0.png")):
+			ICONSETS.append((iconset, iconset))
+
+config.plugins.OAWeather.iconset = ConfigSelection(default="", choices=ICONSETS)
 config.plugins.OAWeather.nighticons = ConfigYesNo(default=True)
 config.plugins.OAWeather.cachedata = ConfigSelection(default="0", choices=[("0", _("Disabled"))] + [(str(x), _("%d Minutes") % x) for x in (30, 60, 120)])
 config.plugins.OAWeather.refreshInterval = ConfigSelectionNumber(0, 1440, 30, default=120, wraparound=True)
@@ -153,6 +162,7 @@ class WeatherSettingsView(Setup):
 
 class WeatherHandler():
 	def __init__(self):
+		self.session = None
 		self.enabledebug = config.plugins.OAWeather.debug.value
 		modes = {"MSN": "msn", "openweather": "owm", "OpenMeteo": "omw"}
 		mode = modes.get(config.plugins.OAWeather.weatherservice.value, "msn")
@@ -168,7 +178,8 @@ class WeatherHandler():
 		self.skydirs = {"N": _("North"), "NE": _("Northeast"), "E": _("East"), "SE": _("Southeast"), "S": _("South"), "SW": _("Southwest"), "W": _("West"), "NW": _("Northwest")}
 		self.msnFullData = None
 
-	def sessionStart(self):
+	def sessionStart(self, session):
+		self.session = session
 		self.debug("sessionStart")
 		self.getCacheData()
 
@@ -213,6 +224,16 @@ class WeatherHandler():
 		if config.plugins.OAWeather.enabled.value:
 			self.weathercity = config.plugins.OAWeather.weathercity.value
 			geocode = config.plugins.OAWeather.owm_geocode.value.split(",")
+			# DEPRECATED, will be removed in April 2023
+			if geocode == ['0.0', '0.0']:
+				geodatalist = self.WI.getCitylist(config.plugins.OAWeather.weathercity.value.split(",")[0], config.osd.language.value.replace('_', '-').lower())
+				if geodatalist is not None and len(geodatalist[0]) == 3:
+					geocode = [geodatalist[0][1], geodatalist[0][2]]
+					config.plugins.OAWeather.weathercity.value = geodatalist[0][0]
+					config.plugins.OAWeather.weathercity.save()
+					config.plugins.OAWeather.owm_geocode.value = "%s,%s" % (float(geocode[0]), float(geocode[1]))
+					config.plugins.OAWeather.owm_geocode.save()
+			# DEPRECATED, will be removed in April 2023
 			if geocode and len(geocode) == 2:
 				geodata = (self.weathercity, geocode[0], geocode[1])  # tuple ("Cityname", longitude, latitude)
 			else:
@@ -260,6 +281,10 @@ class WeatherHandler():
 			print(self.WI.error)
 			self.WI.setmode()  # fallback to MSN
 
+		if self.session:
+			iconpath = config.plugins.OAWeather.iconset.value
+			iconpath = join(ICONSETROOT, iconpath) if iconpath else join(PLUGINPATH, "Icons")
+			self.session.screen["OAWeather"].iconpath = iconpath
 		self.refreshWeatherData()
 
 	def debug(self, text: str):
@@ -282,7 +307,13 @@ def sessionstart(session, **kwargs):
 	session.screen["OAWeather"].humiditytext = _("Humidity")
 	session.screen["OAWeather"].feelsliketext = _("Feels like")
 	session.screen["OAWeather"].pluginpath = PLUGINPATH
-	weatherhandler.sessionStart()
+	iconpath = config.plugins.OAWeather.iconset.value
+	if iconpath:
+		iconpath = join(ICONSETROOT, iconpath)
+	else:
+		iconpath = join(PLUGINPATH, "Icons")
+	session.screen["OAWeather"].iconpath = iconpath
+	weatherhandler.sessionStart(session)
 
 
 def Plugins(**kwargs):
@@ -295,8 +326,7 @@ def Plugins(**kwargs):
 class OAWeatherPlugin(Screen):
 	def __init__(self, session):
 		params = {
-			"picpath": join(PLUGINPATH, "Images"),
-			"iconpath": join(PLUGINPATH, "Icons"),
+			"picpath": join(PLUGINPATH, "Images")
 		}
 		skintext = ""
 		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()

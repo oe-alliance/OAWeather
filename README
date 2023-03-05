@@ -114,11 +114,11 @@ weathersource          # "MSN Weather" or "O-M Weather" or "OWM Weather"
 city                   # Example: "Hamburg" (shortstring without country)
 longitude              # Example: "53.5573"
 latitude               # Example: "9.996"
+observationpoint       # Example: "Hamburg, Germany" (fullstring with country)
+observationtime        # Example: "16:17"
 sunrise                # Example: "08:30"
 sunset                 # Example: "16:27"
 isnight                # Example: "False" oder "True"
-observationtime        # Example: "16:17"
-observationpoint       # Example: "Hamburg, Germany" (fullstring with country)
 tempunit               # "°C" or "°F"
 windunit               # "km/h" or "mph"
 precunit               # MSN "%", OMW/OWM "mm" (even when using units=IMPERIAL)
@@ -127,6 +127,7 @@ feelslike              # Example: "4 °C"
 feelslikefull          # Example: "Feels like 4 °C"
 humidity               # Example: "81 %"
 humidityfull           # Example: "Humidity 81 %"
+raintext               # Example: "No rain for the next 2 hours." (HINT: MSN only, for other services an empty string is supplied)
 winddisplay            # Example: "12 km/h Southwest"
 windspeed              # Example: "12 km/h"
 winddir                # Example: "230 °"
@@ -134,23 +135,27 @@ winddirsign            # Example: "↗ SW"
 winddirarrow           # Example: "↗"
 winddirname            # Example: "Southwest"
 winddirshort           # Example: "SW"
-yahoocode              # Example: "9" (matching the extended weather icon code: YAHOO+)
-meteocode              # Example: "Q" (matching the character set: MetrixIcons.ttf)
-raintext               # Example: "No rain for the next 2 hours." (HINT: MSN only, for other services an empty string is supplied)
 --> these arguments do not need any further arguments
 
 These arguments are depending of the day argument:
-precipitation          # Example: MSN= "29 %", OMW/OWM= "0.7 mm" (even when using units=IMPERIAL)
-precipitationfull      # Example: MSN="Precipitation 29 %", OMW/OWM= "Precipitation 0.7 mm" (even when using units=IMPERIAL)
 temperature_high       # Example: "5 °C"
 temperature_low        # Example: "-3 °C"
 temperature_high_low   # Example: "5 / -3 °C"
 temperature_text       # Example: "rain showers" (HINT: OpenMeteo doesn't deliver descriptiontexts, therefore an empty string is supplied)
-summary0               # Example: "The skies will be cloudy." (HINT: MSN only, for other services an empty string is supplied)
-summary1               # Example: "Blustery winds will accompany a high of 6°." (HINT: MSN only, for other services an empty string is supplied)
+weathericon            # Example: "9" (matching the extended weather icon code: YAHOO+)
+yahoocode              # Example: "9" (matching the extended weather icon code: YAHOO+)
+meteocode              # Example: "Q" (matching the character set: MetrixIcons.ttf)
+dayText                # Example: "today, Fri 24"
 weekday                # Example: "Friday"
-weekshortday           # Example: "Fr"
+weekshortday           # Example: "Fri"
 date                   # Example: "2023-01-13"
+precipitation          # Example: MSN= "29 %", OMW/OWM= "0.7 mm" (even when using units=IMPERIAL)
+precipitationfull      # Example: MSN="Precipitation 29 %", OMW/OWM= "Precipitation 0.7 mm" (even when using units=IMPERIAL)
+daySummary0            # Example: "The skies will be cloudy." (HINT: MSN only, for other services an empty string is supplied)
+daySummary1            # Example: "Blustery winds will accompany a high of 6°." (HINT: MSN only, for other services an empty string is supplied)
+nightSummary0          # Example: "The skies will be mostly clear." (HINT: MSN only, for other services an empty string is supplied)
+nightSummary1          # Example: "The low will be -3 °C." (HINT: MSN only, for other services an empty string is supplied)
+umbrellaIndex          # Example: "No need." (HINT:MSN only and only available for day0+1, otherwise an empty string is supplied)
 --> to use in combination with current (X = 0) or dayX (X = 1 to 5) (look out for the examples)
 --> X = 0 (current, means right now and the rest of the day)
 --> X = 1 (today, means the complete 24h-day)

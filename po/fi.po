@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 23:16+0100\n"
+"POT-Creation-Date: 2023-02-25 12:12+0100\n"
 "PO-Revision-Date: 2022-12-07 12:48+0000\n"
 "Last-Translator: tomppaa <tomzza89@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/openatv/metrixhd/fi/>\n"
@@ -24,6 +24,9 @@ msgstr "Välimuistin data"
 msgid "Celsius"
 msgstr "Celsius"
 
+msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgstr ""
+
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr ""
 
@@ -34,6 +37,10 @@ msgstr "Kaupunki '%s' ei löytynyt! Kokeile toista sanamuotoa."
 #, fuzzy
 msgid "Current Weather"
 msgstr "Virhe säätiedoissa"
+
+#, fuzzy
+msgid "Default"
+msgstr "Oletusarvot"
 
 msgid "Defaults"
 msgstr "Oletusarvot"
@@ -177,6 +184,10 @@ msgstr "MetrixSää kaupungin nimi"
 
 #, fuzzy
 msgid "Weather icon night switch"
+msgstr "MetrixSää kuvakkeen polku"
+
+#, fuzzy
+msgid "Weather icon set"
 msgstr "MetrixSää kuvakkeen polku"
 
 msgid "Weather service"

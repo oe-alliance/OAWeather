@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 23:16+0100\n"
+"POT-Creation-Date: 2023-02-25 12:12+0100\n"
 "PO-Revision-Date: 2022-05-25 21:18+0000\n"
 "Last-Translator: Bader <fentanyl100@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/openatv/metrixhd/ar/>\n"
@@ -28,6 +28,9 @@ msgstr ""
 msgid "Celsius"
 msgstr "درجة مئوية"
 
+msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgstr ""
+
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr ""
 
@@ -37,6 +40,10 @@ msgstr ""
 
 msgid "Current Weather"
 msgstr ""
+
+#, fuzzy
+msgid "Default"
+msgstr "الافتراضية"
 
 msgid "Defaults"
 msgstr "الافتراضية"
@@ -174,6 +181,10 @@ msgstr ""
 
 msgid "Weather icon night switch"
 msgstr ""
+
+#, fuzzy
+msgid "Weather icon set"
+msgstr "إعدادات الطقس"
 
 msgid "Weather service"
 msgstr ""

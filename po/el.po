@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 23:16+0100\n"
+"POT-Creation-Date: 2023-02-25 12:12+0100\n"
 "PO-Revision-Date: 2023-02-06 21:29+0200\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
@@ -28,6 +28,9 @@ msgstr "Δεδομένα προσωρινής αποθήκευσης"
 msgid "Celsius"
 msgstr "Κελσίου"
 
+msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgstr ""
+
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr "Επιλέξτε αν θα πρέπει να ενεργοποιηθεί ή όχι ο \"νυχτερινός διακόπτης\". Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
 
@@ -37,6 +40,10 @@ msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστ�
 
 msgid "Current Weather"
 msgstr "Τρέχων καιρός"
+
+#, fuzzy
+msgid "Default"
+msgstr "Προεπιλογές"
 
 msgid "Defaults"
 msgstr "Προεπιλογές"
@@ -174,6 +181,10 @@ msgid "Weather city name"
 msgstr "Όνομα πόλης καιρού"
 
 msgid "Weather icon night switch"
+msgstr "Διακόπτης νύχτας εικονιδίου καιρού"
+
+#, fuzzy
+msgid "Weather icon set"
 msgstr "Διακόπτης νύχτας εικονιδίου καιρού"
 
 msgid "Weather service"

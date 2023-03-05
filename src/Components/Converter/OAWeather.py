@@ -98,17 +98,15 @@ class OAWeather(Converter, object):
 						return self.source.getPrecipitation(self.index)
 					elif self.mode == "precipitationfull":
 						return self.source.getPrecipitation(self.index, True)
-					elif self.mode == "summary0":
-						return self.source.getKeyforDay("summary0", self.index)
-					elif self.mode == "summary1":
-						return self.source.getKeyforDay("summary1", self.index)
 					else:
-						return ""
+						return self.source.getKeyforDay(self.mode, self.index, "")
 
 				if self.mode == "weathersource":
 					return self.source.getVal("source")
-				elif self.mode in ("city", "observationpoint"):
+				elif self.mode == "city":
 					return self.source.getVal("name")
+				elif self.mode == "observationPoint":
+					return self.source.getCurrentVal("observationPoint")
 				elif self.mode == "observationtime":
 					return self.source.getObservationTime()
 				elif self.mode == "sunrise":
@@ -128,7 +126,7 @@ class OAWeather(Converter, object):
 				elif self.mode == "humidityfull":
 					return self.source.getHumidity(True)
 				elif self.mode == "raintext":
-					return self.source.getCurrentVal("raintext")
+					return self.source.getCurrentVal("raintext", "")
 				elif self.mode == "winddisplay":
 					return "%s %s" % (self.source.getWindSpeed(), self.source.getWindDirName())
 				elif self.mode == "windspeed":
@@ -154,6 +152,17 @@ class OAWeather(Converter, object):
 	text = property(getText)
 
 	@cached
+	def getBoolean(self):
+		if self.mode == "raintext":
+			return self.source.getCurrentVal("raintext", "") != ""
+		elif self.mode in ("daySummary0", "nightSummary0"):
+			return self.source.getKeyforDay(self.mode, self.index, "") != ""
+		else:
+			return False
+
+	boolean = property(getBoolean)
+
+	@cached
 	def getIconFilename(self):
 		if self.mode == "logo":
 			try:
@@ -164,7 +173,9 @@ class OAWeather(Converter, object):
 				return ""
 
 		if self.index in (self.CURRENT, self.DAY1, self.DAY2, self.DAY3, self.DAY4, self.DAY5):
-			path = self.path
+			path = self.source.iconpath
+			if self.path:
+				path = self.path
 			if path and exists(path):
 				code = self.source.getYahooCode(self.index)
 				if code:

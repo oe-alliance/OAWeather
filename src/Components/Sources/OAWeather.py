@@ -47,6 +47,7 @@ class OAWeather(Source):
 		self.feelsliketext = "Feels like"
 		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.pluginpath = None
+		self.iconpath = None
 
 	def debug(self, text: str):
 		if self.enabledebug:
@@ -54,7 +55,7 @@ class OAWeather(Source):
 
 	def callbackUpdate(self, data):
 		self.debug("callbackUpdate: %s" % str(data))
-		self.data = data
+		self.data = data or {}
 		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.tempunit = self.getVal("tempunit")
 		self.changed((self.CHANGED_ALL,))
@@ -67,17 +68,9 @@ class OAWeather(Source):
 
 	def getCurrentVal(self, key: str, default: str = _("n/a")):
 		self.debug("getCurrentVal:%s" % key)
-		value = default
-		if self.data and "current" in self.data:
-			current = self.data.get("current", {})
-			if key in current:
-				value = current.get(key, default)
-				self.debug("current key val: %s" % value)
-			else:
-				self.debug("key not in current")
-		else:
-			self.debug("NO current in data")
-		return value
+		val = self.data.get("current", {}).get(key, default)
+		self.debug("current key val: %s" % val)
+		return val
 
 	def getObservationTime(self):
 		val = self.getCurrentVal("observationTime", "")
@@ -162,12 +155,9 @@ class OAWeather(Source):
 			return self.data.get("current", {}).get(key, default) if self.data else default
 		else:
 			index = day - 1
-			forecast = self.data.get("forecast")
-			if forecast and index in forecast:
-				val = forecast.get(index).get(key, default)
-				self.debug("getKeyforDay key:%s day:%s / val:%s" % (key, day, val))
-				return val
-			return default
+			val = self.data.get("forecast", {}).get(index, {}).get(key, default)
+			self.debug("getKeyforDay key:%s day:%s / val:%s" % (key, day, val))
+			return val
 
 	def destroy(self):
 		weatherhandler.onUpdate.remove(self.callbackUpdate)
