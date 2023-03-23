@@ -110,7 +110,7 @@ Displaying icons with OAWeatherPixmap Renderer:
 --> X = 3-5 (day 2-4, means the complete 24h-day)
 
 Displaying Info-data with Label Renderer:
-weathersource          # "MSN Weather" or "O-M Weather" or "OWM Weather"
+weathersource          # "MSN Weather" or "Open-Meteo Weather" or "OpenWeatherMap"
 city                   # Example: "Hamburg" (shortstring without country)
 longitude              # Example: "53.5573"
 latitude               # Example: "9.996"
@@ -121,7 +121,7 @@ sunset                 # Example: "16:27"
 isnight                # Example: "False" oder "True"
 tempunit               # "°C" or "°F"
 windunit               # "km/h" or "mph"
-precunit               # MSN "%", OMW/OWM "mm" (even when using units=IMPERIAL)
+precunit               # "%"
 temperature_current    # Example: "8 °C"
 feelslike              # Example: "4 °C"
 feelslikefull          # Example: "Feels like 4 °C"
@@ -141,16 +141,16 @@ These arguments are depending of the day argument:
 temperature_high       # Example: "5 °C"
 temperature_low        # Example: "-3 °C"
 temperature_high_low   # Example: "5 / -3 °C"
-temperature_text       # Example: "rain showers" (HINT: OpenMeteo doesn't deliver descriptiontexts, therefore an empty string is supplied)
+temperature_text       # Example: "rain showers" (HINT: Open-Meteo doesn't deliver a description text, therefore an empty string is supplied)
 weathericon            # Example: "9" (matching the extended weather icon code: YAHOO+)
 yahoocode              # Example: "9" (matching the extended weather icon code: YAHOO+)
-meteocode              # Example: "Q" (matching the character set: MetrixIcons.ttf)
+meteocode              # Example: "Q" (matching the character set: 'MetrixIcons.ttf' that contains the Meteofont)
 dayText                # Example: "today, Fri 24"
 weekday                # Example: "Friday"
 weekshortday           # Example: "Fri"
 date                   # Example: "2023-01-13"
-precipitation          # Example: MSN= "29 %", OMW/OWM= "0.7 mm" (even when using units=IMPERIAL)
-precipitationfull      # Example: MSN="Precipitation 29 %", OMW/OWM= "Precipitation 0.7 mm" (even when using units=IMPERIAL)
+precipitation          # Example: "29 %"
+precipitationfull      # Example: "Precipitation 29 %"
 daySummary0            # Example: "The skies will be cloudy." (HINT: MSN only, for other services an empty string is supplied)
 daySummary1            # Example: "Blustery winds will accompany a high of 6°." (HINT: MSN only, for other services an empty string is supplied)
 nightSummary0          # Example: "The skies will be mostly clear." (HINT: MSN only, for other services an empty string is supplied)
