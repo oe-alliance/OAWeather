@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 12:12+0100\n"
+"POT-Creation-Date: 2023-04-01 19:08+0200\n"
 "PO-Revision-Date: 2023-02-06 21:29+0200\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
@@ -164,6 +164,9 @@ msgstr ""
 
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Το όνομα της πόλης είναι πολύ μικρό. Απαιτούνται περισσότεροι από 2 χαρακτήρες για την αναζήτηση."
+
+msgid "Today"
+msgstr ""
 
 msgid "Update"
 msgstr "Ενημέρωση"

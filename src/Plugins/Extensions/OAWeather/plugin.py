@@ -351,6 +351,7 @@ class OAWeatherPlugin(Screen):
 		self["statustext"] = StaticText()
 		self["update"] = Label(_("Update"))
 		self["current"] = Label(_("Current Weather"))
+		self["today"] = Label(_("Today"))
 
 		for i in range(1, 6):
 			self["weekday%s_temp" % i] = StaticText()

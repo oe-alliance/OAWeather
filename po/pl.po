@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 12:12+0100\n"
+"POT-Creation-Date: 2023-04-01 19:08+0200\n"
 "PO-Revision-Date: 2023-03-07 10:48+0000\n"
 "Last-Translator: pololoko111 <peciek83@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
@@ -159,6 +159,9 @@ msgstr ""
 
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "Nazwa miasta jest zbyt krótka. Do wyszukiwania potrzebne są więcej niż 2 znaki."
+
+msgid "Today"
+msgstr ""
 
 msgid "Update"
 msgstr "Aktualizacja"

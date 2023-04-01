@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 12:12+0100\n"
+"POT-Creation-Date: 2023-04-01 19:08+0200\n"
 "PO-Revision-Date: 2022-11-14 11:47+0000\n"
 "Last-Translator: Juanjo-EA1CJ <juanjo.ea1cj@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/openatv/metrixhd/es/>\n"
@@ -169,6 +169,9 @@ msgstr ""
 
 msgid "The city name is too short. More than 2 characters are needed for search."
 msgstr "El nombre de la ciudad es demasiado corto. Se necesitan más de 2 caracteres para la búsqueda."
+
+msgid "Today"
+msgstr ""
 
 msgid "Update"
 msgstr ""
