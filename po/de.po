@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-01 19:08+0200\n"
-"PO-Revision-Date: 2022-11-19 22:47+0000\n"
-"Last-Translator: Mr.Servo <mrservo@gmx.de>\n"
+"PO-Revision-Date: 2023-04-03 09:18+0200\n"
+"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/openatv/metrixhd/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, python-format
@@ -25,10 +25,10 @@ msgid "Celsius"
 msgstr "Celsius"
 
 msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr ""
+msgstr "Wählen Sie den Symbol-Stil. Der zusätzliche Stil muß hier erstellt werden: /usr/share/enigma2/WeatherIconSets/NAME."
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr "Wählen Sie, ob der Nachtschalter aktiviert werden soll oder nicht. Einige Symbole werden dann als Nachtsymbole mit Mond angezeigt."
+msgstr "Wählen Sie, ob der Nachtschaltung aktiviert werden soll oder nicht. Einige Symbole werden dann als Nachtsymbole mit Mond angezeigt."
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -37,7 +37,6 @@ msgstr "Stadt '%s' wurde nicht gefunden! Bitte versuchen Sie eine andere Formuli
 msgid "Current Weather"
 msgstr "Aktuelles Wetter"
 
-#, fuzzy
 msgid "Default"
 msgstr "Standard"
 
@@ -180,11 +179,10 @@ msgid "Weather city name"
 msgstr "Wetter Stadtname"
 
 msgid "Weather icon night switch"
-msgstr "Wetter Nacht-Icons"
+msgstr "Wetter-Symbol Nachtschaltung"
 
-#, fuzzy
 msgid "Weather icon set"
-msgstr "Wetter Nacht-Icons"
+msgstr "Wetter-Icon-Stil"
 
 msgid "Weather service"
 msgstr "Wetterdienst"
