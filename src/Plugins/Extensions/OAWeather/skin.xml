@@ -76,7 +76,7 @@
     <convert type="OAWeather">temperature_low,day1</convert>
   </widget>
   <ePixmap pixmap="{picpath}/wind.png" position="378,73" size="32,32" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-  <widget font="Regular;24" position="435,73" size="230,32" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+  <widget font="Regular;24" position="435,73" size="300,32" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
     <convert type="OAWeather">winddisplay</convert>
   </widget>
   <ePixmap pixmap="{picpath}/humidity.png" position="378,116" size="32,32" zPosition="3" transparent="1" alphatest="blend" scale="1" />
