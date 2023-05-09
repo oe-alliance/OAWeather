@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-01 19:08+0200\n"
-"PO-Revision-Date: 2023-01-03 07:31+0000\n"
-"Last-Translator: Massimo Pissarello <mapi68@gmail.com>\n"
+"PO-Revision-Date: 2023-05-09 00:22+0200\n"
+"Last-Translator: Madhouse <anonm4d@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/openatv/metrixhd/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-SourceCharset: UTF-8\n"
 
 #, python-format
@@ -25,18 +25,17 @@ msgid "Celsius"
 msgstr "Celsius"
 
 msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr ""
+msgstr "Scegli il set di icone. Devi creare un set aggiuntivo in: /usr/share/enigma2/WeatherIconSets/NAME."
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr ""
+msgstr "Scegli se attivare o meno la modalità 'notturno'. Alcune icone vengono quindi visualizzate come icone notturne con la luna."
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Città '%s' non trovata! Si prega di provare un'altra formulazione."
 
-#, fuzzy
 msgid "Current Weather"
-msgstr "Errore in Informazioni meteo"
+msgstr "Meteo corrente"
 
 #, fuzzy
 msgid "Default"
@@ -51,12 +50,11 @@ msgstr "Disabilitato"
 msgid "East"
 msgstr "Est"
 
-#, fuzzy
 msgid "Enable Debug"
-msgstr "Abilitato"
+msgstr "Abilita debug"
 
 msgid "Enabled"
-msgstr "Abilitato"
+msgstr "Abilita"
 
 msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
 msgstr "Inserisci una chiave API personalizzata da utilizzare con OpenWeatherMap (https://openweathermap.org/)."
@@ -68,19 +66,19 @@ msgid "Error getting City ID"
 msgstr "Errore durante l'ottenimento dell'ID città"
 
 msgid "Error in Weatherinfo"
-msgstr "Errore in Informazioni meteo"
+msgstr "Errore nelle Informazioni meteo"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 msgid "Feels like"
-msgstr ""
+msgstr "Percepita"
 
 msgid "Humidity"
-msgstr ""
+msgstr "Umidità"
 
 msgid "Location Selection"
-msgstr "Selezione della posizione"
+msgstr "Seleziona posizione"
 
 msgid "MSN weather"
 msgstr "Meteo MSN"
@@ -101,7 +99,7 @@ msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
 
 msgid "Precipitation"
-msgstr ""
+msgstr "Precipitazioni"
 
 msgid "Refresh interval"
 msgstr "Intervallo aggiornamento"
@@ -112,16 +110,14 @@ msgstr "Ricerca ID città, per favore attendi..."
 msgid "Search for your City"
 msgstr "Cerca la tua città"
 
-#, fuzzy
 msgid "Select 'Yes' to enable add debug output to log."
-msgstr "Seleziona 'Sì' per abilitare l'aggiunta di MetrixWeather alla Barra delle informazioni."
+msgstr "Seleziona 'Si' per abilitare il debug nel file log."
 
-#, fuzzy
 msgid "Select 'Yes' to enable the addition of Weather."
-msgstr "Seleziona 'Sì' per abilitare l'aggiunta di MetrixWeather alla Barra delle informazioni."
+msgstr "Seleziona 'Si' per abilitare l'aggiunta del Meteo."
 
 msgid "Select Your Location"
-msgstr "Seleziona la tua posizione"
+msgstr "Seleziona la tua località"
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Seleziona il servizio meteo preferito per fornire le informazioni meteo."
@@ -136,7 +132,7 @@ msgid "Set default values"
 msgstr "Imposta i valori predefiniti"
 
 msgid "Show Weather Forecast"
-msgstr ""
+msgstr "Mostra le previsioni Meteo"
 
 msgid "South"
 msgstr "Sud"
@@ -147,9 +143,8 @@ msgstr "Sud Est"
 msgid "Southwest"
 msgstr "Sud Ovest"
 
-#, fuzzy
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Specifica la frequenza con cui MetrixWeather recupera i suoi dati dal server. 'Una volta' significa che i dati verranno caricati solo una volta dopo l'avvio della GUI o del sistema."
+msgstr "Specifica la frequenza con cui il meteo recupera i suoi dati dal server. 'Una volta' significa che i dati verranno caricati solo una volta dopo l'avvio della GUI o del sistema."
 
 msgid "Temperature unit"
 msgstr "Unità temperatura"
@@ -167,37 +162,34 @@ msgid "The city name is too short. More than 2 characters are needed for search.
 msgstr "Il nome della città è troppo corto. Sono necessari più di 2 caratteri per la ricerca."
 
 msgid "Today"
-msgstr ""
+msgstr "Oggi"
 
 msgid "Update"
-msgstr ""
+msgstr "Aggiornamento"
 
 msgid "Weather API key"
-msgstr "Chiave API MetrixWeather"
+msgstr "Chiave API Meteo"
 
-#, fuzzy
 msgid "Weather Plugin"
-msgstr "Impostazioni meteo"
+msgstr "Weather Plugin"
 
 msgid "Weather Settings Actions"
 msgstr "Azioni impostazioni meteo"
 
 msgid "Weather city name"
-msgstr "Nome città MetrixWeather"
+msgstr "Nome città"
 
-#, fuzzy
 msgid "Weather icon night switch"
-msgstr "Percorso icone MetrixWeather"
+msgstr "Attiva le icone notturne"
 
-#, fuzzy
 msgid "Weather icon set"
-msgstr "Percorso icone MetrixWeather"
+msgstr "Percorso icone"
 
 msgid "Weather service"
-msgstr "Servizio MetrixWeather"
+msgstr "Servizio Meteo"
 
 msgid "Weather settings"
-msgstr "Impostazioni meteo"
+msgstr "Configurazioni meteo"
 
 msgid "West"
 msgstr "Ovest"
