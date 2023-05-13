@@ -19,7 +19,7 @@
 <screen name="OAWeatherPlugin" position="0,0" size="1280,720" resolution="1280,720" title="Weather Plugin" flags="wfNoBorder" backgroundColor="#80000000">
   <ePixmap pixmap="{picpath}/background.png" position="0,0" size="1280,720" zPosition="-2" transparent="1" alphatest="blend" scale="1" />
   <widget name="current" font="Regular;28" position="60,15" size="240,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
-  <widget name="update" font="Regular; 22" position="95,60" size="95,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top" />
+  <widget name="update" font="Regular; 22" position="95,60" size="100,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top" />
   <widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;22" position="185,60" size="80,30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
     <convert type="OAWeather">observationtime</convert>
   </widget>
