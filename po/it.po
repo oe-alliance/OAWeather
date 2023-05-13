@@ -165,7 +165,7 @@ msgid "Today"
 msgstr "Oggi"
 
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Aggiornato"
 
 msgid "Weather API key"
 msgstr "Chiave API Meteo"
