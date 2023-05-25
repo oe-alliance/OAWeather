@@ -219,7 +219,7 @@ class WeatherHandler():
 		self.refreshTimer.stop()
 		if config.misc.firstrun.value:  # don't refresh on firstrun try again after 10 seconds
 			self.debug("firstrun")
-			self.refreshTimer.start(10000, True)
+			self.refreshTimer.start(600000, True)
 			return
 		if config.plugins.OAWeather.enabled.value:
 			self.weathercity = config.plugins.OAWeather.weathercity.value
