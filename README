@@ -184,3 +184,10 @@ Displaying weather service logo icon with OAWeatherPixmap Renderer:
 	<widget alphatest="blend" render="OAWeatherPixmap" position="20,553" size="200,30" source="session.OAWeather" transparent="1">
 		<convert type="OAWeather">logo</convert>
 	</widget>
+
+usage example 4:
+conditional display of pixmap (here: depending on flag 'isnight')
+<widget position="0,0" size="480,320" render="Pixmap" pixmap="/usr/share/enigma2/display/NightWeather_Standby_stein17/standby_night.png" source="session.OAWeather"  zPosition="0" halign="center" valign="center">
+	<convert type="OAWeather">isnight</convert>
+	<convert type="ConditionalShowHide" />
+</widget>

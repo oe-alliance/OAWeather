@@ -153,7 +153,9 @@ class OAWeather(Converter, object):
 
 	@cached
 	def getBoolean(self):
-		if self.mode == "raintext":
+		if self.mode == "isnight":
+			return self.source.getIsNight()
+		elif self.mode == "raintext":
 			return self.source.getCurrentVal("raintext", "") != ""
 		elif self.mode in ("daySummary0", "nightSummary0"):
 			return self.source.getKeyforDay(self.mode, self.index, "") != ""
