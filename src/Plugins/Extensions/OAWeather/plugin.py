@@ -21,7 +21,7 @@ from pickle import dump, load
 from time import time
 from twisted.internet.reactor import callInThread
 from xml.etree.ElementTree import tostring, parse
-from enigma import eTimer
+from enigma import eTimer, getDesktop
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Label import Label
@@ -34,6 +34,8 @@ from Screens.MessageBox import MessageBox
 from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, resolveFilename
 from Tools.Weatherinfo import Weatherinfo
 from . import _
+
+screenwidth = getDesktop(0).size()
 
 config.plugins.OAWeather = ConfigSubsection()
 config.plugins.OAWeather.enabled = ConfigYesNo(default=True)
@@ -329,7 +331,10 @@ class OAWeatherPlugin(Screen):
 			"picpath": join(PLUGINPATH, "Images")
 		}
 		skintext = ""
-		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
+		if screenwidth.width() >= 1920:
+			xml = parse(join(PLUGINPATH, "skinfhd.xml")).getroot()
+		elif screenwidth.width() <= 1280:
+			xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
 		for screen in xml.findall('screen'):
 			if screen.get("name") == "OAWeatherPlugin":
 				skintext = tostring(screen).decode()
