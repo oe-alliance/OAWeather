@@ -35,8 +35,6 @@ from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, resolveF
 from Tools.Weatherinfo import Weatherinfo
 from . import _
 
-screenwidth = getDesktop(0).size()
-
 config.plugins.OAWeather = ConfigSubsection()
 config.plugins.OAWeather.enabled = ConfigYesNo(default=True)
 
@@ -331,10 +329,7 @@ class OAWeatherPlugin(Screen):
 			"picpath": join(PLUGINPATH, "Images")
 		}
 		skintext = ""
-		if screenwidth.width() >= 1920:
-			xml = parse(join(PLUGINPATH, "skinfhd.xml")).getroot()
-		elif screenwidth.width() <= 1280:
-			xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
+		xml = parse(join(PLUGINPATH, "fhd_skin.xml" if getDesktop(0).size().height() == 1080 else "skin.xml")).getroot()
 		for screen in xml.findall('screen'):
 			if screen.get("name") == "OAWeatherPlugin":
 				skintext = tostring(screen).decode()
