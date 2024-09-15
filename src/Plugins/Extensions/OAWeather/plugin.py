@@ -21,7 +21,7 @@ from pickle import dump, load
 from time import time
 from twisted.internet.reactor import callInThread
 from xml.etree.ElementTree import tostring, parse
-from enigma import eTimer
+from enigma import eTimer, getDesktop
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Label import Label
@@ -329,7 +329,7 @@ class OAWeatherPlugin(Screen):
 			"picpath": join(PLUGINPATH, "Images")
 		}
 		skintext = ""
-		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
+		xml = parse(join(PLUGINPATH, "fhd_skin.xml" if getDesktop(0).size().height() == 1080 else "skin.xml")).getroot()
 		for screen in xml.findall('screen'):
 			if screen.get("name") == "OAWeatherPlugin":
 				skintext = tostring(screen).decode()
