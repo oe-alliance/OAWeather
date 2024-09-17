@@ -159,7 +159,7 @@
   <widget font="Regular; 22" position="972,615" size="250,50" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
     <convert type="OAWeather">temperature_text,day5</convert>
   </widget>
-  <widget source="global.CurrentTime" render="Label" font="global_clock; 28" position="1320,15" size="186,45" noWrap="1" zPosition="2" halign="center" valign="center" backgroundColor="#80000000" foregroundColor="white" transparent="1">
+  <widget source="global.CurrentTime" render="Label" font="global_clock; 28" position="1010,78" size="80,45" noWrap="1" zPosition="2" halign="right" valign="center" backgroundColor="#80000000" foregroundColor="white" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>
   <!-- Summary -->
