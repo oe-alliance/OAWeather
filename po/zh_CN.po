@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the OAWeather package.
+# FIRST AUTHOR <grystyle@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OAWeather 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"PO-Revision-Date: 2024-12-10 14:37+0800\n"
+"Last-Translator: Mark Stone <Mark@kram.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#, python-format
+msgid "%d Minutes"
+msgstr "%d 分钟"
+
+msgid "Cache data"
+msgstr "缓存数据"
+
+msgid "Celsius"
+msgstr "摄氏度"
+
+msgid ""
+"Choose the icon set. You need to create an additional set here: /usr/share/"
+"enigma2/WeatherIconSets/NAME."
+msgstr ""
+"选择图标集。您需要在此处创建一个附加集：/usr/share/enigma2/WeatherIconSets/名"
+"称。"
+
+msgid ""
+"Choose whether the 'night switch' should be activated or not. Some icons are "
+"then displayed as night icons with moon."
+msgstr "选择是否激活“夜间开关”。然后，一些图标会显示为带月亮的夜间图标。"
+
+#, python-format
+msgid "City '%s' not found! Please try another wording."
+msgstr "未找到城市“%s”！请尝试其他词汇。"
+
+msgid "Current Weather"
+msgstr "当前天气"
+
+msgid "Default"
+msgstr "默认"
+
+msgid "Defaults"
+msgstr "默认"
+
+msgid "Disabled"
+msgstr "已禁用"
+
+msgid "East"
+msgstr "东风"
+
+msgid "Enable Debug"
+msgstr "启用调试"
+
+msgid "Enabled"
+msgstr "已启用"
+
+msgid ""
+"Enter a personalized API key for use with OpenWeatherMap (https://"
+"openweathermap.org/)."
+msgstr ""
+"输入用于 OpenWeatherMap (https://openweathermap.org/) 的个性化 API 密钥。"
+
+msgid "Enter the location for your weather forecasts."
+msgstr "输入天气预报的位置。"
+
+msgid "Error getting City ID"
+msgstr "获取城市 ID 错误"
+
+msgid "Error in Weatherinfo"
+msgstr "天气信息错误"
+
+msgid "Fahrenheit"
+msgstr "华氏温度"
+
+msgid "Feels like"
+msgstr "体感温度"
+
+msgid "Humidity"
+msgstr "湿度"
+
+msgid "Location Selection"
+msgstr "选择位置"
+
+msgid "MSN weather"
+msgstr "MSN 天气"
+
+msgid "North"
+msgstr "北风"
+
+msgid "Northeast"
+msgstr "东北风"
+
+msgid "Northwest"
+msgstr "西北风"
+
+msgid "Open-Meteo Wetter"
+msgstr "Open-Meteo 天气"
+
+msgid "OpenWeatherMap"
+msgstr "OpenWeatherMap"
+
+msgid "Precipitation"
+msgstr "降水量"
+
+msgid "Refresh interval"
+msgstr "刷新间隔"
+
+msgid "Search for City ID please wait..."
+msgstr "正在搜索城市 ID，请稍候..."
+
+msgid "Search for your City"
+msgstr "搜索您的城市"
+
+msgid "Select 'Yes' to enable add debug output to log."
+msgstr "选择“是”以启用将调试输出添加到日志。"
+
+msgid "Select 'Yes' to enable the addition of Weather."
+msgstr "选择“是”以启用附加天气。"
+
+msgid "Select Your Location"
+msgstr "选择您的位置"
+
+msgid "Select the preferred weather service to supply the weather information."
+msgstr "选择首选的天气服务来提供天气信息。"
+
+msgid "Select the temperature unit to be used for temperature displays."
+msgstr "选择用于温度显示的温度单位。"
+
+msgid ""
+"Select this option to save that last obtained weather data locally. This is "
+"used to initialize the data immediately after restart while updated data is "
+"being fetched."
+msgstr ""
+"选择此选项可将上次获得的天气数据保存在本地。这用于在重新启动后立即初始化数"
+"据，同时获取更新的数据。"
+
+msgid "Set default values"
+msgstr "设置默认值"
+
+msgid "Show Weather Forecast"
+msgstr "显示天气预报"
+
+msgid "South"
+msgstr "南风"
+
+msgid "Southeast"
+msgstr "东南风"
+
+msgid "Southwest"
+msgstr "西南风"
+
+msgid ""
+"Specify how often Weather retrieves its data from the server. 'Once' means "
+"the data will loaded only once after a GUI or system start."
+msgstr ""
+"指定天气从服务器检索数据的频率。'“一次”表示在用户界面或系统启动后，数据只会加"
+"载一次。"
+
+msgid "Temperature unit"
+msgstr "温度单位"
+
+msgid ""
+"The API key for OpenWeatherMap is not defined or invalid.\n"
+"Please verify your input data.\n"
+"Otherwise your settings won't be saved."
+msgstr ""
+"OpenWeatherMap 的 API 密钥未定义或无效。\n"
+"请验证您的输入数据。\n"
+"否则您的设置将不会被保存。"
+
+msgid ""
+"The city name is too short. More than 2 characters are needed for search."
+msgstr "城市名称太短。搜索需要 2 个以上字符。"
+
+msgid "Today"
+msgstr "今天"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Weather API key"
+msgstr "天气 API 密钥"
+
+msgid "Weather Plugin"
+msgstr "天气插件"
+
+msgid "Weather Settings Actions"
+msgstr "天气设置操作"
+
+msgid "Weather city name"
+msgstr "天气城市名称"
+
+msgid "Weather icon night switch"
+msgstr "天气图标夜间开关"
+
+msgid "Weather icon set"
+msgstr "天气图标集"
+
+msgid "Weather service"
+msgstr "天气服务"
+
+msgid "Weather settings"
+msgstr "天气设置"
+
+msgid "West"
+msgstr "西风"
+
+msgid "n/a"
+msgstr "N/A"
