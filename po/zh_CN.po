@@ -111,7 +111,7 @@ msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
 
 msgid "Precipitation"
-msgstr "降水量"
+msgstr "降水量概率"
 
 msgid "Refresh interval"
 msgstr "刷新间隔"
