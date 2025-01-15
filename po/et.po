@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2022-12-06 08:48+0000\n"
 "Last-Translator: rimasx <riks_12@hot.ee>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/openatv/metrixhd/et/>\n"
@@ -84,6 +84,9 @@ msgstr ""
 msgid "MSN weather"
 msgstr ""
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr ""
 
@@ -118,6 +121,9 @@ msgid "Select 'Yes' to enable the addition of Weather."
 msgstr ""
 
 msgid "Select Your Location"
+msgstr ""
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
 msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
@@ -192,6 +198,12 @@ msgid "Weather settings"
 msgstr "Ilma andmed"
 
 msgid "West"
+msgstr ""
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
 msgstr ""
 
 msgid "n/a"

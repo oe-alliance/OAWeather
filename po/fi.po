@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2024-09-15 15:12+0300\n"
 "Last-Translator: Orlandox\n"
 "Language-Team: tomppaa, Orlandox\n"
@@ -82,11 +82,11 @@ msgstr "Kosteus"
 msgid "Location Selection"
 msgstr "Sijainnin valinta"
 
-msgid "Menu"
-msgstr "MENU"
-
 msgid "MSN weather"
 msgstr "MSN sää"
+
+msgid "Metric unit for wind speed"
+msgstr ""
 
 msgid "North"
 msgstr "Pohjoisesta"
@@ -115,9 +115,6 @@ msgstr "Etsii kaupunkitunnusta, odota..."
 msgid "Search for your City"
 msgstr "Etsii kaupunkiasi"
 
-msgid "Select the City and Press Ok"
-msgstr "Valitse kaupunki ja paina OK"
-
 msgid "Select 'Yes' to enable add debug output to log."
 msgstr "Valitse 'Kyllä', jos haluat lisätä tapahtumat debug-lokiin."
 
@@ -126,6 +123,9 @@ msgstr "Valitse 'Kyllä' ottaaksesi sään lisäyksen käyttöön."
 
 msgid "Select Your Location"
 msgstr "Valitse sijaintisi"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Valitse haluamasi sääpalvelun toimittamat säätiedot."
@@ -153,9 +153,6 @@ msgstr "Lounaasta"
 
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
 msgstr "Määritä, kuinka usein Sää hakee tietonsa palvelimelta. 'Kerran' tarkoittaa, että tiedot ladataan vain kerran graafisen käyttöliittymän tai järjestelmän käynnistyksen jälkeen."
-
-msgid "Standard fertig"
-msgstr "Oletukset valmiit"
 
 msgid "Temperature unit"
 msgstr "Lämpötilayksikkö"
@@ -204,6 +201,12 @@ msgstr "Sääasetukset"
 
 msgid "West"
 msgstr "Lännestä"
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
+msgstr ""
 
 msgid "n/a"
 msgstr "n/a"

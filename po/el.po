@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2023-04-04 19:48+0300\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
@@ -86,6 +86,9 @@ msgstr "Επιλογή τοποθεσίας"
 msgid "MSN weather"
 msgstr "Καιρός MSN"
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr "Βόρεια"
 
@@ -121,6 +124,9 @@ msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η π
 
 msgid "Select Your Location"
 msgstr "Επιλογή τοποθεσίας"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Επιλογή της προτιμώμενης υπηρεσίας παροχής των πληροφοριών καιρού."
@@ -196,6 +202,12 @@ msgstr "Ρυθμίσεις καιρού"
 
 msgid "West"
 msgstr "Δυτικά"
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
+msgstr ""
 
 msgid "n/a"
 msgstr "μ/δ"

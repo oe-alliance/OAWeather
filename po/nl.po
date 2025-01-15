@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2022-12-31 13:47+0000\n"
 "Last-Translator: Snoete <snoete@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/openatv/metrixhd/nl/>\n"
@@ -85,6 +85,9 @@ msgstr "Woonplaats selectie"
 msgid "MSN weather"
 msgstr "MSN | weer"
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr "Noord"
 
@@ -122,6 +125,9 @@ msgstr "Kies \"Ja\" om MetrixWeather aan het InfoBar-scherm toe te voegen."
 
 msgid "Select Your Location"
 msgstr "Selecteer uw locatie"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Een weerdienst selecteren voor het ophalen van de weerinformatie."
@@ -201,6 +207,12 @@ msgstr "Weer instellingen"
 
 msgid "West"
 msgstr "West"
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
+msgstr ""
 
 msgid "n/a"
 msgstr ""

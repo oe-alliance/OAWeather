@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2022-12-14 19:48+0000\n"
 "Last-Translator: kvinto <badsystem@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/openatv/metrixhd/uk/>\n"
@@ -84,6 +84,9 @@ msgstr "Вибір місця розташування"
 msgid "MSN weather"
 msgstr "Погода MSN"
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr "Північний"
 
@@ -121,6 +124,9 @@ msgstr "Виберіть 'Так', щоб увімкнути MetrixWeather на 
 
 msgid "Select Your Location"
 msgstr "Виберіть своє місцезнаходження"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr ""
@@ -195,6 +201,12 @@ msgid "Weather settings"
 msgstr "Налаштування погоди"
 
 msgid "West"
+msgstr ""
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
 msgstr ""
 
 msgid "n/a"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2022-11-14 11:47+0000\n"
 "Last-Translator: Juanjo-EA1CJ <juanjo.ea1cj@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/openatv/metrixhd/es/>\n"
@@ -89,6 +89,9 @@ msgstr "Selección de la ubicación"
 msgid "MSN weather"
 msgstr "El tiempo en MSN"
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr "Norte"
 
@@ -126,6 +129,9 @@ msgstr "Seleccione \"Sí\" para activar la adición de MetrixWeather a la pantal
 
 msgid "Select Your Location"
 msgstr "Seleccione su ubicación"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Seleccione el servicio meteorológico preferido para suministrar la información meteorológica."
@@ -205,6 +211,12 @@ msgstr "Ajustes meteorológicos"
 
 msgid "West"
 msgstr "Oeste"
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
+msgstr ""
 
 msgid "n/a"
 msgstr ""

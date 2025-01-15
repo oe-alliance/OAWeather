@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-01 19:08+0200\n"
+"POT-Creation-Date: 2025-01-15 16:34+0100\n"
 "PO-Revision-Date: 2022-12-10 09:48+0000\n"
 "Last-Translator: Petr Turek <turekdesign99@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/openatv/metrixhd/cs/>\n"
@@ -85,6 +85,9 @@ msgstr "Výběr umístění"
 msgid "MSN weather"
 msgstr "Počasí MSN"
 
+msgid "Metric unit for wind speed"
+msgstr ""
+
 msgid "North"
 msgstr "Sever"
 
@@ -122,6 +125,9 @@ msgstr "Výběrem možnosti \"Ano\" povolíte přidání aplikace MetrixWeather 
 
 msgid "Select Your Location"
 msgstr "Vyberte svou polohu"
+
+msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Vyberte preferovanou meteorologickou službu, která bude poskytovat informace o počasí."
@@ -201,6 +207,12 @@ msgstr "Nastavení počasí"
 
 msgid "West"
 msgstr "Západ"
+
+msgid "km/h"
+msgstr ""
+
+msgid "m/s"
+msgstr ""
 
 msgid "n/a"
 msgstr ""
