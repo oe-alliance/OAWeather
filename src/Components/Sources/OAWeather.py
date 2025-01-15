@@ -103,17 +103,20 @@ class OAWeather(Source):
 		return "%s%s %s" % (text, self.getCurrentVal("humidity"), "%")
 
 	def getWindSpeed(self):
-		return "%s %s" % (self.getCurrentVal("windSpeed"), self.getVal("windunit"))
+		windSpeed, windunit = self.getCurrentVal("windSpeed"), self.getVal("windunit")
+		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+			windSpeed, windunit = str(round(int(windSpeed) / 3.6, 1)), "m/s"
+		return "%s %s" % (windSpeed, windunit)
 
 	def getWindDir(self):
 		val = self.getCurrentVal("windDir")
 		return ("%s °" % val) if val else self.na
 
 	def getWindDirName(self):
-		skydirection = self.getCurrentVal("windDirSign", "")
+		skydirection = self.getCurrentVal("windDirSign", "* *")
 		if skydirection:
 			skydirection = skydirection.split(" ")
-			return self.skydirs[skydirection[1]] if skydirection[1] in self.skydirs else skydirection[1]
+			return self.skydirs.get(skydirection[1], skydirection[1])
 		else:
 			return self.na
 
