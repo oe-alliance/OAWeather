@@ -21,7 +21,7 @@ from pickle import dump, load
 from time import time
 from twisted.internet.reactor import callInThread
 from xml.etree.ElementTree import tostring, parse
-from enigma import eTimer, getDesktop
+from enigma import eTimer
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Label import Label
@@ -54,6 +54,7 @@ GEODATA = ("Hamburg, DE", "10.000654,53.550341")
 config.plugins.OAWeather.weathercity = ConfigText(default=GEODATA[0], visible_width=250, fixed_size=False)
 config.plugins.OAWeather.owm_geocode = ConfigText(default=GEODATA[1])
 config.plugins.OAWeather.tempUnit = ConfigSelection(default="Celsius", choices=[("Celsius", _("Celsius")), ("Fahrenheit", _("Fahrenheit"))])
+config.plugins.OAWeather.windspeedMetricUnit = ConfigSelection(default="km/h", choices=[("km/h", _("km/h")), ("m/s", _("m/s"))])
 config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("openweather", _("OpenWeatherMap"))])
 config.plugins.OAWeather.debug = ConfigYesNo(default=False)
 
@@ -224,16 +225,6 @@ class WeatherHandler():
 		if config.plugins.OAWeather.enabled.value:
 			self.weathercity = config.plugins.OAWeather.weathercity.value
 			geocode = config.plugins.OAWeather.owm_geocode.value.split(",")
-			# DEPRECATED, will be removed in April 2023
-			if geocode == ['0.0', '0.0']:
-				geodatalist = self.WI.getCitylist(config.plugins.OAWeather.weathercity.value.split(",")[0], config.osd.language.value.replace('_', '-').lower())
-				if geodatalist is not None and len(geodatalist[0]) == 3:
-					geocode = [geodatalist[0][1], geodatalist[0][2]]
-					config.plugins.OAWeather.weathercity.value = geodatalist[0][0]
-					config.plugins.OAWeather.weathercity.save()
-					config.plugins.OAWeather.owm_geocode.value = "%s,%s" % (float(geocode[0]), float(geocode[1]))
-					config.plugins.OAWeather.owm_geocode.save()
-			# DEPRECATED, will be removed in April 2023
 			if geocode and len(geocode) == 2:
 				geodata = (self.weathercity, geocode[0], geocode[1])  # tuple ("Cityname", longitude, latitude)
 			else:
@@ -329,10 +320,7 @@ class OAWeatherPlugin(Screen):
 			"picpath": join(PLUGINPATH, "Images")
 		}
 		skintext = ""
-		xmlFile = join(PLUGINPATH, "skin_FHD.xml") if getDesktop(0).size().height() == 1080 else ""
-		if not exists(xmlFile):
-			xmlFile = join(PLUGINPATH, "skin.xml")
-		xml = parse(xmlFile).getroot()
+		xml = parse(join(PLUGINPATH, "skin.xml")).getroot()
 		for screen in xml.findall('screen'):
 			if screen.get("name") == "OAWeatherPlugin":
 				skintext = tostring(screen).decode()
@@ -359,7 +347,7 @@ class OAWeatherPlugin(Screen):
 		for i in range(1, 6):
 			self["weekday%s_temp" % i] = StaticText()
 
-		self.data = None
+		self.data = {}
 		self.na = _("n/a")
 
 		self.onLayoutFinish.append(self.startRun)
@@ -386,13 +374,13 @@ class OAWeatherPlugin(Screen):
 
 	def getWeatherDataCallback(self):
 		self["statustext"].text = ""
-		forecast = self.data.get("forecast")
+		forecast = self.data.get("forecast", {})
 		tempunit = self.data.get("tempunit", self.na)
 		for day in range(1, 6):
-			item = forecast.get(day)
-			lowTemp = item.get("minTemp")
-			highTemp = item.get("maxTemp")
-			text = item.get("text")
+			item = forecast.get(day, {})
+			lowTemp = item.get("minTemp", "")
+			highTemp = item.get("maxTemp", "")
+			text = item.get("text", "")
 			self["weekday%s_temp" % day].text = "%s %s|%s %s\n%s" % (highTemp, tempunit, lowTemp, tempunit, text)
 
 	def config(self):
