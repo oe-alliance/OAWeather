@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-01 19:08+0200\n"
-"PO-Revision-Date: 2022-11-22 15:47+0000\n"
-"Last-Translator: igorrrrr <igorzhugan66@gmail.com>\n"
+"PO-Revision-Date: 2025-01-15 13:41+0000\n"
+"Last-Translator: Marchella1983\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, python-format
@@ -25,22 +25,20 @@ msgid "Celsius"
 msgstr "Цельсий"
 
 msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr ""
+msgstr "Дополнительный набор пиконов погоды. Для выбора Вам необходимо добавить дополнительный набор пиконов в - /usr/share/enigma2/WeatherIconSets/NAME."
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr ""
+msgstr "Выберите, должен ли быть активирован «ночной переключатель» или нет. Некоторые значки будут отображаться как ночные значки с луной."
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Город '%s' не найден! Пожалуйста, попробуйте другую формулировку."
 
-#, fuzzy
 msgid "Current Weather"
-msgstr "Ошибка в информации о погоде"
+msgstr "Текущая погода"
 
-#, fuzzy
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "Yмолчанию"
 
 msgid "Defaults"
 msgstr "По умолчанию"
@@ -51,9 +49,8 @@ msgstr "Отключено"
 msgid "East"
 msgstr "Восток"
 
-#, fuzzy
 msgid "Enable Debug"
-msgstr "Включить"
+msgstr "Включить отладочный лог"
 
 msgid "Enabled"
 msgstr "Включить"
@@ -74,10 +71,10 @@ msgid "Fahrenheit"
 msgstr "Фаренгейт"
 
 msgid "Feels like"
-msgstr ""
+msgstr "Ощущается как"
 
 msgid "Humidity"
-msgstr ""
+msgstr "Влажность"
 
 msgid "Location Selection"
 msgstr "Местоположение"
@@ -101,7 +98,7 @@ msgid "OpenWeatherMap"
 msgstr "Открыть карту погоды"
 
 msgid "Precipitation"
-msgstr ""
+msgstr "Осадки"
 
 msgid "Refresh interval"
 msgstr "Интервал обновления"
@@ -112,13 +109,11 @@ msgstr "Найдите идентификатор города, пожалуйс
 msgid "Search for your City"
 msgstr "Найдите свой город"
 
-#, fuzzy
 msgid "Select 'Yes' to enable add debug output to log."
-msgstr "Выберите 'Да', чтобы разрешить добавление MetrixWeather на экран инфобара."
+msgstr "Выберите «Да», чтобы включить вывод отладочного лога в журнал."
 
-#, fuzzy
 msgid "Select 'Yes' to enable the addition of Weather."
-msgstr "Выберите 'Да', чтобы разрешить добавление MetrixWeather на экран инфобара."
+msgstr "Выберите «Да», чтобы включить настрйки «Погода»."
 
 msgid "Select Your Location"
 msgstr "Выберите своё местоположение"
@@ -136,7 +131,7 @@ msgid "Set default values"
 msgstr "Установить значения по умолчанию"
 
 msgid "Show Weather Forecast"
-msgstr ""
+msgstr "Показать прогноз погоды"
 
 msgid "South"
 msgstr "Юг"
@@ -147,9 +142,8 @@ msgstr "Юго-Восток"
 msgid "Southwest"
 msgstr "Юго-Запад"
 
-#, fuzzy
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Укажите, как часто MetrixWeather извлекает данные с сервера. 'Один раз' означает, что данные будут загружены только один раз после запуска графического интерфейса или системы."
+msgstr "Укажите, как часто Weather получает данные с сервера. 'Once' означает, что данные будут загружаться только один раз после запуска графического интерфейса или системы."
 
 msgid "Temperature unit"
 msgstr "Единица измерения температуры"
@@ -167,17 +161,16 @@ msgid "The city name is too short. More than 2 characters are needed for search.
 msgstr "Название города слишком короткое. Для поиска необходимо более 2 символов."
 
 msgid "Today"
-msgstr ""
+msgstr "Сейчас"
 
 msgid "Update"
-msgstr ""
+msgstr "Обновлено"
 
 msgid "Weather API key"
 msgstr "Ключ API MetrixWeather"
 
-#, fuzzy
 msgid "Weather Plugin"
-msgstr "Настройки погоды"
+msgstr "Плагин погоды"
 
 msgid "Weather Settings Actions"
 msgstr "Действия с настройками погоды"
@@ -185,13 +178,11 @@ msgstr "Действия с настройками погоды"
 msgid "Weather city name"
 msgstr "Название города MetrixWeather"
 
-#, fuzzy
 msgid "Weather icon night switch"
-msgstr "Путь к иконкам MetrixWeather"
+msgstr "Ночной переключатель"
 
-#, fuzzy
 msgid "Weather icon set"
-msgstr "Путь к иконкам MetrixWeather"
+msgstr "Набор пиконов"
 
 msgid "Weather service"
 msgstr "Сервис MetrixWeather"
@@ -203,4 +194,4 @@ msgid "West"
 msgstr "Запад"
 
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
