@@ -87,7 +87,7 @@ msgid "MSN weather"
 msgstr "MSN 天气"
 
 msgid "Metric unit for wind speed"
-msgstr ""
+msgstr "风速的公制单位"
 
 msgid "North"
 msgstr "北风"
@@ -105,7 +105,7 @@ msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
 
 msgid "Precipitation"
-msgstr "降水量概率"
+msgstr "降水概率"
 
 msgid "Refresh interval"
 msgstr "刷新间隔"
@@ -126,7 +126,7 @@ msgid "Select Your Location"
 msgstr "选择您的位置"
 
 msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
-msgstr ""
+msgstr "选择用于风速显示的公制单位。这对英制单位“mph”没有影响。"
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "选择首选的天气服务来提供天气信息。"
@@ -204,10 +204,10 @@ msgid "West"
 msgstr "西风"
 
 msgid "km/h"
-msgstr ""
+msgstr "千米/小时"
 
 msgid "m/s"
-msgstr ""
+msgstr "米/秒"
 
 msgid "n/a"
 msgstr "N/A"
