@@ -86,7 +86,7 @@ msgid "MSN weather"
 msgstr "MSN sää"
 
 msgid "Metric unit for wind speed"
-msgstr ""
+msgstr "Tuulen nopeuden yksikkö metrijärjestelmässä"
 
 msgid "North"
 msgstr "Pohjoisesta"
@@ -125,7 +125,7 @@ msgid "Select Your Location"
 msgstr "Valitse sijaintisi"
 
 msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
-msgstr ""
+msgstr "Valitse tuulennopeuden metrijärjestelmän yksikkö tuuli näyttöjä varten. Tämä ei vaikuta imperiaaliseen yksikköön 'mph'."
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Valitse haluamasi sääpalvelun toimittamat säätiedot."
@@ -197,16 +197,16 @@ msgid "Weather service"
 msgstr "Sääpalvelu"
 
 msgid "Weather settings"
-msgstr "Sääasetukset"
+msgstr "Sää asetukset"
 
 msgid "West"
 msgstr "Lännestä"
 
 msgid "km/h"
-msgstr ""
+msgstr "km/h"
 
 msgid "m/s"
-msgstr ""
+msgstr "m/s"
 
 msgid "n/a"
 msgstr "n/a"
