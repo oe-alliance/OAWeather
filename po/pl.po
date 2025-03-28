@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2025-01-15 16:40+0000\n"
+"PO-Revision-Date: 2025-03-28 21:10+0000\n"
 "Last-Translator: pololoko111\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
 "Language: pl\n"
@@ -18,6 +18,9 @@ msgstr ""
 msgid "%d Minutes"
 msgstr "%d Minuty"
 
+msgid "Add"
+msgstr "Dodaj"
+ 
 msgid "Cache data"
 msgstr "Dane podręczne"
 
@@ -29,6 +32,9 @@ msgstr "Wybierz zestaw ikon. Musisz utworzyć dodatkowy zestaw tutaj: /usr/share
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
 msgstr "Wybierz, czy „przełącznik nocny” ma być aktywowany, czy nie. Niektóre ikony są wtedy wyświetlane jako ikony nocne z księżycem."
+
+msgid "Chose favorite"
+msgstr "Wybierz ulubione"
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -43,20 +49,34 @@ msgstr "Domyślny"
 msgid "Defaults"
 msgstr "Domyślne"
 
+msgid "Delete"
+msgstr "Usuń"
+
 msgid "Disabled"
 msgstr "Wyłączone"
 
+#, python-format
+msgid ""
+"Do you really want do delete favorite\n"
+"'%s'?"
+msgstr ""
+"Czy na pewno chcesz usunąć ulubione\n"
+"'%s'?"
+
+msgid "Do you really want do exit without saving your modified favorite list?"
+msgstr "Czy na pewno chcesz wyjść bez zapisywania zmodyfikowanej listy ulubionych?"
+ 
 msgid "East"
 msgstr "Wschód"
+
+msgid "Edit"
+msgstr "Edytuj"
 
 msgid "Enable Debug"
 msgstr "Włącz debugowanie"
 
 msgid "Enabled"
-msgstr "Włączone"
-
-msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
-msgstr "Wprowadź spersonalizowany klucz API do użytku z OpenWeatherMap (https://openweathermap.org/)."
+msgstr "Włączony"
 
 msgid "Enter the location for your weather forecasts."
 msgstr "Wprowadź lokalizację prognozy pogody."
@@ -67,6 +87,12 @@ msgstr "Błąd uzyskania identyfikatora miasta"
 msgid "Error in Weatherinfo"
 msgstr "Błąd w Weatherinfo"
 
+msgid "Exit details"
+msgstr "Wyjście z detali"
+ 
+msgid "Exit overview"
+msgstr "Wyjście z przeglądu"
+ 
 msgid "Fahrenheit"
 msgstr "Fahrenheita"
 
@@ -76,15 +102,36 @@ msgstr "Odczuwalna"
 msgid "Humidity"
 msgstr "Wilgotność"
 
-msgid "Location Selection"
-msgstr "Wybór lokalizacji"
-
 msgid "MSN weather"
 msgstr "Pogoda MSN"
+
+msgid "Manage favorites"
+msgstr "Zarządzaj ulubionymi"
 
 msgid "Metric unit for wind speed"
 msgstr "Jednostka metryczna prędkości wiatru"
 
+msgid "Next favorite"
+msgstr "Następny ulubiony"
+ 
+msgid "View details"
+msgstr "Zobacz szczegóły"
+ 
+msgid "Day +/-"
+msgstr "Dzień +/-"
+ 
+msgid "Settings"
+msgstr "Ustawienia"
+ 
+msgid "Manage your favorites"
+msgstr "Zarządzaj ulubionymi"
+ 
+msgid "No data available for this period."
+msgstr "Brak danych dla tego okresu."
+ 
+msgid "No data available."
+msgstr "Brak dostępnych danych."
+ 
 msgid "North"
 msgstr "Północ"
 
@@ -97,19 +144,19 @@ msgstr "Północny zachód"
 msgid "Open-Meteo Wetter"
 msgstr "Pogoda Open-Meteo"
 
-msgid "OpenWeatherMap"
-msgstr "OpenWeatherMap"
-
 msgid "Precipitation"
-msgstr "Opad atmosfery"
+msgstr "Opad atmosferyczny"
+
+msgid "Previous favorite"
+msgstr "Poprzedni ulubiony"
 
 msgid "Refresh interval"
 msgstr "Częstotliwość odświeżania"
 
-msgid "Search for City ID please wait..."
-msgstr "Wyszukaj ID miasta, proszę czekać..."
+msgid "Save"
+msgstr "Zapisz"
 
-msgid "Search for your City"
+msgid "Search for your city"
 msgstr "Wyszukaj swoje miasto"
 
 msgid "Select 'Yes' to enable add debug output to log."
@@ -118,8 +165,8 @@ msgstr "Wybierz „Tak”, aby włączyć dodawanie danych wyjściowych debugowa
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Wybierz „Tak”, aby włączyć dodawanie pogody."
 
-msgid "Select Your Location"
-msgstr "Wybierz Swoją Lokalizację"
+msgid "Select desired location"
+msgstr "Wybierz żądaną lokalizację"
 
 msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
 msgstr "Wybierz jednostkę metryczną dla prędkości wiatru, która ma być używana do wyświetlania wiatru. Nie ma to wpływu na jednostkę imperialną 'mph'."
@@ -132,6 +179,9 @@ msgstr "Wybierz jednostkę temperatury, która będzie używana do wyświetlania
 
 msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
 msgstr "Wybierz tę opcję, aby zapisać ostatnio uzyskane dane pogodowe lokalnie. Jest to używane do inicjalizacji danych natychmiast po ponownym uruchomieniu, podczas gdy aktualizowane dane są pobierane."
+
+msgid "Select your location"
+msgstr "Wybierz swoją lokalizację"
 
 msgid "Set default values"
 msgstr "Ustaw wartości domyślne"
@@ -154,17 +204,12 @@ msgstr "Określ, jak często Weather pobiera dane z serwera. „Raz” oznacza, 
 msgid "Temperature unit"
 msgstr "Jednostka temperatury"
 
-msgid ""
-"The API key for OpenWeatherMap is not defined or invalid.\n"
-"Please verify your input data.\n"
-"Otherwise your settings won't be saved."
-msgstr ""
-"Klucz API dla OpenWeatherMap nie jest zdefiniowany lub nieprawidłowy.\n"
-"Zweryfikuj wprowadzone dane.\n"
-"W przeciwnym razie ustawienia nie zostaną zapisane."
-
 msgid "The city name is too short. More than 2 characters are needed for search."
-msgstr "Nazwa miasta jest zbyt krótka. Do wyszukiwania potrzebne są więcej niż 2 znaki."
+msgstr "Nazwa miasta jest za krótka. Do wyszukiwania potrzeba więcej niż 2 znaków."
+
+#, python-format
+msgid "The favorite '%s' corresponds to the set weather city name and therefore cannot be deleted."
+msgstr "Ulubiony '%s' odpowiada nazwie miasta ustawionego dla pogody i dlatego nie można go usunąć."
 
 msgid "Today"
 msgstr "Dzisiaj"
@@ -172,17 +217,23 @@ msgstr "Dzisiaj"
 msgid "Update"
 msgstr "Odświeżono"
 
-msgid "Weather API key"
-msgstr "Klucz API MetrixWeather"
-
 msgid "Weather Plugin"
 msgstr "Wtyczka Pogody"
+
+msgid "Weather Plugin Detailview"
+msgstr "Szczegółowy widok wtyczki pogodowej"
+
+msgid "Weather Plugin Overview"
+msgstr "Przegląd wtyczki pogodowej"
 
 msgid "Weather Settings Actions"
 msgstr "Akcje ustawień pogodowych"
 
 msgid "Weather city name"
 msgstr "Nazwa miasta MetrixWeather"
+
+msgid "Weather cityname (at least 3 letters):"
+msgstr "Nazwa miasta (co najmniej 3 litery):"
 
 msgid "Weather icon night switch"
 msgstr "Przełącznik nocny ikony pogody"
