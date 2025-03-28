@@ -107,14 +107,18 @@ Displaying icons with OAWeatherPixmap Renderer:
 --> X = 0 (current, means right now and the rest of the day)
 --> X = 1 (today, means the complete 24h-day)
 --> X = 2 (tomorrow, means the complete 24h-day)
---> X = 3-5 (day 2-4, means the complete 24h-day)
+--> X = 3-6 (day 2-6, means the complete 24h-day)
 
 Displaying Info-data with Label Renderer:
-weathersource          # "MSN Weather" or "Open-Meteo Weather" or "OpenWeatherMap"
-city                   # Example: "Hamburg" (shortstring without country)
+weathersource          # "MSN Weather" or "Open-Meteo Weather"
 longitude              # Example: "53.5573"
 latitude               # Example: "9.996"
-observationpoint       # Example: "Hamburg, Germany" (fullstring with country)
+city                   # Example: "Hamburg" (shortstring without country, without area)
+cityarea               # Example: "Hamburg, Freie und Hansestadt" (reduced string with area, without country)
+citycountry            # Example: "Hamburg, Germany" (reduced string with country, without area)
+citycountryarea        # Example: "Hamburg, Germany, Freie und Hansestadt" (fullstring with country and area)
+cityareacountry        # Example: "Hamburg, Freie und Hansestadt, Germany" (fullstring with area and country)
+observationPoint       # Example: "Hamburg, Freie und Hansestadt, Germany" (fullstring with area and country)
 observationtime        # Example: "16:17"
 sunrise                # Example: "08:30"
 sunset                 # Example: "16:27"
@@ -135,6 +139,9 @@ winddirsign            # Example: "↗ SW"
 winddirarrow           # Example: "↗"
 winddirname            # Example: "Southwest"
 winddirshort           # Example: "SW"
+windgust               # Example: "28 km/h"
+uvIndex                # Example: "2"
+visibility             # Example: "51 km"
 --> these arguments do not need any further arguments
 
 These arguments are depending of the day argument:
@@ -142,6 +149,18 @@ temperature_high       # Example: "5 °C"
 temperature_low        # Example: "-3 °C"
 temperature_high_low   # Example: "5 / -3 °C"
 temperature_text       # Example: "rain showers" (HINT: Open-Meteo doesn't deliver a description text, therefore an empty string is supplied)
+feelslike_max          # Example: "8 °C"
+feelslike_min          # Example: "-5 °C"
+winddisplay_max        # Example: "12 km/h Southwest"
+windspeed_max          # Example: "18 km/h"
+winddir_dominant       # Example: "230 °"
+winddirsign_dominant   # Example: "↗ SW"
+winddirarrow_dominant  # Example: "↗"
+winddirname_dominant   # Example: "Southwest"
+winddirshort_dominant  # Example: "SW"
+windgusts_max          # Example: "32 km/h"
+uvindex_max            # Example: "4"
+visibility_max         # Example: "60 km"
 weathericon            # Example: "9" (matching the extended weather icon code: YAHOO+)
 yahoocode              # Example: "9" (matching the extended weather icon code: YAHOO+)
 meteocode              # Example: "Q" (matching the character set: 'MetrixIcons.ttf' that contains the Meteofont)

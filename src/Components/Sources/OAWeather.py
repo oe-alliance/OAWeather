@@ -31,7 +31,7 @@ class OAWeather(Source):
 
 	METEOdayswitch = {"2": "1", "3": "4", "C": "B", "I": "H", "K": "J"}
 
-	services = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}
+	services = {"MSN": "msn", "OpenMeteo": "omw"}
 
 	def __init__(self):
 		Source.__init__(self)
@@ -42,6 +42,8 @@ class OAWeather(Source):
 		self.skydirs = weatherhandler.getSkydirs()
 		self.na = _("n/a")
 		self.tempunit = self.getVal("tempunit")
+		self.windunit = self.getVal("windunit")
+		self.visibilityunit = self.getVal("visibiliyunit")
 		self.precipitationtext = "Precipitation"
 		self.humiditytext = "Humidity"
 		self.feelsliketext = "Feels like"
@@ -58,6 +60,8 @@ class OAWeather(Source):
 		self.data = data or {}
 		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.tempunit = self.getVal("tempunit")
+		self.windunit = self.getVal("windunit")
+		self.visibilityunit = self.getVal("visibiliyunit")
 		self.changed((self.CHANGED_ALL,))
 
 	def getValid(self):
@@ -71,6 +75,47 @@ class OAWeather(Source):
 		val = self.data.get("current", {}).get(key, default)
 		self.debug("current key val: %s" % val)
 		return val
+
+	def getWeatherSource(self):
+		return self.getCurrentVal("source")
+
+	def getCity(self):
+		return self.getVal("name")
+
+	def getCityArea(self, default: str = _("n/a")):
+		components = self.getCurrentVal("observationPoint").split(", ")
+		len_components = len(components)
+		if len_components > 1:
+			return "%s, %s" % (components[0], components[1])
+		if len_components == 1:
+			return "%s" % components[0]
+		else:
+			return default
+
+	def getCityCountry(self, default: str = _("n/a")):
+		components = self.getCurrentVal("observationPoint").split(", ")
+		len_components = len(components)
+		if len_components > 1:
+			return "%s, %s" % (components[0], components[1])
+		if len_components == 1:
+			return "%s" % components[0]
+		else:
+			return default
+
+	def CityCountryArea(self, default: str = _("n/a")):
+		components = self.getCurrentVal("observationPoint").split(", ")
+		len_components = len(components)
+		if len_components > 2:
+			return "%s, %s, %s" % (components[0], components[-1], components[1])
+		if len_components == 2:
+			return "%s, %s" % (components[0], components[-1])
+		if len_components == 1:
+			return "%s" % components[0]
+		else:
+			return default
+
+	def getCityAreaCountry(self):
+		return self.getCurrentVal("observationPoint")
 
 	def getObservationTime(self):
 		val = self.getCurrentVal("observationTime", "")
@@ -102,8 +147,11 @@ class OAWeather(Source):
 		text = "%s " % self.humiditytext if full else ""
 		return "%s%s %s" % (text, self.getCurrentVal("humidity"), "%")
 
+	def getRainText(self):
+		return self.getCurrentVal("raintext", "")
+
 	def getWindSpeed(self):
-		windSpeed, windunit = self.getCurrentVal("windSpeed"), self.getVal("windunit")
+		windSpeed, windunit = self.getCurrentVal("windSpeed"), self.windunit
 		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
 			windSpeed, windunit = str(round(int(windSpeed) / 3.6, 1)), "m/s"
 		return "%s %s" % (windSpeed, windunit)
@@ -111,6 +159,9 @@ class OAWeather(Source):
 	def getWindDir(self):
 		val = self.getCurrentVal("windDir")
 		return ("%s °" % val) if val else self.na
+
+	def getWindDirSign(self):
+		return self.getCurrentVal("windDirSign", "")
 
 	def getWindDirName(self):
 		skydirection = self.getCurrentVal("windDirSign", "* *")
@@ -120,8 +171,23 @@ class OAWeather(Source):
 		else:
 			return self.na
 
+	def getWindDirArrow(self):
+		return self.getCurrentVal("windDirSign", " ").split(" ")[0]
+
 	def getWindDirShort(self):
 		return self.getCurrentVal("windDirSign", " ").split(" ")[1]
+
+	def getWindGusts(self):
+		windGusts, windunit = self.getCurrentVal("windGusts"), self.windunit
+		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+			windGusts, windunit = str(round(int(windGusts) / 3.6, 1)), "m/s"
+		return "%s %s" % (windGusts, windunit)
+
+	def getUVindex(self):
+		return self.getCurrentVal("uvIndex", self.na)
+
+	def getVisibility(self):
+		return "%s %s" % (self.getCurrentVal("visibility", self.na), self.visibilityunit)
 
 	def getMaxTemp(self, day: int):
 		return "%s %s" % (self.getKeyforDay("maxTemp", day), self.tempunit)
@@ -132,17 +198,65 @@ class OAWeather(Source):
 	def getMaxMinTemp(self, day: int):
 		return "%s / %s %s" % (self.getKeyforDay("minTemp", day), self.getKeyforDay("maxTemp", day), self.tempunit)
 
+	def getMaxFeelsLike(self, day: int):
+		return "%s %s" % (self.getKeyforDay("maxFeelsLike", day), self.tempunit)
+
+	def getMinFeelsLike(self, day: int):
+		return "%s %s" % (self.getKeyforDay("minFeelsLike", day), self.tempunit)
+
+	def getMaxWindSpeed(self, day: int):
+		maxwindspeed, windunit = self.getKeyforDay("maxWindSpeed", day), self.windunit
+		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+			maxwindspeed, windunit = str(round(int(maxwindspeed) / 3.6, 1)), "m/s"
+		return "%s %s" % (maxwindspeed, windunit)
+
+	def getMinWindSpeed(self, day: int):
+		minwindspeed, windunit = self.getKeyforDay("maxWindSpeed", day), self.windunit
+		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+			minwindspeed, windunit = str(round(int(minwindspeed) / 3.6, 1)), "m/s"
+		return "%s %s" % (minwindspeed, windunit)
+
+	def getDomWindDir(self, day: int):
+		return "%s %s" % (self.getKeyforDay("domWindDir", day), self.tempunit)
+
+	def getDomWindDirSign(self, day: int):
+		val = self.getCurrentVal("domWindDirSign")
+		return ("%s °" % val) if val else self.na
+
+	def getDomWindDirName(self, day: int):
+		skydirection = self.getKeyforDay("domWindDirSign", day)
+		if skydirection:
+			skydirection = skydirection.split(" ")
+			return self.skydirs.get(skydirection[1], skydirection[1])
+		else:
+			return self.na
+
+	def getDomWindDirArrow(self, day: int):
+		return self.getKeyforDay("domWindDirSign", day).split(" ")[0]
+
+	def getDomWindDirShort(self, day: int):
+		return self.getKeyforDay("windDirSign", day).split(" ")[1]
+
+	def getMaxWindGusts(self, day: int):
+		maxWindGusts, windunit = self.getKeyforDay("maxWindGusts", day), self.windunit
+		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+			maxWindGusts, windunit = str(round(int(maxWindGusts) / 3.6, 1)), "m/s"
+		return "%s %s" % (maxWindGusts, windunit)
+
+	def getMaxUvIndex(self, day: int):
+		return "%s" % self.getKeyforDay("maxUvIndex", day)
+
+	def getMaxVisibility(self, day: int):
+		return "%s %s" % (self.getKeyforDay("maxVisibility", day), self.visibilityunit)
+
 	def getPrecipitation(self, day: int, full=False):
 		text = "%s " % self.precipitationtext if full else ""
 		return "%s%s %s" % (text, self.getKeyforDay("precipitation", day), self.getVal("precunit"))
 
 	def getYahooCode(self, day: int):
 		iconcode = self.getKeyforDay("yahooCode", day, "")
-		if day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.YAHOOnightswitch:
-			iconcode = self.YAHOOnightswitch[iconcode]
-		else:
-			self.YAHOOdayswitch.get(iconcode, iconcode)
-		return iconcode
+		nightSwitch = day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight()
+		return self.YAHOOnightswitch.get(iconcode, iconcode) if nightSwitch else self.YAHOOdayswitch.get(iconcode, iconcode)
 
 	def getMeteoCode(self, day: int):
 		iconcode = self.getKeyforDay("meteoCode", day, "")
