@@ -84,6 +84,30 @@ class OAWeather(Converter, object):
 						return self.source.getMaxMinTemp(self.index)
 					elif self.mode == "temperature_text":
 						return self.source.getKeyforDay("text", self.index, "")
+					elif self.mode == "feelslike_max":
+						return "%s %s" % (self.source.getMaxFeelsLike(self.index))
+					elif self.mode == "feelslike_min":
+						return "%s %s" % (self.source.getMinFeelsLike(self.index))
+					elif self.mode == "winddisplay_max":
+						return "%s %s" % (self.source.getMaxWindSpeed(self.index), self.source.getDomWindDirName(self.index))
+					elif self.mode == "windspeed_max":
+						return self.source.getMaxWindSpeed(self.index)
+					elif self.mode == "winddir_dominant":
+						return self.source.getDomWindDir(self.index)
+					elif self.mode == "winddirsign_dominant":
+						return self.source.getDomWindDirSign(self.index)
+					elif self.mode == "winddirarrow_dominant":
+						return self.source.getDomWindDirArrow(self.index)
+					elif self.mode == "winddirname_dominant":
+						return self.source.getDomWindDirName(self.index)
+					elif self.mode == "winddirshort_dominant":
+						return self.source.getDomWindDirShort(self.index)
+					elif self.mode == "windgusts_max":
+						return self.source.getMaxWindGusts(self.index)
+					elif self.mode == "uvindex_max":
+						return self.source.getMaxUvIndex(self.index)
+					elif self.mode == "visibility_max":
+						return self.source.getMaxVisibility(self.index)
 					elif self.mode in ("weathericon", "yahoocode"):
 						return self.source.getYahooCode(self.index)
 					elif self.mode == "meteocode":
@@ -100,13 +124,18 @@ class OAWeather(Converter, object):
 						return self.source.getPrecipitation(self.index, True)
 					else:
 						return self.source.getKeyforDay(self.mode, self.index, "")
-
 				if self.mode == "weathersource":
-					return self.source.getVal("source")
+					return self.source.getWeatherSource()
 				elif self.mode == "city":
-					return self.source.getVal("name")
-				elif self.mode == "observationPoint":
-					return self.source.getCurrentVal("observationPoint")
+					return self.source.getCity()
+				elif self.mode == "cityarea":
+					return self.source.getCityArea()
+				elif self.mode == "citycountry":
+					return self.source.CityCountry()
+				elif self.mode == "citycountryarea":
+					return self.source.CityCountryArea()
+				elif self.mode in ["cityareacountry", "observationPoint"]:
+					return self.source.getCityAreaCountry()
 				elif self.mode == "observationtime":
 					return self.source.getObservationTime()
 				elif self.mode == "sunrise":
@@ -126,7 +155,7 @@ class OAWeather(Converter, object):
 				elif self.mode == "humidityfull":
 					return self.source.getHumidity(True)
 				elif self.mode == "raintext":
-					return self.source.getCurrentVal("raintext", "")
+					return self.source.getRainText()
 				elif self.mode == "winddisplay":
 					return "%s %s" % (self.source.getWindSpeed(), self.source.getWindDirName())
 				elif self.mode == "windspeed":
@@ -134,16 +163,21 @@ class OAWeather(Converter, object):
 				elif self.mode == "winddir":
 					return self.source.getWindDir()
 				elif self.mode == "winddirsign":
-					return self.source.getCurrentVal("windDirSign")
+					return self.source.getWindDirsign()
 				elif self.mode == "winddirarrow":
-					return self.source.getCurrentVal("windDirSign").split(" ")[0]
+					return self.source.getWindDirArrow()
 				elif self.mode == "winddirname":
 					return self.source.getWindDirName()
 				elif self.mode == "winddirshort":
 					return self.source.getWindDirShort()
+				elif self.mode == "windgusts":
+					return self.source.getWindGusts()
+				elif self.mode == "uvindex":
+					return self.source.getUVindex()
+				elif self.mode == "visibility":
+					return self.source.getVisibility()
 				else:
 					return self.source.getVal(self.mode)
-
 			except Exception as err:
 				print("[OAWeather] Converter Error:%s" % str(err))
 				print_exc()
@@ -156,7 +190,7 @@ class OAWeather(Converter, object):
 		if self.mode == "isnight":
 			return self.source.getIsNight()
 		elif self.mode == "raintext":
-			return self.source.getCurrentVal("raintext", "") != ""
+			return self.source.getRainText() != ""
 		elif self.mode in ("daySummary0", "nightSummary0"):
 			return self.source.getKeyforDay(self.mode, self.index, "") != ""
 		else:
@@ -173,7 +207,6 @@ class OAWeather(Converter, object):
 					return path
 			except Exception:
 				return ""
-
 		if self.index in (self.CURRENT, self.DAY1, self.DAY2, self.DAY3, self.DAY4, self.DAY5):
 			path = self.source.iconpath
 			if self.path:
