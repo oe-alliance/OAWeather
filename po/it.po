@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2023-05-09 00:22+0200\n"
+"PO-Revision-Date: 2025-03-30 21:33+0200\n"
 "Last-Translator: Madhouse <anonm4d@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/openatv/metrixhd/it/>\n"
 "Language: it\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-SourceCharset: UTF-8\n"
 
 #, python-format
@@ -23,6 +23,9 @@ msgstr "Dati nella cache"
 
 msgid "Celsius"
 msgstr "Celsius"
+
+msgid "Chose favorite"
+msgstr "Scegli il preferito"
 
 msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
 msgstr "Scegli il set di icone. Devi creare un set aggiuntivo in: /usr/share/enigma2/WeatherIconSets/NAME."
@@ -37,15 +40,23 @@ msgstr "Città '%s' non trovata! Si prega di provare un'altra formulazione."
 msgid "Current Weather"
 msgstr "Meteo corrente"
 
-#, fuzzy
+msgid "Day +/-"
+msgstr "Giono +/-"
+
 msgid "Default"
 msgstr "Predefinito"
 
 msgid "Defaults"
-msgstr "Predefinito"
+msgstr "Predefiniti"
 
 msgid "Disabled"
 msgstr "Disabilitato"
+
+msgid "Exit overview"
+msgstr "Esci"
+
+msgid "Exit details"
+msgstr "Esci"
 
 msgid "East"
 msgstr "Est"
@@ -83,8 +94,14 @@ msgstr "Seleziona posizione"
 msgid "MSN weather"
 msgstr "Meteo MSN"
 
+msgid "Manage your favorites"
+msgstr "Gestisci i tuoi preferiti"
+
+msgid "Manage favorites"
+msgstr "Gestione preferiti"
+
 msgid "Metric unit for wind speed"
-msgstr ""
+msgstr "Unità metrica per la velocità del vento"
 
 msgid "North"
 msgstr "Nord"
@@ -95,11 +112,17 @@ msgstr "Nord Est"
 msgid "Northwest"
 msgstr "Nord Ovest"
 
+msgid "Next favorite"
+msgstr "Prossimo preferito"
+
 msgid "Open-Meteo Wetter"
 msgstr "Open-Meteo"
 
 msgid "OpenWeatherMap"
 msgstr "OpenWeatherMap"
+
+msgid "Previous favorite"
+msgstr "Preferito precedente"
 
 msgid "Precipitation"
 msgstr "Precipitazioni"
@@ -123,7 +146,7 @@ msgid "Select Your Location"
 msgstr "Seleziona la tua località"
 
 msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
-msgstr ""
+msgstr "Seleziona l'unità metrica per la velocità del vento da utilizzare per le visualizzazioni del vento. Questo non ha effetto sull'unità imperiale 'mph'."
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Seleziona il servizio meteo preferito per fornire le informazioni meteo."
@@ -201,10 +224,10 @@ msgid "West"
 msgstr "Ovest"
 
 msgid "km/h"
-msgstr ""
+msgstr "km/h"
 
 msgid "m/s"
-msgstr ""
+msgstr "m/s"
 
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
