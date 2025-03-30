@@ -248,6 +248,9 @@ msgstr ""
 msgid "Weather service"
 msgstr ""
 
+msgid "Weather API key v2.5"
+msgstr ""
+
 msgid "Weather settings"
 msgstr ""
 
