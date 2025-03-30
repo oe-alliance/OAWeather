@@ -31,7 +31,7 @@ class OAWeather(Source):
 
 	METEOdayswitch = {"2": "1", "3": "4", "C": "B", "I": "H", "K": "J"}
 
-	services = {"MSN": "msn", "OpenMeteo": "omw"}
+	services = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}
 
 	def __init__(self):
 		Source.__init__(self)
@@ -184,7 +184,7 @@ class OAWeather(Source):
 		return "%s %s" % (windGusts, windunit)
 
 	def getUVindex(self):
-		return self.getCurrentVal("uvIndex", self.na)
+		return self.getCurrentVal("uvIndex", "")
 
 	def getVisibility(self):
 		return "%s %s" % (self.getCurrentVal("visibility", self.na), self.visibilityunit)
@@ -244,7 +244,7 @@ class OAWeather(Source):
 		return "%s %s" % (maxWindGusts, windunit)
 
 	def getMaxUvIndex(self, day: int):
-		return "%s" % self.getKeyforDay("maxUvIndex", day)
+		return "%s" % self.getKeyforDay("maxUvIndex", day, "")
 
 	def getMaxVisibility(self, day: int):
 		return "%s %s" % (self.getKeyforDay("maxVisibility", day), self.visibilityunit)

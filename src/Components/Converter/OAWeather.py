@@ -191,6 +191,8 @@ class OAWeather(Converter, object):
 			return self.source.getIsNight()
 		elif self.mode == "raintext":
 			return self.source.getRainText() != ""
+		elif self.mode == "uvindex":
+			return self.source.getUVindex() != ""
 		elif self.mode in ("daySummary0", "nightSummary0"):
 			return self.source.getKeyforDay(self.mode, self.index, "") != ""
 		else:
