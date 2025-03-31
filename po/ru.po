@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2025-01-15 17:41+0000\n"
+"PO-Revision-Date: 2025-03-30 20:18+0200\n"
 "Last-Translator: Marchella1983\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/ru/>\n"
 "Language: ru\n"
@@ -207,3 +207,36 @@ msgstr "м/c"
 
 msgid "n/a"
 msgstr "n/a"
+
+msgid "View details"
+msgstr "Просмотр деталей"
+
+msgid "Next favorite"
+msgstr "Следующий из фаворита"
+
+msgid "Previous favorite"
+msgstr "Предыдущий из фаворита"
+
+msgid "Chose favorite"
+msgstr "Выбрать из фаворита"
+
+msgid "Exit overview"
+msgstr "Выход"
+
+msgid "Exit details"
+msgstr "Выход"
+
+msgid "Select desired location"
+msgstr "Выберите нужное местоположение"
+
+msgid "Manage your favorites"
+msgstr "Управление вашими фаворитами"
+
+msgid "Manage favorites"
+msgstr "Управление фаворитами"
+
+msgid "Select your location"
+msgstr "Выберите ваше местоположение"
+
+msgid "Favorites have been successfully saved!"
+msgstr "Избранное было успешно сохранено!"
