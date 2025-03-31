@@ -96,6 +96,9 @@ msgstr "Wyjście z przeglądu"
 msgid "Fahrenheit"
 msgstr "Fahrenheita"
 
+msgid "Favorites have been successfully saved!"
+msgstr "Ulubione zostały pomyślnie zapisane!"
+
 msgid "Feels like"
 msgstr "Odczuwalna"
 
