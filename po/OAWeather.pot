@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-27 23:00+0100\n"
+"POT-Creation-Date: 2025-03-30 23:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-msgid "Enter the location for your weather forecasts."
+msgid "Enter the location for your weather forecasts. To include your location, expand your favorites list with 'Manage your favorites'."
 msgstr ""
 
 msgid "Error getting City ID"
@@ -246,6 +246,9 @@ msgid "Weather icon set"
 msgstr ""
 
 msgid "Weather service"
+msgstr ""
+
+msgid "Weather API key v2.5"
 msgstr ""
 
 msgid "Weather settings"
