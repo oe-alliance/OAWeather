@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2025-03-28 21:10+0000\n"
+"PO-Revision-Date: 2025-03-31 21:10+0000\n"
 "Last-Translator: pololoko111\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/openatv/metrixhd/pl/>\n"
 "Language: pl\n"
@@ -78,8 +78,8 @@ msgstr "Włącz debugowanie"
 msgid "Enabled"
 msgstr "Włączony"
 
-msgid "Enter the location for your weather forecasts."
-msgstr "Wprowadź lokalizację prognozy pogody."
+msgid "Enter the location for your weather forecasts. To include your location, expand your favorites list with 'Manage your favorites'."
+msgstr "Wprowadź lokalizację dla swoich prognoz pogody. Aby uwzględnić swoją lokalizację, rozwiń listę ulubionych za pomocą 'Zarządzaj ulubionymi'."
 
 msgid "Error getting City ID"
 msgstr "Błąd uzyskania identyfikatora miasta"
@@ -95,6 +95,9 @@ msgstr "Wyjście z przeglądu"
  
 msgid "Fahrenheit"
 msgstr "Fahrenheita"
+
+msgid "Favorites have been successfully saved!"
+msgstr "Ulubione zostały pomyślnie zapisane!"
 
 msgid "Feels like"
 msgstr "Odczuwalna"
@@ -243,6 +246,9 @@ msgstr "Zestaw ikon pogody"
 
 msgid "Weather service"
 msgstr "Usługa MetrixWeather"
+
+msgid "Weather API key v2.5"
+msgstr "Klucz API v2.5"
 
 msgid "Weather settings"
 msgstr "Ustawienia pogody"
