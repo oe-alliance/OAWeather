@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-04-03 12:45+0200\n"
+"PO-Revision-Date: 2025-04-03 13:18+0200\n"
 "Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "ru/>\n"
@@ -21,7 +21,7 @@ msgid "%d Minutes"
 msgstr "%d минут"
 
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 msgid "Cache data"
 msgstr "Кэшировать данные"
@@ -44,7 +44,7 @@ msgstr ""
 "Некоторые значки будут отображаться как ночные значки с луной."
 
 msgid "Chose favorite"
-msgstr "Выбрать из фаворита"
+msgstr "Избранные"
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -60,7 +60,7 @@ msgid "Defaults"
 msgstr "По умолчанию"
 
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 msgid "Disabled"
 msgstr "Отключено"
@@ -70,15 +70,18 @@ msgid ""
 "Do you really want do delete favorite\n"
 "'%s'?"
 msgstr ""
+"Вы действительно хотите удалить любимое\n"
+"'%s'?"
 
 msgid "Do you really want do exit without saving your modified favorite list?"
 msgstr ""
+"Вы действительно хотите выйти, не сохранив измененный список избранного?"
 
 msgid "East"
 msgstr "Восток"
 
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 msgid "Enable Debug"
 msgstr "Включить отладочный лог"
@@ -90,6 +93,9 @@ msgid ""
 "Enter the location for your weather forecasts. To include your location, "
 "expand your favorites list with 'Manage your favorites'."
 msgstr ""
+"Введите местоположение для прогноза погоды. Чтобы указать свое "
+"местоположение, расширьте список избранного с помощью \"Управление "
+"избранным\"."
 
 msgid "Error getting City ID"
 msgstr "Ошибка получения идентификатора города"
@@ -125,19 +131,19 @@ msgid "View details"
 msgstr "Подробный"
 
 msgid "Day +/-"
-msgstr ""
+msgstr "День +/-"
 
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 msgid "Manage your favorites"
 msgstr "Управление вашими фаворитами"
 
 msgid "No data available for this period."
-msgstr ""
+msgstr "Данные за этот период отсутствуют."
 
 msgid "No data available."
-msgstr ""
+msgstr "Данные отсутствуют."
 
 msgid "North"
 msgstr "Север"
@@ -161,12 +167,10 @@ msgid "Refresh interval"
 msgstr "Интервал обновления"
 
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
-#, fuzzy
-#| msgid "Search for your City"
 msgid "Search for your city"
-msgstr "Найдите свой город"
+msgstr "Поиск по вашему городу"
 
 msgid "Select 'Yes' to enable add debug output to log."
 msgstr "Выберите «Да», чтобы включить вывод отладочного лога в журнал."
@@ -243,6 +247,8 @@ msgid ""
 "The favorite '%s' corresponds to the set weather city name and therefore "
 "cannot be deleted."
 msgstr ""
+"Избранное '%s' соответствует установленному названию города, поэтому его "
+"нельзя удалить."
 
 msgid "Today"
 msgstr "Сейчас"
@@ -253,15 +259,11 @@ msgstr "Обновлено"
 msgid "Weather Plugin"
 msgstr "Плагин погоды"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Detailview"
-msgstr "Плагин погоды"
+msgstr "Подробный обзор погоды плагина"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Overview"
-msgstr "Плагин погоды"
+msgstr "Обзор погоды плагина"
 
 msgid "Weather Settings Actions"
 msgstr "Действия с настройками погоды"
@@ -270,7 +272,7 @@ msgid "Weather city name"
 msgstr "Название города MetrixWeather"
 
 msgid "Weather cityname (at least 3 letters):"
-msgstr ""
+msgstr "Название города (не менее 3 букв):"
 
 msgid "Weather icon night switch"
 msgstr "Ночной переключатель"
@@ -281,10 +283,8 @@ msgstr "Набор пиконов"
 msgid "Weather service"
 msgstr "Сервис MetrixWeather"
 
-#, fuzzy
-#| msgid "Weather API key"
 msgid "Weather API key v2.5"
-msgstr "Ключ API MetrixWeather"
+msgstr "Ключ погодного API v2.5"
 
 msgid "Weather settings"
 msgstr "Настройки погоды"
@@ -300,3 +300,40 @@ msgstr "м/c"
 
 msgid "n/a"
 msgstr "n/a"
+
+#~ msgid ""
+#~ "Enter a personalized API key for use with OpenWeatherMap (https://"
+#~ "openweathermap.org/)."
+#~ msgstr ""
+#~ "Введите персональный ключ API для использования с OpenWeatherMap (https://"
+#~ "openweathermap.org/)."
+
+#~ msgid "Enter the location for your weather forecasts."
+#~ msgstr "Введите местоположение для Ваших прогнозов погоды."
+
+#~ msgid "Location Selection"
+#~ msgstr "Местоположение"
+
+#~ msgid "OpenWeatherMap"
+#~ msgstr "Открыть карту погоды"
+
+#~ msgid "Search for City ID please wait..."
+#~ msgstr "Найдите идентификатор города, пожалуйста, подождите..."
+
+#~ msgid "Select Your Location"
+#~ msgstr "Выберите своё местоположение"
+
+#~ msgid ""
+#~ "The API key for OpenWeatherMap is not defined or invalid.\n"
+#~ "Please verify your input data.\n"
+#~ "Otherwise your settings won't be saved."
+#~ msgstr ""
+#~ "Ключ API для OpenWeatherMap не определён или недействителен.\n"
+#~ "Пожалуйста, проверьте введённые данные.\n"
+#~ "В противном случае Ваши настройки не будут сохранены."
+
+#~ msgid "Exit overview"
+#~ msgstr "Выход"
+
+#~ msgid "Exit details"
+#~ msgstr "Выход"
