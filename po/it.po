@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-30 23:00+0100\n"
 "PO-Revision-Date: 2025-04-03 12:44+0200\n"
-"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
+"Last-Translator: Madhouse <anonm4d@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "it/>\n"
 "Language: it\n"
@@ -20,7 +20,7 @@ msgid "%d Minutes"
 msgstr "%d Minuti"
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgid "Cache data"
 msgstr "Dati nella cache"
@@ -59,7 +59,7 @@ msgid "Defaults"
 msgstr "Predefiniti"
 
 msgid "Delete"
-msgstr ""
+msgstr "Elimina"
 
 msgid "Disabled"
 msgstr "Disabilitato"
@@ -69,15 +69,17 @@ msgid ""
 "Do you really want do delete favorite\n"
 "'%s'?"
 msgstr ""
+"Vuoi davvero eliminare i preferiti\n"
+"'%s'?"
 
 msgid "Do you really want do exit without saving your modified favorite list?"
-msgstr ""
+msgstr "Vuoi davvero uscire senza salvare l'elenco dei preferiti modificato?"
 
 msgid "East"
 msgstr "Est"
 
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 msgid "Enable Debug"
 msgstr "Abilita debug"
@@ -89,6 +91,8 @@ msgid ""
 "Enter the location for your weather forecasts. To include your location, "
 "expand your favorites list with 'Manage your favorites'."
 msgstr ""
+"Inserisci la posizione per le tue previsioni meteo. Per includere la tua posizione, "
+"espandi l'elenco dei preferiti con 'Gestisci i tuoi preferiti'."
 
 msgid "Error getting City ID"
 msgstr "Errore durante l'ottenimento dell'ID città"
@@ -100,7 +104,7 @@ msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 msgid "Favorites have been successfully saved!"
-msgstr ""
+msgstr "I preferiti sono stati salvati con successo!"
 
 msgid "Feels like"
 msgstr "Percepita"
@@ -123,22 +127,22 @@ msgstr "Prossimo preferito"
 #, fuzzy
 #| msgid "Exit details"
 msgid "View details"
-msgstr "Esci"
+msgstr "Visualizza dettagli"
 
 msgid "Day +/-"
 msgstr "Giono +/-"
 
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 msgid "Manage your favorites"
 msgstr "Gestisci i tuoi preferiti"
 
 msgid "No data available for this period."
-msgstr ""
+msgstr "Nessun dato disponibile per questo periodo."
 
 msgid "No data available."
-msgstr ""
+msgstr "Nessun dato disponibile."
 
 msgid "North"
 msgstr "Nord"
@@ -162,7 +166,7 @@ msgid "Refresh interval"
 msgstr "Intervallo aggiornamento"
 
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #, fuzzy
 #| msgid "Search for your City"
@@ -178,7 +182,7 @@ msgstr "Seleziona 'Si' per abilitare l'aggiunta del Meteo."
 #, fuzzy
 #| msgid "Select Your Location"
 msgid "Select desired location"
-msgstr "Seleziona la tua località"
+msgstr "Seleziona la posizione desiderata"
 
 msgid ""
 "Select the metric unit for wind speed to be used for wind displays. This has "
@@ -247,6 +251,8 @@ msgid ""
 "The favorite '%s' corresponds to the set weather city name and therefore "
 "cannot be deleted."
 msgstr ""
+"Il preferito '%s' corrisponde al nome della città meteorologica impostata e quindi "
+"non può essere cancellato."
 
 msgid "Today"
 msgstr "Oggi"
@@ -271,10 +277,10 @@ msgid "Weather Settings Actions"
 msgstr "Azioni impostazioni meteo"
 
 msgid "Weather city name"
-msgstr "Nome città"
+msgstr "Meteo nome città"
 
 msgid "Weather cityname (at least 3 letters):"
-msgstr ""
+msgstr "Nome della città (almeno 3 lettere):"
 
 msgid "Weather icon night switch"
 msgstr "Attiva le icone notturne"
@@ -288,7 +294,7 @@ msgstr "Servizio Meteo"
 #, fuzzy
 #| msgid "Weather API key"
 msgid "Weather API key v2.5"
-msgstr "Chiave API Meteo"
+msgstr "Chiave API v.2.5 Meteo"
 
 msgid "Weather settings"
 msgstr "Configurazioni meteo"
