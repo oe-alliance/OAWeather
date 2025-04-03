@@ -2,15 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2025-03-30 20:18+0200\n"
-"Last-Translator: Marchella1983\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/ru/>\n"
+"POT-Creation-Date: 2025-03-30 23:00+0100\n"
+"PO-Revision-Date: 2025-04-03 12:45+0200\n"
+"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/"
+"ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -18,17 +20,31 @@ msgstr ""
 msgid "%d Minutes"
 msgstr "%d минут"
 
+msgid "Add"
+msgstr ""
+
 msgid "Cache data"
 msgstr "Кэшировать данные"
 
 msgid "Celsius"
 msgstr "Цельсий"
 
-msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr "Дополнительный набор пиконов погоды. Для выбора Вам необходимо добавить дополнительный набор пиконов в - /usr/share/enigma2/WeatherIconSets/NAME."
+msgid ""
+"Choose the icon set. You need to create an additional set here: /usr/share/"
+"enigma2/WeatherIconSets/NAME."
+msgstr ""
+"Дополнительный набор пиконов погоды. Для выбора Вам необходимо добавить "
+"дополнительный набор пиконов в - /usr/share/enigma2/WeatherIconSets/NAME."
 
-msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr "Выберите, должен ли быть активирован «ночной переключатель» или нет. Некоторые значки будут отображаться как ночные значки с луной."
+msgid ""
+"Choose whether the 'night switch' should be activated or not. Some icons are "
+"then displayed as night icons with moon."
+msgstr ""
+"Выберите, должен ли быть активирован «ночной переключатель» или нет. "
+"Некоторые значки будут отображаться как ночные значки с луной."
+
+msgid "Chose favorite"
+msgstr "Выбрать из фаворита"
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -43,11 +59,26 @@ msgstr "Yмолчанию"
 msgid "Defaults"
 msgstr "По умолчанию"
 
+msgid "Delete"
+msgstr ""
+
 msgid "Disabled"
 msgstr "Отключено"
 
+#, python-format
+msgid ""
+"Do you really want do delete favorite\n"
+"'%s'?"
+msgstr ""
+
+msgid "Do you really want do exit without saving your modified favorite list?"
+msgstr ""
+
 msgid "East"
 msgstr "Восток"
+
+msgid "Edit"
+msgstr ""
 
 msgid "Enable Debug"
 msgstr "Включить отладочный лог"
@@ -55,11 +86,10 @@ msgstr "Включить отладочный лог"
 msgid "Enabled"
 msgstr "Включить"
 
-msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
-msgstr "Введите персональный ключ API для использования с OpenWeatherMap (https://openweathermap.org/)."
-
-msgid "Enter the location for your weather forecasts."
-msgstr "Введите местоположение для Ваших прогнозов погоды."
+msgid ""
+"Enter the location for your weather forecasts. To include your location, "
+"expand your favorites list with 'Manage your favorites'."
+msgstr ""
 
 msgid "Error getting City ID"
 msgstr "Ошибка получения идентификатора города"
@@ -70,20 +100,44 @@ msgstr "Ошибка в информации о погоде"
 msgid "Fahrenheit"
 msgstr "Фаренгейт"
 
+msgid "Favorites have been successfully saved!"
+msgstr "Избранное было успешно сохранено!"
+
 msgid "Feels like"
 msgstr "Ощущается как"
 
 msgid "Humidity"
 msgstr "Влажность"
 
-msgid "Location Selection"
-msgstr "Местоположение"
-
 msgid "MSN weather"
 msgstr "MSN погода"
 
+msgid "Manage favorites"
+msgstr "Управление фаворитами"
+
 msgid "Metric unit for wind speed"
 msgstr "Скорость ветра"
+
+msgid "Next favorite"
+msgstr "Фавориты >>"
+
+msgid "View details"
+msgstr "Подробный"
+
+msgid "Day +/-"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Manage your favorites"
+msgstr "Управление вашими фаворитами"
+
+msgid "No data available for this period."
+msgstr ""
+
+msgid "No data available."
+msgstr ""
 
 msgid "North"
 msgstr "Север"
@@ -97,19 +151,21 @@ msgstr "Северо-Запад"
 msgid "Open-Meteo Wetter"
 msgstr "Open-Meteo Wetter погода"
 
-msgid "OpenWeatherMap"
-msgstr "Открыть карту погоды"
-
 msgid "Precipitation"
 msgstr "Осадки"
+
+msgid "Previous favorite"
+msgstr "<< Фавориты"
 
 msgid "Refresh interval"
 msgstr "Интервал обновления"
 
-msgid "Search for City ID please wait..."
-msgstr "Найдите идентификатор города, пожалуйста, подождите..."
+msgid "Save"
+msgstr ""
 
-msgid "Search for your City"
+#, fuzzy
+#| msgid "Search for your City"
+msgid "Search for your city"
 msgstr "Найдите свой город"
 
 msgid "Select 'Yes' to enable add debug output to log."
@@ -118,20 +174,38 @@ msgstr "Выберите «Да», чтобы включить вывод отл
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Выберите «Да», чтобы включить настрйки «Погода»."
 
-msgid "Select Your Location"
-msgstr "Выберите своё местоположение"
+msgid "Select desired location"
+msgstr "Выберите нужное местоположение"
 
-msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
-msgstr "Выберите метрическую единицу измерения скорости ветра, которая будет использоваться для отображения ветра. Это не влияет на имперскую единицу измерения «миль/ч»."
+msgid ""
+"Select the metric unit for wind speed to be used for wind displays. This has "
+"no effect on the imperial unit 'mph'."
+msgstr ""
+"Выберите метрическую единицу измерения скорости ветра, которая будет "
+"использоваться для отображения ветра. Это не влияет на имперскую единицу "
+"измерения «миль/ч»."
 
 msgid "Select the preferred weather service to supply the weather information."
-msgstr "Выберите предпочтительную службу погоды для предоставления информации о погоде."
+msgstr ""
+"Выберите предпочтительную службу погоды для предоставления информации о "
+"погоде."
 
 msgid "Select the temperature unit to be used for temperature displays."
-msgstr "Выберите единицу измерения температуры, которая будет использоваться для отображения температуры."
+msgstr ""
+"Выберите единицу измерения температуры, которая будет использоваться для "
+"отображения температуры."
 
-msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
-msgstr "Выберите этот параметр, чтобы сохранить последние полученные данные о погоде локально. Это используется для инициализации данных сразу после перезапуска во время выборки обновленных данных."
+msgid ""
+"Select this option to save that last obtained weather data locally. This is "
+"used to initialize the data immediately after restart while updated data is "
+"being fetched."
+msgstr ""
+"Выберите этот параметр, чтобы сохранить последние полученные данные о погоде "
+"локально. Это используется для инициализации данных сразу после перезапуска "
+"во время выборки обновленных данных."
+
+msgid "Select your location"
+msgstr "Выберите ваше местоположение"
 
 msgid "Set default values"
 msgstr "Установить значения по умолчанию"
@@ -148,23 +222,27 @@ msgstr "Юго-Восток"
 msgid "Southwest"
 msgstr "Юго-Запад"
 
-msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Укажите, как часто Weather получает данные с сервера. 'Once' означает, что данные будут загружаться только один раз после запуска графического интерфейса или системы."
+msgid ""
+"Specify how often Weather retrieves its data from the server. 'Once' means "
+"the data will loaded only once after a GUI or system start."
+msgstr ""
+"Укажите, как часто Weather получает данные с сервера. 'Once' означает, что "
+"данные будут загружаться только один раз после запуска графического "
+"интерфейса или системы."
 
 msgid "Temperature unit"
 msgstr "Единица измерения температуры"
 
 msgid ""
-"The API key for OpenWeatherMap is not defined or invalid.\n"
-"Please verify your input data.\n"
-"Otherwise your settings won't be saved."
+"The city name is too short. More than 2 characters are needed for search."
 msgstr ""
-"Ключ API для OpenWeatherMap не определён или недействителен.\n"
-"Пожалуйста, проверьте введённые данные.\n"
-"В противном случае Ваши настройки не будут сохранены."
+"Название города слишком короткое. Для поиска необходимо более 2 символов."
 
-msgid "The city name is too short. More than 2 characters are needed for search."
-msgstr "Название города слишком короткое. Для поиска необходимо более 2 символов."
+#, python-format
+msgid ""
+"The favorite '%s' corresponds to the set weather city name and therefore "
+"cannot be deleted."
+msgstr ""
 
 msgid "Today"
 msgstr "Сейчас"
@@ -172,10 +250,17 @@ msgstr "Сейчас"
 msgid "Update"
 msgstr "Обновлено"
 
-msgid "Weather API key"
-msgstr "Ключ API MetrixWeather"
-
 msgid "Weather Plugin"
+msgstr "Плагин погоды"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Detailview"
+msgstr "Плагин погоды"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Overview"
 msgstr "Плагин погоды"
 
 msgid "Weather Settings Actions"
@@ -183,6 +268,9 @@ msgstr "Действия с настройками погоды"
 
 msgid "Weather city name"
 msgstr "Название города MetrixWeather"
+
+msgid "Weather cityname (at least 3 letters):"
+msgstr ""
 
 msgid "Weather icon night switch"
 msgstr "Ночной переключатель"
@@ -192,6 +280,11 @@ msgstr "Набор пиконов"
 
 msgid "Weather service"
 msgstr "Сервис MetrixWeather"
+
+#, fuzzy
+#| msgid "Weather API key"
+msgid "Weather API key v2.5"
+msgstr "Ключ API MetrixWeather"
 
 msgid "Weather settings"
 msgstr "Настройки погоды"
@@ -207,36 +300,3 @@ msgstr "м/c"
 
 msgid "n/a"
 msgstr "n/a"
-
-msgid "View details"
-msgstr "Просмотр деталей"
-
-msgid "Next favorite"
-msgstr "Следующий из фаворита"
-
-msgid "Previous favorite"
-msgstr "Предыдущий из фаворита"
-
-msgid "Chose favorite"
-msgstr "Выбрать из фаворита"
-
-msgid "Exit overview"
-msgstr "Выход"
-
-msgid "Exit details"
-msgstr "Выход"
-
-msgid "Select desired location"
-msgstr "Выберите нужное местоположение"
-
-msgid "Manage your favorites"
-msgstr "Управление вашими фаворитами"
-
-msgid "Manage favorites"
-msgstr "Управление фаворитами"
-
-msgid "Select your location"
-msgstr "Выберите ваше местоположение"
-
-msgid "Favorites have been successfully saved!"
-msgstr "Избранное было успешно сохранено!"

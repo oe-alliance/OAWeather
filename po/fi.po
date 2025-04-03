@@ -7,19 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2024-09-15 15:12+0300\n"
-"Last-Translator: Orlandox\n"
+"POT-Creation-Date: 2025-03-30 23:00+0100\n"
+"PO-Revision-Date: 2025-04-03 12:43+0200\n"
+"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: tomppaa, Orlandox\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #, python-format
 msgid "%d Minutes"
 msgstr "%d minuuttia"
+
+msgid "Add"
+msgstr ""
 
 msgid "Cache data"
 msgstr "Välimuisti"
@@ -27,11 +30,22 @@ msgstr "Välimuisti"
 msgid "Celsius"
 msgstr "Celsius"
 
-msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr "Valitse ikonisarja. Sinun on luotava lisäsetti tähän: /usr/share/enigma2/WeatherIconSets/NAME."
+msgid ""
+"Choose the icon set. You need to create an additional set here: /usr/share/"
+"enigma2/WeatherIconSets/NAME."
+msgstr ""
+"Valitse ikonisarja. Sinun on luotava lisäsetti tähän: /usr/share/enigma2/"
+"WeatherIconSets/NAME."
 
-msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr "Valitse, otetaanko 'yökytkin' käyttöön vai ei. Jotkut ikonit näytetään sitten yöikoneina kuun kanssa."
+msgid ""
+"Choose whether the 'night switch' should be activated or not. Some icons are "
+"then displayed as night icons with moon."
+msgstr ""
+"Valitse, otetaanko 'yökytkin' käyttöön vai ei. Jotkut ikonit näytetään "
+"sitten yöikoneina kuun kanssa."
+
+msgid "Chose favorite"
+msgstr ""
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -46,11 +60,26 @@ msgstr "Oletus"
 msgid "Defaults"
 msgstr "Oletukset"
 
+msgid "Delete"
+msgstr ""
+
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
+#, python-format
+msgid ""
+"Do you really want do delete favorite\n"
+"'%s'?"
+msgstr ""
+
+msgid "Do you really want do exit without saving your modified favorite list?"
+msgstr ""
+
 msgid "East"
 msgstr "Idästä"
+
+msgid "Edit"
+msgstr ""
 
 msgid "Enable Debug"
 msgstr "Ota Debug käyttöön"
@@ -58,11 +87,10 @@ msgstr "Ota Debug käyttöön"
 msgid "Enabled"
 msgstr "Käytössä"
 
-msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
-msgstr "Anna henkilökohtainen API-avain käytettäväksi OpenWeatherMapin kanssa (https://openweathermap.org/)."
-
-msgid "Enter the location for your weather forecasts."
-msgstr "Anna sääennusteesi sijainti."
+msgid ""
+"Enter the location for your weather forecasts. To include your location, "
+"expand your favorites list with 'Manage your favorites'."
+msgstr ""
 
 msgid "Error getting City ID"
 msgstr "Virhe haettaessa kaupunkitunnusta"
@@ -73,20 +101,44 @@ msgstr "Virhe säätiedoissa"
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
+msgid "Favorites have been successfully saved!"
+msgstr ""
+
 msgid "Feels like"
 msgstr "Tuntuu kuin"
 
 msgid "Humidity"
 msgstr "Kosteus"
 
-msgid "Location Selection"
-msgstr "Sijainnin valinta"
-
 msgid "MSN weather"
 msgstr "MSN sää"
 
+msgid "Manage favorites"
+msgstr ""
+
 msgid "Metric unit for wind speed"
 msgstr "Tuulen nopeuden yksikkö metrijärjestelmässä"
+
+msgid "Next favorite"
+msgstr ""
+
+msgid "View details"
+msgstr ""
+
+msgid "Day +/-"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Manage your favorites"
+msgstr ""
+
+msgid "No data available for this period."
+msgstr ""
+
+msgid "No data available."
+msgstr ""
 
 msgid "North"
 msgstr "Pohjoisesta"
@@ -100,19 +152,21 @@ msgstr "Luoteesta"
 msgid "Open-Meteo Wetter"
 msgstr "Open-Meteo Sää"
 
-msgid "OpenWeatherMap"
-msgstr "OpenWeatherMap"
-
 msgid "Precipitation"
 msgstr "Sateen tod.näköisyys"
+
+msgid "Previous favorite"
+msgstr ""
 
 msgid "Refresh interval"
 msgstr "Päivitysväli"
 
-msgid "Search for City ID please wait..."
-msgstr "Etsii kaupunkitunnusta, odota..."
+msgid "Save"
+msgstr ""
 
-msgid "Search for your City"
+#, fuzzy
+#| msgid "Search for your City"
+msgid "Search for your city"
 msgstr "Etsii kaupunkiasi"
 
 msgid "Select 'Yes' to enable add debug output to log."
@@ -121,11 +175,17 @@ msgstr "Valitse 'Kyllä', jos haluat lisätä tapahtumat debug-lokiin."
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Valitse 'Kyllä' ottaaksesi sään lisäyksen käyttöön."
 
-msgid "Select Your Location"
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select desired location"
 msgstr "Valitse sijaintisi"
 
-msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
-msgstr "Valitse tuulennopeuden metrijärjestelmän yksikkö tuuli näyttöjä varten. Tämä ei vaikuta imperiaaliseen yksikköön 'mph'."
+msgid ""
+"Select the metric unit for wind speed to be used for wind displays. This has "
+"no effect on the imperial unit 'mph'."
+msgstr ""
+"Valitse tuulennopeuden metrijärjestelmän yksikkö tuuli näyttöjä varten. Tämä "
+"ei vaikuta imperiaaliseen yksikköön 'mph'."
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Valitse haluamasi sääpalvelun toimittamat säätiedot."
@@ -133,8 +193,19 @@ msgstr "Valitse haluamasi sääpalvelun toimittamat säätiedot."
 msgid "Select the temperature unit to be used for temperature displays."
 msgstr "Valitse lämpötilan näytöissä käytettävä lämpötilayksikkö."
 
-msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
-msgstr "Valitse tämä vaihtoehto tallentaaksesi viimeksi hankitut säätiedot paikallisesti. Tätä käytetään tietojen alustamiseen välittömästi uudelleenkäynnistyksen jälkeen, kun päivitettyjä tietoja haetaan."
+msgid ""
+"Select this option to save that last obtained weather data locally. This is "
+"used to initialize the data immediately after restart while updated data is "
+"being fetched."
+msgstr ""
+"Valitse tämä vaihtoehto tallentaaksesi viimeksi hankitut säätiedot "
+"paikallisesti. Tätä käytetään tietojen alustamiseen välittömästi "
+"uudelleenkäynnistyksen jälkeen, kun päivitettyjä tietoja haetaan."
+
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select your location"
+msgstr "Valitse sijaintisi"
 
 msgid "Set default values"
 msgstr "Aseta oletusarvot"
@@ -151,23 +222,27 @@ msgstr "Kaakosta"
 msgid "Southwest"
 msgstr "Lounaasta"
 
-msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Määritä, kuinka usein Sää hakee tietonsa palvelimelta. 'Kerran' tarkoittaa, että tiedot ladataan vain kerran graafisen käyttöliittymän tai järjestelmän käynnistyksen jälkeen."
+msgid ""
+"Specify how often Weather retrieves its data from the server. 'Once' means "
+"the data will loaded only once after a GUI or system start."
+msgstr ""
+"Määritä, kuinka usein Sää hakee tietonsa palvelimelta. 'Kerran' tarkoittaa, "
+"että tiedot ladataan vain kerran graafisen käyttöliittymän tai järjestelmän "
+"käynnistyksen jälkeen."
 
 msgid "Temperature unit"
 msgstr "Lämpötilayksikkö"
 
 msgid ""
-"The API key for OpenWeatherMap is not defined or invalid.\n"
-"Please verify your input data.\n"
-"Otherwise your settings won't be saved."
+"The city name is too short. More than 2 characters are needed for search."
 msgstr ""
-"OpenWeatherMapin API-avainta ei ole määritetty tai se on virheellinen.\n"
-"Tarkista syöttämäsi tiedot.\n"
-"Muuten asetuksiasi ei tallenneta."
+"Kaupungin nimi on liian lyhyt. Hakuun tarvitaan enemmän kuin 2 merkkiä."
 
-msgid "The city name is too short. More than 2 characters are needed for search."
-msgstr "Kaupungin nimi on liian lyhyt. Hakuun tarvitaan enemmän kuin 2 merkkiä."
+#, python-format
+msgid ""
+"The favorite '%s' corresponds to the set weather city name and therefore "
+"cannot be deleted."
+msgstr ""
 
 msgid "Today"
 msgstr "Tänään"
@@ -175,10 +250,17 @@ msgstr "Tänään"
 msgid "Update"
 msgstr "Päivitetty"
 
-msgid "Weather API key"
-msgstr "Sään API -avain"
-
 msgid "Weather Plugin"
+msgstr "Sää-lisäosa"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Detailview"
+msgstr "Sää-lisäosa"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Overview"
 msgstr "Sää-lisäosa"
 
 msgid "Weather Settings Actions"
@@ -186,6 +268,9 @@ msgstr "Sääasetuksien toiminnot"
 
 msgid "Weather city name"
 msgstr "Sää-kaupungin nimi"
+
+msgid "Weather cityname (at least 3 letters):"
+msgstr ""
 
 msgid "Weather icon night switch"
 msgstr "Sääikonin yökytkin"
@@ -195,6 +280,11 @@ msgstr "Sääikonisetti"
 
 msgid "Weather service"
 msgstr "Sääpalvelu"
+
+#, fuzzy
+#| msgid "Weather API key"
+msgid "Weather API key v2.5"
+msgstr "Sään API -avain"
 
 msgid "Weather settings"
 msgstr "Sää asetukset"

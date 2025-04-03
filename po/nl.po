@@ -2,21 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2022-12-31 13:47+0000\n"
-"Last-Translator: Snoete <snoete@hotmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/openatv/metrixhd/nl/>\n"
+"POT-Creation-Date: 2025-03-30 23:00+0100\n"
+"PO-Revision-Date: 2025-04-03 12:44+0200\n"
+"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/openatv/metrixhd/"
+"nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, python-format
 msgid "%d Minutes"
 msgstr "%d Minuten"
+
+msgid "Add"
+msgstr ""
 
 msgid "Cache data"
 msgstr "Cache gegevens"
@@ -24,15 +28,23 @@ msgstr "Cache gegevens"
 msgid "Celsius"
 msgstr "Celsius"
 
-msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
+msgid ""
+"Choose the icon set. You need to create an additional set here: /usr/share/"
+"enigma2/WeatherIconSets/NAME."
 msgstr ""
 
-msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
+msgid ""
+"Choose whether the 'night switch' should be activated or not. Some icons are "
+"then displayed as night icons with moon."
+msgstr ""
+
+msgid "Chose favorite"
 msgstr ""
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
-msgstr "De woonplaats '%s' werd niet gevonden! A.u.b. de omschrijving aanpassen."
+msgstr ""
+"De woonplaats '%s' werd niet gevonden! A.u.b. de omschrijving aanpassen."
 
 #, fuzzy
 msgid "Current Weather"
@@ -45,11 +57,26 @@ msgstr "Standaard waarden"
 msgid "Defaults"
 msgstr "Standaard waarden"
 
+msgid "Delete"
+msgstr ""
+
 msgid "Disabled"
 msgstr "Gedeactiveerd"
 
+#, python-format
+msgid ""
+"Do you really want do delete favorite\n"
+"'%s'?"
+msgstr ""
+
+msgid "Do you really want do exit without saving your modified favorite list?"
+msgstr ""
+
 msgid "East"
 msgstr "Oost"
+
+msgid "Edit"
+msgstr ""
 
 #, fuzzy
 msgid "Enable Debug"
@@ -58,11 +85,10 @@ msgstr "Ingeschakeld"
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
-msgstr "Een eigen API code opgeven voor gebruik van weergegevens uit OpenWeatherMap (https://openweathermap.org/)."
-
-msgid "Enter the location for your weather forecasts."
-msgstr "A.u.b. de woonplaats voor uw weersvoorspelling opgeven."
+msgid ""
+"Enter the location for your weather forecasts. To include your location, "
+"expand your favorites list with 'Manage your favorites'."
+msgstr ""
 
 msgid "Error getting City ID"
 msgstr "Fout bij het downloaden van de City ID"
@@ -73,19 +99,43 @@ msgstr "Fout in Weatherinfo"
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
+msgid "Favorites have been successfully saved!"
+msgstr ""
+
 msgid "Feels like"
 msgstr ""
 
 msgid "Humidity"
 msgstr ""
 
-msgid "Location Selection"
-msgstr "Woonplaats selectie"
-
 msgid "MSN weather"
 msgstr "MSN | weer"
 
+msgid "Manage favorites"
+msgstr ""
+
 msgid "Metric unit for wind speed"
+msgstr ""
+
+msgid "Next favorite"
+msgstr ""
+
+msgid "View details"
+msgstr ""
+
+msgid "Day +/-"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Manage your favorites"
+msgstr ""
+
+msgid "No data available for this period."
+msgstr ""
+
+msgid "No data available."
 msgstr ""
 
 msgid "North"
@@ -100,19 +150,21 @@ msgstr "Noord-west"
 msgid "Open-Meteo Wetter"
 msgstr "Open-Meteo Weather"
 
-msgid "OpenWeatherMap"
-msgstr "OpenWeatherMap"
-
 msgid "Precipitation"
+msgstr ""
+
+msgid "Previous favorite"
 msgstr ""
 
 msgid "Refresh interval"
 msgstr "Hoe vaak actualiseren"
 
-msgid "Search for City ID please wait..."
-msgstr "De City-ID wordt gezocht, even geduld..."
+msgid "Save"
+msgstr ""
 
-msgid "Search for your City"
+#, fuzzy
+#| msgid "Search for your City"
+msgid "Search for your city"
 msgstr "Uw woonplaats zoeken"
 
 #, fuzzy
@@ -123,10 +175,14 @@ msgstr "Kies \"Ja\" om MetrixWeather aan het InfoBar-scherm toe te voegen."
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Kies \"Ja\" om MetrixWeather aan het InfoBar-scherm toe te voegen."
 
-msgid "Select Your Location"
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select desired location"
 msgstr "Selecteer uw locatie"
 
-msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgid ""
+"Select the metric unit for wind speed to be used for wind displays. This has "
+"no effect on the imperial unit 'mph'."
 msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
@@ -135,8 +191,19 @@ msgstr "Een weerdienst selecteren voor het ophalen van de weerinformatie."
 msgid "Select the temperature unit to be used for temperature displays."
 msgstr "Selecteer de temperatuur eenheid die u wil gebruiken."
 
-msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
-msgstr "Selecteer deze optie om de laatst opgevraagde weerinformatie lokaal op te slaan. Deze wordt direct na het starten van de ontvanger getoond, tijdens het downloaden van de actuele weersinformatie."
+msgid ""
+"Select this option to save that last obtained weather data locally. This is "
+"used to initialize the data immediately after restart while updated data is "
+"being fetched."
+msgstr ""
+"Selecteer deze optie om de laatst opgevraagde weerinformatie lokaal op te "
+"slaan. Deze wordt direct na het starten van de ontvanger getoond, tijdens "
+"het downloaden van de actuele weersinformatie."
+
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select your location"
+msgstr "Selecteer uw locatie"
 
 msgid "Set default values"
 msgstr "Standaard waarden instellen"
@@ -154,23 +221,28 @@ msgid "Southwest"
 msgstr "Zuid-west"
 
 #, fuzzy
-msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Instellen hoe vaak MetrixWeather gegevens van de server moet downloaden. \"eenmalig\" betekent dat de gegevens maar één keer na het opstarten worden geladen."
+msgid ""
+"Specify how often Weather retrieves its data from the server. 'Once' means "
+"the data will loaded only once after a GUI or system start."
+msgstr ""
+"Instellen hoe vaak MetrixWeather gegevens van de server moet downloaden. "
+"\"eenmalig\" betekent dat de gegevens maar één keer na het opstarten worden "
+"geladen."
 
 msgid "Temperature unit"
 msgstr "Temperatuureenheid"
 
 msgid ""
-"The API key for OpenWeatherMap is not defined or invalid.\n"
-"Please verify your input data.\n"
-"Otherwise your settings won't be saved."
+"The city name is too short. More than 2 characters are needed for search."
 msgstr ""
-"De API sleutel voor OpenWeatherMap is niet opgegeven of geldig.\n"
-"A.u.b. uw opgave controleren.\n"
-"Anders worden uw instellingen niet opgeslagen."
+"De omschrijving voor de woonplaats is te kort. Deze moet uit meer dan 2 "
+"tekens bestaan."
 
-msgid "The city name is too short. More than 2 characters are needed for search."
-msgstr "De omschrijving voor de woonplaats is te kort. Deze moet uit meer dan 2 tekens bestaan."
+#, python-format
+msgid ""
+"The favorite '%s' corresponds to the set weather city name and therefore "
+"cannot be deleted."
+msgstr ""
 
 msgid "Today"
 msgstr ""
@@ -178,11 +250,16 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-msgid "Weather API key"
-msgstr "Weather-API-Sleutel"
-
 #, fuzzy
 msgid "Weather Plugin"
+msgstr "Weer instellingen"
+
+#, fuzzy
+msgid "Weather Plugin Detailview"
+msgstr "Weer instellingen"
+
+#, fuzzy
+msgid "Weather Plugin Overview"
 msgstr "Weer instellingen"
 
 msgid "Weather Settings Actions"
@@ -190,6 +267,9 @@ msgstr "Weerinstelling Acties"
 
 msgid "Weather city name"
 msgstr "MetrixWeather woonplaats"
+
+msgid "Weather cityname (at least 3 letters):"
+msgstr ""
 
 #, fuzzy
 msgid "Weather icon night switch"
@@ -201,6 +281,11 @@ msgstr "MetrixWeather-Icon-locatie"
 
 msgid "Weather service"
 msgstr "Weather service"
+
+#, fuzzy
+#| msgid "Weather API key"
+msgid "Weather API key v2.5"
+msgstr "Weather-API-Sleutel"
 
 msgid "Weather settings"
 msgstr "Weer instellingen"

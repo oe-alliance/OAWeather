@@ -7,20 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2023-04-04 19:48+0300\n"
-"Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
-"Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/el/>\n"
+"POT-Creation-Date: 2025-03-30 23:00+0100\n"
+"PO-Revision-Date: 2025-04-03 12:43+0200\n"
+"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/"
+"el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #, python-format
 msgid "%d Minutes"
 msgstr "%d λεπτά"
+
+msgid "Add"
+msgstr ""
 
 msgid "Cache data"
 msgstr "Δεδομένα προσωρινής αποθήκευσης"
@@ -28,11 +32,22 @@ msgstr "Δεδομένα προσωρινής αποθήκευσης"
 msgid "Celsius"
 msgstr "Κελσίου"
 
-msgid "Choose the icon set. You need to create an additional set here: /usr/share/enigma2/WeatherIconSets/NAME."
-msgstr "Επιλέξτε το πακέτο εικονιδίων. Πρέπει να δημιουργήσετε ένα πρόσθετο πακέτο εδώ: /usr/share/enigma2/WeatherIconSets/NAME."
+msgid ""
+"Choose the icon set. You need to create an additional set here: /usr/share/"
+"enigma2/WeatherIconSets/NAME."
+msgstr ""
+"Επιλέξτε το πακέτο εικονιδίων. Πρέπει να δημιουργήσετε ένα πρόσθετο πακέτο "
+"εδώ: /usr/share/enigma2/WeatherIconSets/NAME."
 
-msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
-msgstr "Επιλέξτε αν θα πρέπει να ενεργοποιηθεί ή όχι ο \"νυχτερινός διακόπτης\". Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
+msgid ""
+"Choose whether the 'night switch' should be activated or not. Some icons are "
+"then displayed as night icons with moon."
+msgstr ""
+"Επιλέξτε αν θα πρέπει να ενεργοποιηθεί ή όχι ο \"νυχτερινός διακόπτης\". "
+"Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
+
+msgid "Chose favorite"
+msgstr ""
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -47,11 +62,26 @@ msgstr "Προεπιλογή"
 msgid "Defaults"
 msgstr "Προεπιλογές"
 
+msgid "Delete"
+msgstr ""
+
 msgid "Disabled"
 msgstr "Ανενεργό"
 
+#, python-format
+msgid ""
+"Do you really want do delete favorite\n"
+"'%s'?"
+msgstr ""
+
+msgid "Do you really want do exit without saving your modified favorite list?"
+msgstr ""
+
 msgid "East"
 msgstr "Ανατολικά"
+
+msgid "Edit"
+msgstr ""
 
 msgid "Enable Debug"
 msgstr "Ενεργοποίηση αποσφαλμάτωσης"
@@ -59,11 +89,10 @@ msgstr "Ενεργοποίηση αποσφαλμάτωσης"
 msgid "Enabled"
 msgstr "Ενεργό"
 
-msgid "Enter a personalized API key for use with OpenWeatherMap (https://openweathermap.org/)."
-msgstr "Εισαγωγή ενός προσωποποιημένου κλειδιού API για χρήση με το OpenWeatherMap (https://openweathermap.org/)."
-
-msgid "Enter the location for your weather forecasts."
-msgstr "Εισαγωγή της τοποθεσίας για τοπικές προγνώσεις."
+msgid ""
+"Enter the location for your weather forecasts. To include your location, "
+"expand your favorites list with 'Manage your favorites'."
+msgstr ""
 
 msgid "Error getting City ID"
 msgstr "Σφάλμα εύρεσης αναγνωριστικού πόλης"
@@ -74,19 +103,43 @@ msgstr "Σφάλμα πληροφοριών καιρού"
 msgid "Fahrenheit"
 msgstr "Φαρενάιτ"
 
+msgid "Favorites have been successfully saved!"
+msgstr ""
+
 msgid "Feels like"
 msgstr "Αίσθηση"
 
 msgid "Humidity"
 msgstr "Υγρασία"
 
-msgid "Location Selection"
-msgstr "Επιλογή τοποθεσίας"
-
 msgid "MSN weather"
 msgstr "Καιρός MSN"
 
+msgid "Manage favorites"
+msgstr ""
+
 msgid "Metric unit for wind speed"
+msgstr ""
+
+msgid "Next favorite"
+msgstr ""
+
+msgid "View details"
+msgstr ""
+
+msgid "Day +/-"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Manage your favorites"
+msgstr ""
+
+msgid "No data available for this period."
+msgstr ""
+
+msgid "No data available."
 msgstr ""
 
 msgid "North"
@@ -101,31 +154,39 @@ msgstr "Βορειοδυτικά"
 msgid "Open-Meteo Wetter"
 msgstr "Καιρός Open-Meteo"
 
-msgid "OpenWeatherMap"
-msgstr "OpenWeatherMap"
-
 msgid "Precipitation"
 msgstr "Υετός"
+
+msgid "Previous favorite"
+msgstr ""
 
 msgid "Refresh interval"
 msgstr "Διάστημα ανανέωσης"
 
-msgid "Search for City ID please wait..."
-msgstr "Αναζήτηση ID πόλης, περιμένετε..."
+msgid "Save"
+msgstr ""
 
-msgid "Search for your City"
+#, fuzzy
+#| msgid "Search for your City"
+msgid "Search for your city"
 msgstr "Αναζήτηση για την πόλη σας"
 
 msgid "Select 'Yes' to enable add debug output to log."
-msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη της αποσφαλμάτωσης στο αρχείο καταγραφής."
+msgstr ""
+"Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη της αποσφαλμάτωσης στο αρχείο "
+"καταγραφής."
 
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη του πρόσθετου."
 
-msgid "Select Your Location"
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select desired location"
 msgstr "Επιλογή τοποθεσίας"
 
-msgid "Select the metric unit for wind speed to be used for wind displays. This has no effect on the imperial unit 'mph'."
+msgid ""
+"Select the metric unit for wind speed to be used for wind displays. This has "
+"no effect on the imperial unit 'mph'."
 msgstr ""
 
 msgid "Select the preferred weather service to supply the weather information."
@@ -134,8 +195,20 @@ msgstr "Επιλογή της προτιμώμενης υπηρεσίας παρ
 msgid "Select the temperature unit to be used for temperature displays."
 msgstr "Επιλογή μονάδας θερμοκρασίας για χρήση στις ενδείξεις θερμοκρασίας."
 
-msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
-msgstr "Ενεργοποιήστε αυτήν την επιλογή για να αποθηκευτούν τα τελευταία δεδομένα καιρού που λήφθηκαν τοπικά. Αυτό χρησιμοποιείται για την προετοιμασία των δεδομένων αμέσως μετά την επανεκκίνηση, ενώ γίνεται λήψη ενημερωμένων δεδομένων."
+msgid ""
+"Select this option to save that last obtained weather data locally. This is "
+"used to initialize the data immediately after restart while updated data is "
+"being fetched."
+msgstr ""
+"Ενεργοποιήστε αυτήν την επιλογή για να αποθηκευτούν τα τελευταία δεδομένα "
+"καιρού που λήφθηκαν τοπικά. Αυτό χρησιμοποιείται για την προετοιμασία των "
+"δεδομένων αμέσως μετά την επανεκκίνηση, ενώ γίνεται λήψη ενημερωμένων "
+"δεδομένων."
+
+#, fuzzy
+#| msgid "Select Your Location"
+msgid "Select your location"
+msgstr "Επιλογή τοποθεσίας"
 
 msgid "Set default values"
 msgstr "Ορισμός προεπιλεγμένων τιμών"
@@ -152,23 +225,28 @@ msgstr "Νοτιοανατολικά"
 msgid "Southwest"
 msgstr "Νοτιοδυτικά"
 
-msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Καθορίστε πόσο συχνά το πρόσθετο θα ανακτά τα δεδομένα του από το διακομιστή. «Μία φορά» σημαίνει ότι τα δεδομένα θα φορτωθούν μόνο μία φορά μετά την εκκίνηση της επιφάνειας χρήστη ή του συστήματος."
+msgid ""
+"Specify how often Weather retrieves its data from the server. 'Once' means "
+"the data will loaded only once after a GUI or system start."
+msgstr ""
+"Καθορίστε πόσο συχνά το πρόσθετο θα ανακτά τα δεδομένα του από το "
+"διακομιστή. «Μία φορά» σημαίνει ότι τα δεδομένα θα φορτωθούν μόνο μία φορά "
+"μετά την εκκίνηση της επιφάνειας χρήστη ή του συστήματος."
 
 msgid "Temperature unit"
 msgstr "Μονάδα θερμοκρασίας"
 
 msgid ""
-"The API key for OpenWeatherMap is not defined or invalid.\n"
-"Please verify your input data.\n"
-"Otherwise your settings won't be saved."
+"The city name is too short. More than 2 characters are needed for search."
 msgstr ""
-"Το κλειδί API για το OpenWeatherMap δεν έχει οριστεί ή δεν είναι έγκυρο.\n"
-"Επαληθεύστε τα δεδομένα εισόδου σας.\n"
-"Διαφορετικά, οι ρυθμίσεις σας δεν θα αποθηκευτούν."
+"Το όνομα της πόλης είναι πολύ μικρό. Απαιτούνται περισσότεροι από 2 "
+"χαρακτήρες για την αναζήτηση."
 
-msgid "The city name is too short. More than 2 characters are needed for search."
-msgstr "Το όνομα της πόλης είναι πολύ μικρό. Απαιτούνται περισσότεροι από 2 χαρακτήρες για την αναζήτηση."
+#, python-format
+msgid ""
+"The favorite '%s' corresponds to the set weather city name and therefore "
+"cannot be deleted."
+msgstr ""
 
 msgid "Today"
 msgstr "Σήμερα"
@@ -176,10 +254,17 @@ msgstr "Σήμερα"
 msgid "Update"
 msgstr "Ενημέρωση"
 
-msgid "Weather API key"
-msgstr "Κλειδί API για τον καιρό"
-
 msgid "Weather Plugin"
+msgstr "Πρόσθετο καιρού"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Detailview"
+msgstr "Πρόσθετο καιρού"
+
+#, fuzzy
+#| msgid "Weather Plugin"
+msgid "Weather Plugin Overview"
 msgstr "Πρόσθετο καιρού"
 
 msgid "Weather Settings Actions"
@@ -187,6 +272,9 @@ msgstr "Ενέργειες ρυθμίσεων καιρού"
 
 msgid "Weather city name"
 msgstr "Όνομα πόλης καιρού"
+
+msgid "Weather cityname (at least 3 letters):"
+msgstr ""
 
 msgid "Weather icon night switch"
 msgstr "Διακόπτης νύχτας εικονιδίου καιρού"
@@ -196,6 +284,11 @@ msgstr "Πακέτο εικονιδίων"
 
 msgid "Weather service"
 msgstr "Υπηρεσία καιρού"
+
+#, fuzzy
+#| msgid "Weather API key"
+msgid "Weather API key v2.5"
+msgstr "Κλειδί API για τον καιρό"
 
 msgid "Weather settings"
 msgstr "Ρυθμίσεις καιρού"
