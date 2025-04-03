@@ -88,12 +88,6 @@ msgstr ""
 msgid "Error in Weatherinfo"
 msgstr ""
 
-msgid "Exit details"
-msgstr ""
-
-msgid "Exit overview"
-msgstr ""
-
 msgid "Fahrenheit"
 msgstr ""
 

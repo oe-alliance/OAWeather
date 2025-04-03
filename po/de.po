@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-03-31 01:06+0200\n"
+"PO-Revision-Date: 2025-04-03 12:42+0200\n"
 "Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "de/>\n"
@@ -103,12 +103,6 @@ msgstr "Fehler beim Abrufen der City ID"
 
 msgid "Error in Weatherinfo"
 msgstr "Fehler in Weatherinfo"
-
-msgid "Exit details"
-msgstr "Verlasse Details"
-
-msgid "Exit overview"
-msgstr "Verlasse Übersicht"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
@@ -308,6 +302,3 @@ msgstr "m/s"
 
 msgid "n/a"
 msgstr "n/a"
-
-#~ msgid "Enter the location for your weather forecasts."
-#~ msgstr "Geben Sie den Standort für Ihre Wettervorhersage ein."
