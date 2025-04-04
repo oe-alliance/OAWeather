@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-15 16:34+0100\n"
-"PO-Revision-Date: 2025-03-30 20:18+0200\n"
+"PO-Revision-Date: 2025-04-04 20:18+0200\n"
 "Last-Translator: Marchella1983\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/openatv/metrixhd/ru/>\n"
 "Language: ru\n"
@@ -38,10 +38,10 @@ msgid "Current Weather"
 msgstr "Текущая погода"
 
 msgid "Default"
-msgstr "Yмолчанию"
+msgstr "Дефолт"
 
 msgid "Defaults"
-msgstr "По умолчанию"
+msgstr "По дефолту"
 
 msgid "Disabled"
 msgstr "Отключено"
@@ -80,7 +80,7 @@ msgid "Location Selection"
 msgstr "Местоположение"
 
 msgid "MSN weather"
-msgstr "MSN погода"
+msgstr "MSN weathe"
 
 msgid "Metric unit for wind speed"
 msgstr "Скорость ветра"
@@ -95,10 +95,10 @@ msgid "Northwest"
 msgstr "Северо-Запад"
 
 msgid "Open-Meteo Wetter"
-msgstr "Open-Meteo Wetter погода"
+msgstr "Open-Meteo Wetter"
 
 msgid "OpenWeatherMap"
-msgstr "Открыть карту погоды"
+msgstr "OpenWeatherMap"
 
 msgid "Precipitation"
 msgstr "Осадки"
@@ -170,10 +170,10 @@ msgid "Today"
 msgstr "Сейчас"
 
 msgid "Update"
-msgstr "Обновлено"
+msgstr "Обнова"
 
 msgid "Weather API key"
-msgstr "Ключ API MetrixWeather"
+msgstr "Ключ API Weather"
 
 msgid "Weather Plugin"
 msgstr "Плагин погоды"
@@ -182,7 +182,7 @@ msgid "Weather Settings Actions"
 msgstr "Действия с настройками погоды"
 
 msgid "Weather city name"
-msgstr "Название города MetrixWeather"
+msgstr "Название города для погоды"
 
 msgid "Weather icon night switch"
 msgstr "Ночной переключатель"
@@ -191,7 +191,7 @@ msgid "Weather icon set"
 msgstr "Набор пиконов"
 
 msgid "Weather service"
-msgstr "Сервис MetrixWeather"
+msgstr "Сервис погоды"
 
 msgid "Weather settings"
 msgstr "Настройки погоды"
@@ -209,13 +209,13 @@ msgid "n/a"
 msgstr "n/a"
 
 msgid "View details"
-msgstr "Просмотр деталей"
+msgstr "Подробный вид"
 
 msgid "Next favorite"
-msgstr "Следующий из фаворита"
+msgstr "Фавориты >>"
 
 msgid "Previous favorite"
-msgstr "Предыдущий из фаворита"
+msgstr "<< Фавориты"
 
 msgid "Chose favorite"
 msgstr "Выбрать из фаворита"
