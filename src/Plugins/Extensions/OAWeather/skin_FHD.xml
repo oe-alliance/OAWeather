@@ -17,14 +17,14 @@
 <skin>
 	<screen name="OAWeatherOverview" position="0,0" size="1920,1080" title="Weather Overview" flags="wfNoBorder" backgroundColor="#80000000">
 		<ePixmap pixmap="{picpath}/background.png" position="0,0" size="1920,1080" zPosition="-2" transparent="1" alphatest="blend" scale="1" />
-		<widget source="version" render="Label" position="1548,15" size="258,45" font="Regular;30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="right" valign="center" />
+		<widget source="version" render="Label" position="90,25" size="360,27" font="Regular;21" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
 		<widget name="current" font="Regular;39" position="90,45" size="360,51" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
-		<ePixmap pixmap="{picpath}/update.png" position="132,108" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget name="update" font="Regular;33" position="153,111" size="201,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top" />
-		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;33" position="315,111" size="120,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
+		<ePixmap pixmap="{picpath}/update.png" position="114,111" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget name="update" font="Regular;39" position="177,105" size="216,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="left" valign="center" />
+		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;39" position="330,105" size="150,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="left" valign="center">
 			<convert type="OAWeather">observationtime</convert>
 		</widget>
-		<widget alphatest="blend" render="OAWeatherPixmap" position="1545,54" size="258,36" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
+		<widget alphatest="blend" render="OAWeatherPixmap" position="1425,54" size="258,36" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
 			<convert type="OAWeather">logo</convert>
 		</widget>
 		<widget noWrap="1" font="Regular;60" position="81,336" size="375,75" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
@@ -40,7 +40,7 @@
 			<convert type="OAWeather">temperature_text,day1</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/umbrella.png" position="567,240" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;36" position="651,240" size="345,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<widget font="Regular;36" position="651,240" size="495,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">precipitationfull,current</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/home.png" position="567,45" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
@@ -55,17 +55,16 @@
 		<widget noWrap="1" font="Regular;33" position="1743,405" size="105,48" backgroundColor="#363b38" zPosition="3" transparent="1" valign="center" halign="left" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">sunset</convert>
 		</widget>
-		<widget alphatest="blend" render="OAWeatherPixmap" position="1590,162" size="177,177" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
+		<widget alphatest="blend" render="OAWeatherPixmap" position="1578,171" size="162,162" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
 			<convert type="OAWeather">weathericon,day1</convert>
 		</widget>
-		<widget name="today" position="1530,105" size="120,45" zPosition="3" font="Regular;33" halign="right" transparent="1" backgroundColor="#363b38" valign="center" />
-		<widget source="session.OAWeather" render="Label" font="Regular;33" position="1665,105" size="90,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="left" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1464,105" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day1</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;33" position="1725,105" size="120,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="left" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1563,105" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">date,day1</convert>
 		</widget>
-		<widget alphatest="blend" position="171,138" size="192,192" zPosition="3" transparent="1" render="OAWeatherPixmap" source="session.OAWeather" scale="1">
+		<widget alphatest="blend" position="186,171" size="162,162" zPosition="3" transparent="1" render="OAWeatherPixmap" source="session.OAWeather" scale="1">
 			<convert type="OAWeather">weathericon,current</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/temperature_low.png" position="1686,345" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
@@ -77,36 +76,36 @@
 			<convert type="OAWeather">temperature_low,day1</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/wind.png" position="567,111" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;36" position="652,111" size="450,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<widget font="Regular;36" position="652,111" size="495,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">winddisplay</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/hygrometer.png" position="567,174" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;36" position="652,174" size="345,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<widget font="Regular;36" position="652,174" size="495,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">humidityfull</convert>
 		</widget>
-		<ePixmap pixmap="{picpath}/windgust.png" position="1017,111" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;36" position="1102,111" size="450,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<ePixmap pixmap="{picpath}/windgust.png" position="1167,111" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget font="Regular;36" position="1252,111" size="210,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">windgusts</convert>
 		</widget>
-		<ePixmap pixmap="{picpath}/binoculars.png" position="1017,174" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;36" position="1102,174" size="345,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<ePixmap pixmap="{picpath}/binoculars.png" position="1167,174" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget font="Regular;36" position="1252,174" size="210,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">visibility</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Pixmap" pixmap="{picpath}/uv_index.png" position="1017,237" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1">
+		<widget source="session.OAWeather" render="Pixmap" pixmap="{picpath}/uv_index.png" position="1167,237" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1">
 			<convert type="OAWeather">uvindex</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget font="Regular;36" position="1102,237" size="345,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
+		<widget font="Regular;36" position="1252,237" size="210,48" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">uvindex</convert>
 		</widget>
 		<!--day2 -->
 		<widget font="Regular;33" position="75,966" size="390,45" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">precipitationfull,day2</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="72,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="72,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day2</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="171,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="171,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">date,day2</convert>
 		</widget>
 		<widget alphatest="blend" render="OAWeatherPixmap" position="186,648" size="162,162" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
@@ -122,10 +121,10 @@
 		<widget font="Regular;33" position="532,966" size="390,45" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">precipitationfull,day3</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="531,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="531,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day3</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="628,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="628,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">date,day3</convert>
 		</widget>
 		<widget alphatest="blend" render="OAWeatherPixmap" position="645,648" size="162,162" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
@@ -141,10 +140,10 @@
 		<widget font="Regular;33" position="990,966" size="390,45" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">precipitationfull,day4</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="990,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="990,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day4</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1086,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1089,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">date,day4</convert>
 		</widget>
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1102,648" size="162,162" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
@@ -160,10 +159,10 @@
 		<widget font="Regular;33" position="1452,966" size="390,45" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">precipitationfull,day5</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1449,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1449,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day5</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1543,570" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;39" position="1548,579" size="270,60" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">date,day5</convert>
 		</widget>
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1563,648" size="162,162" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
@@ -175,7 +174,7 @@
 		<widget font="Regular;33" position="1458,885" size="375,75" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">temperature_text,day5</convert>
 		</widget>
-		<widget source="global.CurrentTime" render="Label" font="global_clock;42" position="1431,93" size="120,67" noWrap="1" zPosition="2" halign="right" valign="center" backgroundColor="#80000000" foregroundColor="white" transparent="1">
+		<widget source="global.CurrentTime" render="Label" font="Regular;51" position="1668,36" size="150,66" noWrap="1" zPosition="2" halign="right" valign="center" backgroundColor="#80000000" transparent="1">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 		<!-- Summary -->
@@ -212,98 +211,99 @@
 		<eLabel name="button_green" position="375,1029" size="9,45" backgroundGradient="#00006600,#0024a424,vertical" zPosition="1" />
 		<eLabel name="button_yellow" position="675,1029" size="9,45" backgroundGradient="#007a6213,#00e6c619,vertical" zPosition="1" />
 		<eLabel name="button_blue" position="975,1029" size="9,45" backgroundGradient="#101093,#4040ff,vertical" zPosition="1" />
-		<widget source="key_red" render="Label" position="96,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" />
-		<widget source="key_green" render="Label" position="396,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<widget source="key_yellow" render="Label" position="696,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<widget source="key_blue" render="Label" position="996,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_red" render="Label" position="96,1029" size="285,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="2" halign="left" valign="center" />
+		<widget source="key_green" render="Label" position="396,1029" size="285,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_yellow" render="Label" position="696,1029" size="285,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_blue" render="Label" position="996,1029" size="285,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" />
 		<ePixmap pixmap="{picpath}/ok.png" position="1275,1032" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="key_ok" render="Label" position="1350,1029" size="210,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_ok" render="Label" position="1350,1029" size="210,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" />
 		<ePixmap pixmap="{picpath}/menu.png" position="1560,1032" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="key_menu" render="Label" position="1635,1029" size="225,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_menu" render="Label" position="1635,1029" size="225,45" font="Regular;27" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" />
 	</screen>
 
 	<screen name="OAWeatherDetailview" position="0,0" size="1920,1080" title="Weather Detailview" flags="wfNoBorder" backgroundColor="transparent">
-		<eLabel name="Background" position="30,30" size="1860,1050" backgroundColor="#30000000" zPosition="-2" />
+		<eLabel name="Background" position="30,30" size="1860,1023" backgroundColor="#30000000" zPosition="-2" />
 		<!-- <ePixmap pixmap="{picpath}/background.png" position="0,0" size="1920,1080" zPosition="-2" transparent="1" alphatest="blend" scale="1" />-->
-		<widget source="version" render="Label" position="1548,15" size="258,45" font="Regular;30" backgroundColor="#363b38" zPosition="3" transparent="1" halign="right" valign="center" />
-		<widget name="currdatetime" font="Regular;39" position="90,45" size="360,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
-		<widget name="update" font="Regular;33" position="1560,150" size="135,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top" />
-		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;33" position="1680,150" size="120,45" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
+		<widget source="version" render="Label" position="1485,45" size="360,51" font="Regular;39" backgroundColor="#363b38" zPosition="3" transparent="1" halign="right" valign="center" />
+		<ePixmap pixmap="{picpath}/update.png" position="1569,193" size="36,36" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget name="currdatetime" font="Regular;39" position="75,45" size="360,51" backgroundColor="#363b38" zPosition="3" transparent="1" halign="left" valign="center" />
+		<widget name="update" font="Regular;30" position="1591,195" size="135,42" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top" />
+		<widget render="Label" noWrap="1" source="session.OAWeather" font="Regular;30" position="1701,195" size="120,42" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="top">
 			<convert type="OAWeather">observationtime</convert>
 		</widget>
-		<ePixmap pixmap="{picpath}/home.png" position="567,45" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget font="Regular;39" position="651,45" size="825,51" backgroundColor="#80000000" zPosition="3" transparent="1" halign="left" valign="center" render="Label" source="session.OAWeather">
+		<ePixmap pixmap="{picpath}/home.png" position="420,45" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget font="Regular;39" position="480,45" size="1020,51" backgroundColor="#80000000" zPosition="3" transparent="1" halign="left" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">cityarea</convert>
 		</widget>
-		<widget alphatest="blend" render="OAWeatherPixmap" position="1545,54" size="258,36" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
+		<widget alphatest="blend" render="OAWeatherPixmap" position="1569,145" size="258,36" source="session.OAWeather" transparent="1" zPosition="10" scale="1">
 			<convert type="OAWeather">logo</convert>
 		</widget>
-		<widget source="detailList" render="Listbox" position="75,150" size="1440,816" enableWrapAround="1" transparent="1" scrollbarMode="showNever">
-			<convert type="TemplatedMultiContent">{"template": [   'timestr, temp, feels, humid, precip, windSpd, windDir, shortDesc, longDesc, iconpix
-				MultiContentEntryText(pos=(6,3), size=(171,96), font=1, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),  # timestr
-				MultiContentEntryPixmapAlphaBlend(pos=(150,3), size=(96,96), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=12),  # weathericon
-				MultiContentEntryPixmapAlphaBlend(pos=(258,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=13),  # icon temp
-				MultiContentEntryText(pos=(318,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=1),  # value temp
-				MultiContentEntryPixmapAlphaBlend(pos=(258,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=15),  # icon humid
-				MultiContentEntryText(pos=(318,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=3),  # value humid
-				MultiContentEntryPixmapAlphaBlend(pos=(450,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=14),  # icon feels
-				MultiContentEntryText(pos=(510,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=2),  # value feels
-				MultiContentEntryPixmapAlphaBlend(pos=(453,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=16),  # icon precip
-				MultiContentEntryText(pos=(510,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=4),  # value precip
-				MultiContentEntryPixmapAlphaBlend(pos=(645,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=17),  # icon windSpd
-				MultiContentEntryText(pos=(705,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=5),  # value windSpd
-				MultiContentEntryPixmapAlphaBlend(pos=(645,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=18),  # windDirIcon
-				MultiContentEntryText(pos=(705,51), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=6),  # value windDir
-				MultiContentEntryPixmapAlphaBlend(pos=(870,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=19),  # windGustIcon
-				MultiContentEntryText(pos=(930,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=7),  # windGust
-				MultiContentEntryPixmapAlphaBlend(pos=(873,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=21),  # visibilityIcon
-				MultiContentEntryText(pos=(930,57), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP, text=9),  # visibility
-				MultiContentEntryPixmapAlphaBlend(pos=(1110,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=20),  # uvIcon
-				MultiContentEntryText(pos=(1170,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP, text=8),  # uvIndex
-				MultiContentEntryText(pos=(1110,9), size=(405,90), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP|RT_WRAP, text=10),  # shortDesc(text=11 is longDesc)
+		<widget source="detailList" render="Listbox" position="75,135" size="1440,816" enableWrapAround="1" transparent="1" scrollbarMode="showNever">
+			<convert type="TemplatedMultiContent">{"template": [  # timestr, temp, feels, humid, precip, windSpd, windDir, shortDesc, longDesc, iconpix
+				MultiContentEntryText(pos=(6,3), size=(171,96), font=1, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0), # timestr
+				MultiContentEntryPixmapAlphaBlend(pos=(150,3), size=(96,96), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=12), # weathericon
+				MultiContentEntryPixmapAlphaBlend(pos=(258,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=13), # icon temp
+				MultiContentEntryText(pos=(318,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=1), # value temp
+				MultiContentEntryPixmapAlphaBlend(pos=(258,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=15), # icon humid
+				MultiContentEntryText(pos=(318,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=3), # value humid
+				MultiContentEntryPixmapAlphaBlend(pos=(450,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=14), # icon feels
+				MultiContentEntryText(pos=(510,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=2), # value feels
+				MultiContentEntryPixmapAlphaBlend(pos=(453,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=16), # icon precip
+				MultiContentEntryText(pos=(510,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=4), # value precip
+				MultiContentEntryPixmapAlphaBlend(pos=(645,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=17), # icon windSpd
+				MultiContentEntryText(pos=(705,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=5), # value windSpd
+				MultiContentEntryPixmapAlphaBlend(pos=(645,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=18), # windDirIcon
+				MultiContentEntryText(pos=(705,51), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=6), # value windDir
+				MultiContentEntryPixmapAlphaBlend(pos=(870,3), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=19), # windGustIcon
+				MultiContentEntryText(pos=(930,3), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=7), # windGust
+				MultiContentEntryPixmapAlphaBlend(pos=(873,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=21), # visibilityIcon
+				MultiContentEntryText(pos=(930,57), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP, text=9), # visibility
+				MultiContentEntryPixmapAlphaBlend(pos=(1110,48), size=(48,48), flags=BT_HALIGN_LEFT|BT_VALIGN_CENTER|BT_SCALE, png=20), # uvIcon
+				MultiContentEntryText(pos=(1170,54), size=(150,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP, text=8), # uvIndex
+				MultiContentEntryText(pos=(1110,9), size=(405,90), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_TOP|RT_WRAP, text=10), # shortDesc(text=11 is longDesc)
 				],
 				"fonts": [gFont("Regular",30), gFont("Regular",36)],
 				"itemHeight":102
 				}</convert>
 		</widget>
-		<eLabel name="line" position="75,99" size="1770,1" backgroundColor="grey" />
-		<eLabel name="line" position="75,1017" size="1770,1" backgroundColor="grey" />
-		<eLabel name="button_red" position="75,1029" size="9,45" backgroundGradient="#00821c17,#00fe0000,vertical" zPosition="1" />
-		<eLabel name="button_green" position="375,1029" size="9,45" backgroundGradient="#00006600,#0024a424,vertical" zPosition="1" />
-		<eLabel name="button_yellow" position="675,1029" size="9,45" backgroundGradient="#007a6213,#00e6c619,vertical" zPosition="1" />
-		<eLabel name="button_blue" position="975,1029" size="9,45" backgroundGradient="#101093,#4040ff,vertical" zPosition="1" />
-		<widget source="key_red" render="Label" position="96,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" />
-		<widget source="key_green" render="Label" position="396,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<widget source="key_yellow" render="Label" position="696,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<widget source="key_blue" render="Label" position="996,1029" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<ePixmap pixmap="{picpath}/ch_plus-minus.png" position="1275,1032" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="key_channel" render="Label" position="1350,1029" size="225,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<ePixmap pixmap="{picpath}/menu.png" position="1560,1032" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="key_menu" render="Label" position="1635,1029" size="225,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
-		<ePixmap pixmap="{picpath}/sunrise.png" position="1608,198" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="sunrise" render="Label" position="1668,204" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
-		<ePixmap pixmap="{picpath}/sunset.png" position="1608,300" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="sunset" render="Label" position="1668,300" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
-		<widget name="moonrisepix" position="1608,402" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="moonrise" render="Label" position="1668,405" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
-		<widget name="moonsetpix" position="1608,507" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget source="moonset" render="Label" position="1668,510" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
-		<eLabel text="by Mr.Servo &#38;jbleyel" font="Regular;21" position="1539,900" size="276,30" foregroundColor="#656565" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" />
-		<eLabel text="design by stein17" font="Regular;21" position="1539,930" size="276,30" foregroundColor="#656565" backgroundColor="#00000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" />
-		<eLabel name="line" position="75,252" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,354" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,456" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,558" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,660" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,762" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
-		<eLabel name="line" position="75,864" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="45,99" size="1830,1" backgroundColor="grey" />
+		<eLabel name="line" position="45,987" size="1830,1" backgroundColor="grey" />
+		<eLabel name="button_red" position="75,999" size="9,45" backgroundGradient="#00821c17,#00fe0000,vertical" zPosition="1" />
+		<eLabel name="button_green" position="375,999" size="9,45" backgroundGradient="#00006600,#0024a424,vertical" zPosition="1" />
+		<eLabel name="button_yellow" position="675,999" size="9,45" backgroundGradient="#007a6213,#00e6c619,vertical" zPosition="1" />
+		<eLabel name="button_blue" position="975,999" size="9,45" backgroundGradient="#101093,#4040ff,vertical" zPosition="1" />
+		<widget source="key_red" render="Label" position="96,999" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" />
+		<widget source="key_green" render="Label" position="396,999" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_yellow" render="Label" position="696,999" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<widget source="key_blue" render="Label" position="996,999" size="285,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<ePixmap pixmap="{picpath}/ch_plus-minus.png" position="1275,1002" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="key_channel" render="Label" position="1350,999" size="225,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<ePixmap pixmap="{picpath}/menu.png" position="1560,1002" size="66,42" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="key_menu" render="Label" position="1635,999" size="225,45" font="Regular;27" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" />
+		<ePixmap pixmap="{picpath}/sunrise.png" position="1629,285" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="sunrise" render="Label" position="1689,285" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
+		<ePixmap pixmap="{picpath}/sunset.png" position="1629,384" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="sunset" render="Label" position="1689,384" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
+		<widget name="moonrisepix" position="1629,492" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="moonrise" render="Label" position="1689,492" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
+		<widget name="moonsetpix" position="1629,591" size="48,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />
+		<widget source="moonset" render="Label" position="1689,591" size="105,48" font="Regular;33" backgroundColor="#363b38" transparent="1" zPosition="3" halign="left" valign="center" />
+		<eLabel text="by Mr.Servo &amp;jbleyel" font="Regular;21" position="1560,870" size="276,30" foregroundColor="#656565" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" />
+		<eLabel text="design by stein17" font="Regular;21" position="1560,900" size="276,30" foregroundColor="#656565" backgroundColor="#00000000" zPosition="3" transparent="1" valign="center" halign="center" noWrap="1" />
+		<eLabel name="line" position="75,237" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,339" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,441" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,543" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,645" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,747" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
+		<eLabel name="line" position="75,849" size="1440,1" backgroundColor="#1a27408b" zPosition="3" />
 	</screen>
 
 	<screen name="OAWeatherFavorites" position="360,240" size="1230,600" backgroundColor="#16000000" flags="wfNoBorder" title="Weather Favorites">
 		<widget source="favoriteList" render="Listbox" position="15,60" size="1200,480" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1">
 			<convert type="TemplatedMultiContent">{"template": [
-				MultiContentEntryText(pos=(6,3), size=(774,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),  # city
-				MultiContentEntryText(pos=(789,3), size=(414,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=1),  # geodata
+				MultiContentEntryText(pos=(6,3), size=(774,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0), # city
+				MultiContentEntryText(pos=(789,3), size=(414,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=1), # geodata
 				],
 				"fonts": [gFont("Regular",30), gFont("Regular",30), gFont("Regular",54)],
 				"itemHeight":48
