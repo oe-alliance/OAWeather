@@ -79,7 +79,7 @@ class WeatherHelper():
 		if config.plugins.OAWeather.owm_geocode.value and config.plugins.OAWeather.weathercity.value:
 			if config.plugins.OAWeather.weatherlocation.value == config.plugins.OAWeather.weatherlocation.default:
 				weathercity = config.plugins.OAWeather.weathercity.value
-				lon, lat = eval(config.plugins.OAWeather.owm_geocode.value)
+				lon, lat = eval(str(config.plugins.OAWeather.owm_geocode.value))
 				config.plugins.OAWeather.weatherlocation.value = (weathercity, lon, lat)
 				config.plugins.OAWeather.weatherlocation.save()
 			# remove old entries from '/etc/enigma2/settings'

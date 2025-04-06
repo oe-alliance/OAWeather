@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-04-03 12:43+0200\n"
-"Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
+"PO-Revision-Date: 2025-04-05 02:33+0300\n"
+"Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "el/>\n"
 "Language: el\n"
@@ -24,7 +24,7 @@ msgid "%d Minutes"
 msgstr "%d λεπτά"
 
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 msgid "Cache data"
 msgstr "Δεδομένα προσωρινής αποθήκευσης"
@@ -47,7 +47,7 @@ msgstr ""
 "Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
 
 msgid "Chose favorite"
-msgstr ""
+msgstr "Επιλογή αγαπημένου"
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
@@ -63,7 +63,7 @@ msgid "Defaults"
 msgstr "Προεπιλογές"
 
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 msgid "Disabled"
 msgstr "Ανενεργό"
@@ -73,15 +73,19 @@ msgid ""
 "Do you really want do delete favorite\n"
 "'%s'?"
 msgstr ""
+"Θέλετε πραγματικά να διαγράψετε το αγαπημένο\n"
+"'%s';"
 
 msgid "Do you really want do exit without saving your modified favorite list?"
 msgstr ""
+"Θέλετε πραγματικά να γίνει έξοδος χωρίς να αποθηκευτεί η τροποποιημένη λίστα "
+"αγαπημένων;"
 
 msgid "East"
 msgstr "Ανατολικά"
 
 msgid "Edit"
-msgstr ""
+msgstr "Επεξεργασία"
 
 msgid "Enable Debug"
 msgstr "Ενεργοποίηση αποσφαλμάτωσης"
@@ -93,6 +97,8 @@ msgid ""
 "Enter the location for your weather forecasts. To include your location, "
 "expand your favorites list with 'Manage your favorites'."
 msgstr ""
+"Εισαγωγή τοποθεσίας καιρού αγαπημένων. Για να συμπεριλάβετε την τοποθεσία "
+"σας, επεκτείνετε τη λίστα αγαπημένων μέσω της διαχείρισης."
 
 msgid "Error getting City ID"
 msgstr "Σφάλμα εύρεσης αναγνωριστικού πόλης"
@@ -104,7 +110,7 @@ msgid "Fahrenheit"
 msgstr "Φαρενάιτ"
 
 msgid "Favorites have been successfully saved!"
-msgstr ""
+msgstr "Τα αγαπημένα αποθηκεύτηκαν με επιτυχία!"
 
 msgid "Feels like"
 msgstr "Αίσθηση"
@@ -116,31 +122,31 @@ msgid "MSN weather"
 msgstr "Καιρός MSN"
 
 msgid "Manage favorites"
-msgstr ""
+msgstr "Διαχείριση αγαπημένων"
 
 msgid "Metric unit for wind speed"
-msgstr ""
+msgstr "Μετρική μονάδα για την ταχύτητα ανέμου"
 
 msgid "Next favorite"
-msgstr ""
+msgstr "Επόμενο αγαπημένο"
 
 msgid "View details"
-msgstr ""
+msgstr "Εμφάνιση λεπτομερειών"
 
 msgid "Day +/-"
-msgstr ""
+msgstr "Ημέρα +/-"
 
 msgid "Settings"
-msgstr ""
+msgstr "Ρυθμίσεις"
 
 msgid "Manage your favorites"
-msgstr ""
+msgstr "Διαχείριση αγαπημένων"
 
 msgid "No data available for this period."
-msgstr ""
+msgstr "Μη διαθέσιμα δεδομένα για αυτή την περίοδο."
 
 msgid "No data available."
-msgstr ""
+msgstr "Μη διαθέσιμα δεδομένα."
 
 msgid "North"
 msgstr "Βόρεια"
@@ -158,16 +164,14 @@ msgid "Precipitation"
 msgstr "Υετός"
 
 msgid "Previous favorite"
-msgstr ""
+msgstr "Προηγούμενο αγαπημένο"
 
 msgid "Refresh interval"
 msgstr "Διάστημα ανανέωσης"
 
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
-#, fuzzy
-#| msgid "Search for your City"
 msgid "Search for your city"
 msgstr "Αναζήτηση για την πόλη σας"
 
@@ -179,15 +183,15 @@ msgstr ""
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Επιλέξτε «ναι» για να ενεργοποιηθεί η προσθήκη του πρόσθετου."
 
-#, fuzzy
-#| msgid "Select Your Location"
 msgid "Select desired location"
-msgstr "Επιλογή τοποθεσίας"
+msgstr "Επιλογή επιθυμητής τοποθεσίας"
 
 msgid ""
 "Select the metric unit for wind speed to be used for wind displays. This has "
 "no effect on the imperial unit 'mph'."
 msgstr ""
+"Επιλογή της μετρικής μονάδας για την ταχύτητα του ανέμου προς χρήση σε "
+"απεικόνιση. Αυτό δεν επηρεάζει την αυτοκρατορική μονάδα 'mph'."
 
 msgid "Select the preferred weather service to supply the weather information."
 msgstr "Επιλογή της προτιμώμενης υπηρεσίας παροχής των πληροφοριών καιρού."
@@ -205,10 +209,8 @@ msgstr ""
 "δεδομένων αμέσως μετά την επανεκκίνηση, ενώ γίνεται λήψη ενημερωμένων "
 "δεδομένων."
 
-#, fuzzy
-#| msgid "Select Your Location"
 msgid "Select your location"
-msgstr "Επιλογή τοποθεσίας"
+msgstr "Επιλογή της τοποθεσίας σας"
 
 msgid "Set default values"
 msgstr "Ορισμός προεπιλεγμένων τιμών"
@@ -247,6 +249,8 @@ msgid ""
 "The favorite '%s' corresponds to the set weather city name and therefore "
 "cannot be deleted."
 msgstr ""
+"Το αγαπημένο '%s' αντιστοιχεί στην ήδη ορισμένη πόλη καιρού και έτσι δεν "
+"γίνεται να διαγραφεί."
 
 msgid "Today"
 msgstr "Σήμερα"
@@ -257,15 +261,11 @@ msgstr "Ενημέρωση"
 msgid "Weather Plugin"
 msgstr "Πρόσθετο καιρού"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Detailview"
-msgstr "Πρόσθετο καιρού"
+msgstr "Πρόσθετο καιρού λεπτομέρειες"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Overview"
-msgstr "Πρόσθετο καιρού"
+msgstr "Πρόσθετο καιρού επισκόπηση"
 
 msgid "Weather Settings Actions"
 msgstr "Ενέργειες ρυθμίσεων καιρού"
@@ -274,7 +274,7 @@ msgid "Weather city name"
 msgstr "Όνομα πόλης καιρού"
 
 msgid "Weather cityname (at least 3 letters):"
-msgstr ""
+msgstr "Όνομα πόλης καιρού (τουλάχιστον 3 γράμματα):"
 
 msgid "Weather icon night switch"
 msgstr "Διακόπτης νύχτας εικονιδίου καιρού"
@@ -285,10 +285,8 @@ msgstr "Πακέτο εικονιδίων"
 msgid "Weather service"
 msgstr "Υπηρεσία καιρού"
 
-#, fuzzy
-#| msgid "Weather API key"
 msgid "Weather API key v2.5"
-msgstr "Κλειδί API για τον καιρό"
+msgstr "Κλειδί API για τον καιρό v2.5"
 
 msgid "Weather settings"
 msgstr "Ρυθμίσεις καιρού"
@@ -297,10 +295,10 @@ msgid "West"
 msgstr "Δυτικά"
 
 msgid "km/h"
-msgstr ""
+msgstr "χλμ/ω"
 
 msgid "m/s"
-msgstr ""
+msgstr "μ/δ"
 
 msgid "n/a"
 msgstr "μ/δ"
