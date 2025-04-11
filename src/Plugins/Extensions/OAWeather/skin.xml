@@ -58,7 +58,7 @@
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1052,114" size="108,108" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
 			<convert type="OAWeather">weathericon,day1</convert>
 		</widget>
-		<widget source="session.OAWeather" render="Label" font="Regular;26" position="976,70" size="180,40" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
+		<widget source="session.OAWeather" render="Label" font="Regular;26" position="966,70" size="180,40" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
 			<convert type="OAWeather">weekshortday,day1</convert>
 		</widget>
 		<widget source="session.OAWeather" render="Label" font="Regular;26" position="1042,70" size="180,40" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center">
@@ -207,10 +207,14 @@
 		</widget>
 		<eLabel name="line" position="50,66" size="1180,1" backgroundColor="grey" />
 		<eLabel name="line" position="50,678" size="1180,1" backgroundColor="grey" />
-		<widget source="key_red" render="Label" position="64,686" size="190,30" font="Regular;18" foregroundColor="#00ff0808" backgroundColor="#27d7361d" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_green" render="Label" position="264,686" size="190,30" font="Regular;18" foregroundColor="#0004c81b" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_yellow" render="Label" position="464,686" size="190,30" font="Regular;18" foregroundColor="#00edf506" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_blue" render="Label" position="664,686" size="190,30" font="Regular;18" foregroundColor="#00077cf5" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<eLabel name="button_red" position="50,686" size="6,30" backgroundColor="#00fe0000" zPosition="1" />
+		<eLabel name="button_green" position="250,686" size="6,30" backgroundColor="#0024a424" zPosition="1" />
+		<eLabel name="button_yellow" position="450,686" size="6,30" backgroundColor="#00e6c619" zPosition="1" />
+		<eLabel name="button_blue" position="650,686" size="6,30" backgroundColor="#004040ff" zPosition="1" />
+		<widget source="key_red" render="Label" position="64,686" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_green" render="Label" position="264,686" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_yellow" render="Label" position="464,686" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_blue" render="Label" position="664,686" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
 		<ePixmap pixmap="{picpath}/ok.png" position="850,688" size="44,28" zPosition="3" transparent="1" alphatest="blend" scale="1" />
 		<widget source="key_ok" render="Label" position="900,686" size="140,30" font="Regular;18" foregroundColor="#ffffff" backgroundColor="#27d7361d" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
 		<ePixmap pixmap="{picpath}/menu.png" position="1040,688" size="44,28" zPosition="3" transparent="1" alphatest="blend" scale="1" />
@@ -264,10 +268,14 @@
 		</widget>
 		<eLabel name="line" position="30,66" size="1220,1" backgroundColor="grey" />
 		<eLabel name="line" position="30,658" size="1220,1" backgroundColor="grey" />
-		<widget source="key_red" render="Label" position="64,666" size="190,30" font="Regular;18" foregroundColor="#00ff0808" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_green" render="Label" position="264,666" size="190,30" font="Regular;18" foregroundColor="#0004c81b" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_yellow" render="Label" position="464,666" size="190,30" font="Regular;18" foregroundColor="#00edf506" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_blue" render="Label" position="664,666" size="190,30" font="Regular;18" foregroundColor="#00077cf5" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<eLabel name="button_red" position="50,666" size="6,30" backgroundColor="#00fe0000" zPosition="1" />
+		<eLabel name="button_green" position="250,666" size="6,30" backgroundColor="#0024a424" zPosition="1" />
+		<eLabel name="button_yellow" position="450,666" size="6,30" backgroundColor="#00e6c619" zPosition="1" />
+		<eLabel name="button_blue" position="650,666" size="6,30" backgroundColor="#004040ff" zPosition="1" />
+		<widget source="key_red" render="Label" position="64,666" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_green" render="Label" position="264,666" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_yellow" render="Label" position="464,666" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_blue" render="Label" position="664,666" size="190,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
 		<ePixmap pixmap="{picpath}/ch_plus-minus.png" position="850,668" size="44,28" zPosition="3" transparent="1" alphatest="blend" scale="1" />
 		<widget source="key_channel" render="Label" position="900,666" size="150,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
 		<ePixmap pixmap="{picpath}/menu.png" position="1040,668" size="44,28" zPosition="3" transparent="1" alphatest="blend" scale="1" />
@@ -304,9 +312,13 @@
 		<widget source="headline" render="Label" font="Regular;26" position="10,2" size="780,36" foregroundColor="grey" backgroundColor="#80000000" zPosition="3" transparent="1" valign="center" halign="left" noWrap="1" />
 		<eLabel name="line" position="10,38" size="800,1" backgroundColor="grey" />
 		<eLabel name="line" position="10,362" size="800,1" backgroundColor="grey" />
-		<widget source="key_red" render="Label" position="34,366" size="150,30" font="Regular;18" foregroundColor="#00ff0808" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_green" render="Label" position="224,366" size="150,30" font="Regular;18" foregroundColor="#0004c81b" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_yellow" render="Label" position="414,366" size="150,30" font="Regular;18" foregroundColor="#00edf506" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
-		<widget source="key_blue" render="Label" position="604,366" size="150,30" font="Regular;18" foregroundColor="#00077cf5" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<eLabel name="button_red" position="20,366" size="6,30" backgroundColor="#00fe0000" zPosition="1" />
+		<eLabel name="button_green" position="210,366" size="6,30" backgroundColor="#0024a424" zPosition="1" />
+		<eLabel name="button_yellow" position="400,366" size="6,30" backgroundColor="#00e6c619" zPosition="1" />
+		<eLabel name="button_blue" position="590,366" size="6,30" backgroundColor="#004040ff" zPosition="1" />
+		<widget source="key_red" render="Label" position="34,366" size="150,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="2" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_green" render="Label" position="224,366" size="150,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_yellow" render="Label" position="414,366" size="150,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
+		<widget source="key_blue" render="Label" position="604,366" size="150,30" font="Regular;18" foregroundColor="#00ffffff" backgroundColor="#00000000" transparent="1" zPosition="1" halign="left" valign="center" alphatest="blend" />
 	</screen>
 </skin>
