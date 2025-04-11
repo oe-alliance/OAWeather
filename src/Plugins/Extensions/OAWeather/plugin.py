@@ -919,11 +919,11 @@ class OAWeatherFavorites(Screen):
 		self.newFavList = newFavList
 
 	def keyRed(self):
-		current = self["favoriteList"].getCurrentIndex()
+		current = self["favoriteList"].index
 		if self.newFavList and current is not None:
 			self.currFavorite = self.newFavList[current]
 			if weatherhelper.isDifferentLocation(self.currFavorite, config.plugins.OAWeather.weatherlocation.value):
-				msgtxt = _("Do you really want do delete favorite\n'%s'?" % self.currFavorite[0])
+				msgtxt = _("Do you really want do delete favorite\n'%s'?") % self.currFavorite[0]
 				self.session.openWithCallback(self.returnKeyRed, MessageBox, msgtxt, MessageBox.TYPE_YESNO, timeout=10, default=False)
 			else:
 				msgtxt = _("The favorite '%s' corresponds to the set weather city name and therefore cannot be deleted." % self.currFavorite[0])
@@ -935,7 +935,7 @@ class OAWeatherFavorites(Screen):
 			self.updateFavoriteList()
 
 	def keyYellow(self):
-		self.currindex = self["favoriteList"].getCurrentIndex()
+		self.currindex = self["favoriteList"].index
 		if self.newFavList and self.currindex is not None:
 			weathercity = weatherhelper.isolateCityname(self.newFavList[self.currindex][0])
 			self.session.openWithCallback(self.returnCityname, VirtualKeyBoard, title=_("Weather cityname (at least 3 letters):"), text=weathercity)
@@ -952,7 +952,7 @@ class OAWeatherFavorites(Screen):
 		self.session.openWithCallback(self.returnCityname, VirtualKeyBoard, title=_("Weather cityname (at least 3 letters):"), text="")
 
 	def keyOk(self):
-		current = self["favoriteList"].getCurrentIndex()
+		current = self["favoriteList"].index
 		returnFavorite = self.newFavList[current] if self.newFavList and current is not None else None
 		self.checkChanges(returnFavorite)
 
