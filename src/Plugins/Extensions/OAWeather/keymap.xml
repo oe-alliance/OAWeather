@@ -1,0 +1,10 @@
+<keymap>
+	<map context="OAWeatherActions">
+		<key id="KEY_OK" mapto="ok" flags="m" />
+		<key id="KEY_ENTER" mapto="ok" flags="m" />
+		<key id="KEY_EXIT" mapto="cancel" flags="b" />
+		<key id="KEY_MENU" mapto="menu" flags="m" />
+		<key id="KEY_CHANNELUP" mapto="channelup" flags="m" />
+		<key id="KEY_CHANNELDOWN" mapto="channeldown" flags="m" />
+	</map>
+</keymap>

@@ -22,7 +22,7 @@ from pickle import dump, load
 from time import time
 from twisted.internet.reactor import callInThread
 from xml.etree.ElementTree import tostring, parse
-from enigma import eTimer
+from enigma import eTimer, addFont
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigSelection, ConfigSelectionNumber, ConfigText
 from Components.Label import Label
@@ -35,7 +35,7 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import Setup
 from Screens.VirtualKeyBoard import VirtualKeyBoard
-from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, resolveFilename
+from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, SCOPE_FONTS, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Weatherinfo import Weatherinfo
 from twisted.internet.reactor import callInThread
@@ -44,7 +44,7 @@ from . import _
 
 class WeatherHelper():
 	def __init__(self):
-		self.version = "v1.5"
+		self.version = "v2.0"
 		self.favoritefile = resolveFilename(SCOPE_CONFIG, "oaweather_fav.dat")
 		self.locationDefault = ("Hamburg, DE", 10.00065, 53.55034)
 		self.favoriteList = []
@@ -126,14 +126,22 @@ weatherhelper.readFavoriteList()
 choiceList = [(item, item[0]) for item in weatherhelper.favoriteList]
 config.plugins.OAWeather.weatherlocation = ConfigSelection(default=weatherhelper.locationDefault, choices=choiceList)
 weatherhelper.convertOldLocation()  # deprecated: will be removed at end of 2025
+config.plugins.OAWeather.detailLevel = ConfigSelection(default="default", choices=[("default", _("More Details / Smaller font")), ("reduced", _("Less details / Larger font"))])
 config.plugins.OAWeather.tempUnit = ConfigSelection(default="Celsius", choices=[("Celsius", _("Celsius")), ("Fahrenheit", _("Fahrenheit"))])
 config.plugins.OAWeather.windspeedMetricUnit = ConfigSelection(default="km/h", choices=[("km/h", _("km/h")), ("m/s", _("m/s"))])
+config.plugins.OAWeather.trendarrows = ConfigYesNo(default=True)
 config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("openweather", _("OpenWeatherMap"))])
 config.plugins.OAWeather.debug = ConfigYesNo(default=False)
 
 MODULE_NAME = "OAWeather"
 CACHEFILE = resolveFilename(SCOPE_CONFIG, "OAWeather.dat")
 PLUGINPATH = join(resolveFilename(SCOPE_PLUGINS), 'Extensions/OAWeather')
+
+fontFile = resolveFilename(SCOPE_FONTS, "LiberationSans-Regular.ttf")
+if isfile(fontFile):
+	addFont(fontFile, "LS-Regular", 100, -1, 0)
+elif config.plugins.OAWeather.debug.value:
+	print("[%s] OAWeatherDetailview__init__: %s" % (MODULE_NAME, fontFile))
 
 
 class WeatherSettingsView(Setup):
@@ -169,7 +177,7 @@ class WeatherSettingsView(Setup):
 			weatherhandler.reset()
 		if self.old_weatherlocation != config.plugins.OAWeather.weatherlocation.value:
 			config.plugins.OAWeather.weatherlocation.save()
-			weatherhandler.reset(config.plugins.OAWeather.weatherlocation.value)
+			weatherhandler.reset(newLocation=config.plugins.OAWeather.weatherlocation.value)
 		Setup.keySave(self)
 
 	def keyYellow(self, SAVE=False):
@@ -198,11 +206,11 @@ class WeatherHandler():
 		self.currCity = ""
 		self.currLocation = config.plugins.OAWeather.weatherlocation.value
 		self.trialcounter = 0
-		self.currentWeatherDataValid = 3  # 0= green (data available), 1= yellow (still working), 2= red (no data available, wait on next refresh) 3=startup
+		self.currentWeatherDictValid = 3  # 0= green (data available), 1= yellow (still working), 2= red (no data available, wait on next refresh) 3=startup
 		self.refreshTimer = eTimer()
 		self.refreshTimer.callback.append(self.refreshWeatherData)
-		self.weatherdata = {}
-		self.fullWeatherdata = {}
+		self.weatherDict = {}
+		self.fullWeatherDict = {}
 		self.onUpdate = []
 		self.refreshCallback = None
 		self.skydirs = {"N": _("North"), "NE": _("Northeast"), "E": _("East"), "SE": _("Southeast"), "S": _("South"), "SW": _("Southwest"), "W": _("West"), "NW": _("Northwest")}
@@ -214,21 +222,21 @@ class WeatherHandler():
 
 	def writeData(self, data):
 		self.debug("writeData")
-		self.currentWeatherDataValid = 0
-		self.weatherdata = data
+		self.currentWeatherDictValid = 0
+		self.weatherDict = data
 		for callback in self.onUpdate:
 			callback(data)
 		seconds = int(config.plugins.OAWeather.refreshInterval.value * 60)
 		self.refreshTimer.start(seconds * 1000, True)
 
 	def getData(self):
-		return self.weatherdata
+		return self.weatherDict
 
 	def getFulldata(self):
-		return self.fullWeatherdata
+		return self.fullWeatherDict
 
 	def getValid(self) -> int:
-		return self.currentWeatherDataValid
+		return self.currentWeatherDictValid
 
 	def getSkydirs(self) -> dict:
 		return self.skydirs
@@ -265,7 +273,7 @@ class WeatherHandler():
 				self.WI.start(geodata=self.currLocation, units=unit, scheme=language, reduced=True, callback=self.refreshWeatherDataCallback)
 			else:
 				print("[%s] error in OAWeather config" % (MODULE_NAME))
-				self.currentWeatherDataValid = 2
+				self.currentWeatherDictValid = 2
 
 	def refreshWeatherDataCallback(self, data, error):
 		self.debug("refreshWeatherDataCallback")
@@ -273,19 +281,19 @@ class WeatherHandler():
 			self.trialcounter += 1
 			if self.trialcounter < 2:
 				print("[%s] lookup for city '%s' paused, try again in 10 secs..." % (MODULE_NAME, self.currCity))
-				self.currentWeatherDataValid = 1
+				self.currentWeatherDictValid = 1
 				self.refreshTimer.start(10000, True)
 			elif self.trialcounter > 5:
 				print("[%s] lookup for city '%s' paused 1 h, to many errors..." % (MODULE_NAME, self.currCity))
-				self.currentWeatherDataValid = 2
+				self.currentWeatherDictValid = 2
 				self.refreshTimer.start(3600000, True)
 			else:
 				print("[%s] lookup for city '%s' paused 5 mins, to many errors..." % (MODULE_NAME, self.currCity))
-				self.currentWeatherDataValid = 2
+				self.currentWeatherDictValid = 2
 				self.refreshTimer.start(300000, True)
 			return
 		self.writeData(data)
-		self.fullWeatherdata = self.WI.info
+		self.fullWeatherDict = self.WI.info
 		# TODO write cache only on close
 		if config.plugins.OAWeather.cachedata.value and self.currLocation == config.plugins.OAWeather.weatherlocation.value:
 			with open(CACHEFILE, "wb") as fd:
@@ -372,12 +380,12 @@ class OAWeatherOverview(Screen):
 		self["key_blue"] = StaticText(_("Next favorite"))
 		self["key_ok"] = StaticText(_("View details"))
 		self["key_menu"] = StaticText(_("Settings"))
-		self["actions"] = ActionMap(["SetupActions",
-									"ColorActions"],
-													{
+		self["actions"] = ActionMap(["OAWeatherActions",
+									"ColorActions",
+									"InfoActions"], {
 													"ok": self.keyOk,
 													"cancel": self.close,
-													"red": self.keyOk,
+													"red": self.close,
 													"yellow": self.favoriteUp,
 													"blue": self.favoriteDown,
 													"green": self.favoriteChoice,
@@ -420,18 +428,18 @@ class OAWeatherOverview(Screen):
 			self[f"weekday{day}_temp"].text = "%s %s|%s %s\n%s" % (highTemp, tempunit, lowTemp, tempunit, text)
 
 	def keyOk(self):
-		if weatherhelper.favoriteList:
+		if weatherhelper.favoriteList and weatherhandler.WI.getDataReady():
 			self.session.open(OAWeatherDetailview, weatherhelper.favoriteList[self.currFavIdx])
 
 	def favoriteUp(self):
 		if weatherhelper.favoriteList:
 			self.currFavIdx = (self.currFavIdx - 1) % len(weatherhelper.favoriteList)
-			callInThread(weatherhandler.reset, weatherhelper.favoriteList[self.currFavIdx], self.setupFinished)
+			callInThread(weatherhandler.reset, weatherhelper.favoriteList[self.currFavIdx], self.configFinished)
 
 	def favoriteDown(self):
 		if weatherhelper.favoriteList:
 			self.currFavIdx = (self.currFavIdx + 1) % len(weatherhelper.favoriteList)
-			callInThread(weatherhandler.reset, weatherhelper.favoriteList[self.currFavIdx], self.setupFinished)
+			callInThread(weatherhandler.reset, weatherhelper.favoriteList[self.currFavIdx], self.configFinished)
 
 	def favoriteChoice(self):
 		choiceList = [(item[0], item) for item in weatherhelper.favoriteList]
@@ -439,18 +447,43 @@ class OAWeatherOverview(Screen):
 
 	def returnFavoriteChoice(self, favorite):
 		if favorite is not None:
-			callInThread(weatherhandler.reset, favorite[1], self.setupFinished)
+			callInThread(weatherhandler.reset, favorite[1], self.configFinished)
 
 	def config(self):
-		self.session.openWithCallback(self.setupFinished, WeatherSettingsView)
+		self.session.openWithCallback(self.configFinished, WeatherSettingsView)
 
-	def setupFinished(self, result=None):
+	def configFinished(self, result=None):
 		self.clearFields()
 		self.startRun()
 
 	def error(self, errortext):
 		self.clearFields()
 		self["statustext"].text = errortext
+
+
+class OAWeatherDetailFrame(Screen):
+	def __init__(self, session):
+		self.skin = weatherhelper.loadSkin("OAWeatherDetailFrame")
+		Screen.__init__(self, session)
+		self.widgets = ("time", "pressure", "temp", "feels", "humid", "precip", "windspeed",
+							"winddir", "windgusts", "uvindex", "visibility", "shortdesc", "longdesc")
+		for widget in self.widgets:
+			self[widget] = StaticText()
+		self["icon"] = Pixmap()
+
+	def showFrame(self):
+		self.show()
+
+	def updateFrame(self, dataList):
+		valueMax = len(self.widgets) - 3  # except shortdesc and longdesc
+		for index, widget in enumerate(self.widgets):
+			value = dataList[index]
+			self[widget].setText(value if value or index > valueMax else _("n/a"))
+		self["icon"].instance.setPixmap(dataList[13])
+		self.showFrame()
+
+	def hideFrame(self):
+		self.hide()
 
 
 class OAWeatherDetailview(Screen):
@@ -463,11 +496,16 @@ class OAWeatherDetailview(Screen):
 	def __init__(self, session, currlocation):
 		self.skin = weatherhelper.loadSkin("OAWeatherDetailview")
 		Screen.__init__(self, session)
+		self.detailFrame = self.session.instantiateDialog(OAWeatherDetailFrame)
+		self.detailFrameActive = False
 		self.currFavIdx = weatherhelper.favoriteList.index(currlocation) if currlocation in weatherhelper.favoriteList else 0
 		self.old_weatherservice = config.plugins.OAWeather.weatherservice.value
-		self.dayList = []
+		self.detailLevels = config.plugins.OAWeather.detailLevel.getChoices()
+		self.detailLevelIdx = config.plugins.OAWeather.detailLevel.getIndex()
 		self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0)
 		self.currdaydelta = 0
+		self.skinList = []
+		self.dayList = []
 		self.sunList = []
 		self.moonList = []
 		self.na = _("n/a")
@@ -487,22 +525,28 @@ class OAWeatherDetailview(Screen):
 		self["key_yellow"] = StaticText(_("Previous favorite"))
 		self["key_blue"] = StaticText(_("Next favorite"))
 		self["key_channel"] = StaticText(_("Day +/-"))
-		self["key_menu"] = StaticText(_("Settings"))
-		self.title = _("Weather Plugin")
-		self["actions"] = ActionMap(["SetupActions",
-									"ButtonSetupActions"],
-													{
-													"ok": self.close,
-													"cancel": self.close,
-													"red": self.close,
+		self["key_info"] = StaticText(_("Details +/-"))
+		self["key_ok"] = StaticText(_("Glass"))
+		self["actions"] = ActionMap(["OAWeatherActions",
+									"ColorActions",
+									"InfoActions"], {
+													"ok": self.toggleDetailframe,
+													"cancel": self.exit,
+													"up": self.prevEntry,
+													"down": self.nextEntry,
+													"right": self.pageDown,
+													"left": self.pageUp,
+													"red": self.exit,
 													"yellow": self.favoriteUp,
 													"blue": self.favoriteDown,
 													"green": self.favoriteChoice,
 													"channeldown": self.prevDay,
 													"channelup": self.nextDay,
+													"info": self.toggleDetailLevel,
 													"menu": self.config
-		}, -1)
+													}, -1)
 		self["statustext"] = StaticText()
+		self.pressPix = self.getPixmap("barometer.png")
 		self.tempPix = self.getPixmap("temp.png")
 		self.feelPix = self.getPixmap("feels.png")
 		self.humidPix = self.getPixmap("hygrometer.png")
@@ -512,26 +556,32 @@ class OAWeatherDetailview(Screen):
 		self.WindGustPix = self.getPixmap("windgust.png")
 		self.uvIndexPix = self.getPixmap("uv_index.png")
 		self.visiblePix = self.getPixmap("binoculars.png")
-		self.onLayoutFinish.append(self.startRun)
+		self.onLayoutFinish.append(self.firstRun)
+
+	def firstRun(self):
+		moonrisepix = join(PLUGINPATH, "Images/moonrise.png")
+		if exists(moonrisepix):
+			self["moonrisepix"].instance.setPixmapFromFile(moonrisepix)
+		self["moonrisepix"].hide()
+		moonsetpix = join(PLUGINPATH, "Images/moonset.png")
+		if exists(moonsetpix):
+			self["moonsetpix"].instance.setPixmapFromFile(moonsetpix)
+		self["detailList"].style = self.detailLevels[self.detailLevelIdx]
+		self.startRun()
 
 	def startRun(self):
-		self["moonrisepix"].instance.setPixmapFromFile(join(PLUGINPATH, "Images/moonrise.png"))
-		self["moonrisepix"].hide()
-		self["moonsetpix"].instance.setPixmapFromFile(join(PLUGINPATH, "Images/moonset.png"))
-		self["moonsetpix"].hide()
 		callInThread(self.parseData)
 
 	def updateSkinList(self):
 		weekday = _('Today') if self.currdatehour.weekday() == datetime.today().weekday() else self.currdatehour.strftime("%a")
 		self["currdatetime"].setText(f"{weekday} {self.currdatehour.strftime('%d %b')}")
 		uvIndexPix = self.uvIndexPix if config.plugins.OAWeather.weatherservice.value != "openweather" else None  # OWM does not support UV-index at all
-		iconpix = [self.tempPix, self.feelPix, self.humidPix, self.precipPix, self.WindSpdPpix, self.WindDirPix, self.WindGustPix, uvIndexPix, self.visiblePix]
+		iconpix = [self.pressPix, self.tempPix, self.feelPix, self.humidPix, self.precipPix, self.WindSpdPpix, self.WindDirPix, self.WindGustPix, uvIndexPix, self.visiblePix]
 		if self.dayList:
 			hourData = self.dayList[self.currdaydelta]
 			skinList = []
 			for hour in hourData:  # add set of icons to each hourly-entry
 				skinList.append(tuple(hour + iconpix))
-			self["detailList"].updateList(skinList)
 			currHour = self.currdatehour.strftime("%H:00 h")
 			found, index = False, 0
 			for index, hourData in enumerate(skinList):
@@ -540,9 +590,28 @@ class OAWeatherDetailview(Screen):
 					break
 			self["detailList"].setCurrentIndex(index if found else 0)
 		else:
-			hourData = ["", "", "", "", "", "", "", "", "", "", _("No data available."), _("No data available for this period."), None]
+			hourData = ["", "", "", "", "", "", "", "", "", "", "", _("No data available."), _("No data available for this period."), None]
 			skinList = [tuple(hourData + iconpix)]
-			self["detailList"].updateList(skinList)
+		self["detailList"].updateList(skinList)
+		self.skinList = skinList
+		self.updateDetailFrame()
+
+	def updateDetailFrame(self):
+		if self.detailFrameActive:
+			self.detailFrame.updateFrame(list(self["detailList"].getCurrent()))
+
+	def toggleDetailframe(self):
+		if self.detailFrameActive:
+			self.detailFrame.hideFrame()
+		self.detailFrameActive = not self.detailFrameActive
+		self.updateDetailFrame()
+
+	def toggleDetailLevel(self):
+		self.detailLevelIdx ^= 1
+		self["detailList"].style = self.detailLevels[self.detailLevelIdx]
+		self["detailList"].updateList(self.skinList)
+
+	def updateMoonData(self):
 		if self.moonList:
 			self["moonrise"].setText(datetime.fromisoformat(self.moonList[self.currdaydelta][0]).strftime("%H:%M"))
 			self["moonset"].setText(datetime.fromisoformat(self.moonList[self.currdaydelta][1]).strftime("%H:%M"))
@@ -570,12 +639,13 @@ class OAWeatherDetailview(Screen):
 			parser = {"MSN": self.msnparser, "OpenMeteo": self.omwparser, "openweather": self.owmparser}
 			parser[weatherservice]()
 			self.updateSkinList()
+			self.updateMoonData()
 
 	def msnparser(self):
 		iconpath = config.plugins.OAWeather.iconset.value
 		iconpath = join(ICONSETROOT, iconpath) if iconpath else join(PLUGINPATH, "Icons")
 		dayList = []
-		responses = weatherhandler.getFulldata()["responses"]
+		responses = weatherhandler.getFulldata().get("responses")
 		if responses:  # collect latest available data
 			weather = responses[0]["weather"][0]
 			current = weather["current"]
@@ -589,14 +659,15 @@ class OAWeatherDetailview(Screen):
 			currtime = datetime.fromisoformat(created).replace(tzinfo=None) if created else ""
 			timestr = currtime.strftime("%H:%M h") if currtime else ""
 			tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
+			press = f"{round(current.get('baro', 0))} mbar"
 			temp = f"{round(current.get('temp', 0))} {tempunit}"
 			feels = f"{round(current.get('feels', 0))} {tempunit}"
 			humid = f"{round(current.get('rh', 0))} %"
 			hourly = today["hourly"]
 			precip = f"{round(hourly[0]["precip"])} %" if len(hourly) else self.na  # workaround: use value from next hour if available
 			windSpd = f"{round(current.get('windSpd', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-			windDir = f"{weatherhandler.WI.directionsign(round(current.get('windDir', 0)))}"
-			windGusts = f"<{round(current.get('windGust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+			windDir = f"{_(weatherhandler.WI.directionsign(round(current.get('windDir', 0))))}"
+			windGusts = f"{round(current.get('windGust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
 			uvIndex = f"{round(current.get('uv', 0))}"
 			visibility = f"{round(current.get('vis', 0))} km"
 			shortDesc = current.get("pvdrCap", "")  # e.g. 'bewölkt'
@@ -606,7 +677,7 @@ class OAWeatherDetailview(Screen):
 			iconfile = join(iconpath, f"{yahoocode}.png")
 			iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
 			hourData = []
-			hourData.append([timestr, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
+			hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
 			days = weather["forecast"]["days"]
 			if days:
 				self.sunList = []
@@ -627,14 +698,15 @@ class OAWeatherDetailview(Screen):
 						valid = hour.get("valid")
 						currtime = datetime.fromisoformat(valid).replace(tzinfo=None) if valid else ""
 						timestr = currtime.strftime("%H:%M h") if currtime else ""
+						press = f"{round(hour.get('baro', 0))} mbar"
 						tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
 						temp = f"{round(hour.get('temp', 0))} {tempunit}"
 						feels = f"{round(hour.get('feels', 0))} {tempunit}"
 						humid = f"{round(hour.get('rh', 0))} %"
 						precip = f"{round(hour.get('precip', 0))} %"
 						windSpd = f"{round(hour.get('windSpd', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-						windDir = f"{weatherhandler.WI.directionsign(round(hour.get('windDir', 0)))}"
-						windGusts = f"<{round(hour.get('windGust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+						windDir = f"{_(weatherhandler.WI.directionsign(round(hour.get('windDir', 0))))}"
+						windGusts = f"{round(hour.get('windGust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
 						uvIndex = f"{round(hour.get('uv', 0))}"
 						visibility = f"{round(hour.get('vis', 0))} km"
 						shortDesc = hour.get("pvdrCap", "")  # e.g. 'bewölkt'
@@ -643,7 +715,7 @@ class OAWeatherDetailview(Screen):
 						yahoocode = self.nightSwitch(yahoocode, self.getIsNight(currtime, sunrisestr, sunsetstr))
 						iconfile = join(iconpath, f"{yahoocode}.png")
 						iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
-						hourData.append([timestr, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
+						hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
 					dayList.append(hourData)
 					self.sunList.append((sunrisestr, sunsetstr))
 					self.moonList.append((moonrisestr, moonsetstr))
@@ -653,123 +725,131 @@ class OAWeatherDetailview(Screen):
 		iconpath = config.plugins.OAWeather.iconset.value
 		iconpath = join(ICONSETROOT, iconpath) if iconpath else join(PLUGINPATH, "Icons")
 		fulldata = weatherhandler.getFulldata()
-		daily = fulldata.get("daily", {})
-		sunriseList = daily.get("sunrise", [])
-		sunsetList = daily.get("sunset", [])
-		self.sunList = []
-		for index, sunrisestr in enumerate(sunriseList):
-			sunsetstr = sunsetList[index]
-			self.sunList.append((sunrisestr if sunrisestr else self.na, sunsetstr if sunsetstr else self.na))
-		self.moonList = []  # OMW does not support moonrise / moonset at all
-		hourly = fulldata.get("hourly", {})
-		dayList = []
-		if hourly:
-			timeList = hourly.get("time", [])
-			tempList = hourly.get("temperature_2m", [])
-			feelsList = hourly.get("apparent_temperature", [])
-			humidList = hourly.get("relativehumidity_2m", [])
-			precipList = hourly.get("precipitation_probability", [])
-			wSpeedList = hourly.get("windspeed_10m", [])
-			wGustList = hourly.get("wind_gusts_10m", [])
-			wDirList = hourly.get("winddirection_10m", [])
-			uvList = hourly.get("uv_index", [])
-			visList = hourly.get("visibility", [])
-			wCodeList = hourly.get("weathercode", [])
-			currday = datetime.fromisoformat(timeList[0]).replace(hour=0, minute=0, second=0, microsecond=0)
-			daycount = 0
-			hourData = []
-			for idx, isotime in enumerate(timeList):
-				currtime = datetime.fromisoformat(isotime)
-				timestr = currtime.strftime("%H:%M h")
-				tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
-				temp = f"{round(tempList[idx])} {tempunit}"
-				feels = f"{round(feelsList[idx])} {tempunit}"
-				humid = f"{round(humidList[idx])} %"
-				precip = f"{round(precipList[idx])} %"
-				windSpd = f"{round(wSpeedList[idx])} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-				windDir = f"{weatherhandler.WI.directionsign(round(round(wDirList[idx])))}"
-				windGusts = f"<{round(wGustList[idx])} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-				uvIndex = f"{round(uvList[idx])}"
-				visibility = f"{round(visList[idx] / 1000)} km"
-				shortDesc, longDesc = "", ""  # OMW does not support description texts at all
-				isNight = self.getIsNight(currtime, sunriseList[daycount], sunsetList[daycount])
-				yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OMW", wCodeList[idx]).get("yahooCode"), isNight)  # e.g. '1' -> {'yahooCode': '34', 'meteoCode': 'B'}
-				iconfile = join(iconpath, f"{yahoocode}.png")
-				iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
-				hourData.append([timestr, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
-				timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
-				if timeday > currday:  # is a new day?
-					currday = timeday
-					daycount += 1
-					dayList.append(hourData)
-					hourData = []
-		self.dayList = dayList
+		if fulldata:
+			daily = fulldata.get("daily", {})
+			sunriseList = daily.get("sunrise", [])
+			sunsetList = daily.get("sunset", [])
+			self.sunList = []
+			for index, sunrisestr in enumerate(sunriseList):
+				sunsetstr = sunsetList[index]
+				self.sunList.append((sunrisestr if sunrisestr else self.na, sunsetstr if sunsetstr else self.na))
+			self.moonList = []  # OMW does not support moonrise / moonset at all
+			hourly = fulldata.get("hourly", {})
+			dayList = []
+			if hourly:
+				timeList = hourly.get("time", [])
+				pressList = hourly.get("pressure_msl")
+				tempList = hourly.get("temperature_2m", [])
+				feelsList = hourly.get("apparent_temperature", [])
+				humidList = hourly.get("relativehumidity_2m", [])
+				precipList = hourly.get("precipitation_probability", [])
+				wSpeedList = hourly.get("windspeed_10m", [])
+				wGustList = hourly.get("wind_gusts_10m", [])
+				wDirList = hourly.get("winddirection_10m", [])
+				uvList = hourly.get("uv_index", [])
+				visList = hourly.get("visibility", [])
+				wCodeList = hourly.get("weathercode", [])
+				currday = datetime.fromisoformat(timeList[0]).replace(hour=0, minute=0, second=0, microsecond=0)
+				daycount = 0
+				hourData = []
+				for idx, isotime in enumerate(timeList):
+					currtime = datetime.fromisoformat(isotime)
+					timestr = currtime.strftime("%H:%M h")
+					press = f"{round(pressList[idx])} mbar"
+					tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
+					temp = f"{round(tempList[idx])} {tempunit}"
+					feels = f"{round(feelsList[idx])} {tempunit}"
+					humid = f"{round(humidList[idx])} %"
+					precip = f"{round(precipList[idx])} %"
+					windSpd = f"{round(wSpeedList[idx])} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+					windDir = f"{_(weatherhandler.WI.directionsign(round(round(wDirList[idx]))))}"
+					windGusts = f"{round(wGustList[idx])} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+					uvIndex = f"{round(uvList[idx])}"
+					visibility = f"{round(visList[idx] / 1000)} km"
+					shortDesc, longDesc = "", ""  # OMW does not support description texts at all
+					isNight = self.getIsNight(currtime, sunriseList[daycount], sunsetList[daycount])
+					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OMW", wCodeList[idx]).get("yahooCode"), isNight)  # e.g. '1' -> {'yahooCode': '34', 'meteoCode': 'B'}
+					iconfile = join(iconpath, f"{yahoocode}.png")
+					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
+					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
+					timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
+					if timeday > currday:  # is a new day?
+						currday = timeday
+						daycount += 1
+						dayList.append(hourData)
+						hourData = []
+			self.dayList = dayList
 
 	def owmparser(self):
 		iconpath = config.plugins.OAWeather.iconset.value
 		iconpath = join(ICONSETROOT, iconpath) if iconpath else join(PLUGINPATH, "Icons")
 		fulldata = weatherhandler.getFulldata()
-		city = fulldata.get("city", {})
-		sunriseTs, sunsetTs = city.get("sunrise", 0), city.get("sunset", 0)  # OM only supports sunris/sunset of today
-		sunrisestr = datetime.fromtimestamp(sunriseTs).isoformat() if sunriseTs else ""
-		sunsetstr = datetime.fromtimestamp(sunsetTs).isoformat() if sunsetTs else ""
-		self.sunList, self.moonList = [], []  # OMW does not support moonrise / moonset at all
-		hourData = []
-		tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
-		timeTs = fulldata.get("dt", 0)  # collect latest available data
-		timestr = datetime.fromtimestamp(timeTs).strftime("%H:%M") if timeTs else ""
-		main = fulldata.get("main", {})
-		hourly = fulldata.get("list", {})
-		temp = f"{round(main.get("temp", 0))} {tempunit}"
-		feels = f"{round(main.get("feels_like", 0))} {tempunit}"
-		humid = f"{round(main.get("humidity", 0))} %"
-		precip = f"{round(hourly[0].get("pop", 0) * 100)} %"
-		wind = fulldata.get("wind", {})
-		windSpd = f"{round(wind.get("speed", 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-		windDir = f"{weatherhandler.WI.directionsign(round(wind.get("deg", 0)))}"
-		windGusts = f"{round(hourly[0].get("wind", {}).get("gust", 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-		uvIndex = ""  # OWM does not support UV-index at all
-		visibility = f"{round(fulldata.get("visibility", 0) / 1000)} km"
-		weather = fulldata.get("weather", [""])[0]
-		shortDesc = longDesc = weather.get("description", "")
-		currtime = datetime.fromtimestamp(timeTs)
-		isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
-		yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
-		iconfile = join(iconpath, f"{yahoocode}.png")
-		iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
-		hourData.append([timestr, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
-		dayList = []
-		if hourly:
-			currday = datetime.fromisoformat(hourly[0].get("dt_txt", "1900-01-01 00:00:00")).replace(hour=0, minute=0, second=0, microsecond=0)
-			for hour in hourly:  # collect data on future hours of current day
-				isotime = hour.get("dt_txt", "1900-01-01 00:00:00")
-				timestr = isotime[11:16]
-				main = hour.get("main", {})
-				temp = f"{round(main.get("temp", 0))} {tempunit}"
-				feels = f"{round(main.get("feels_like", 0))} {tempunit}"
-				humid = f"{round(main.get("humidity", 0))} %"
-				precip = f"{round(hour.get("pop", 0) * 100)} %"
-				wind = hour.get("wind", {})
-				windSpd = f"{round(wind.get("speed", 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-				windDir = f"{weatherhandler.WI.directionsign(round(wind.get("deg", 0)))}"
-				windGusts = f"{round(wind.get("gust", 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-				uvIndex = ""  # OWM does not support UV-index at all
-				visibility = f"{round(hour.get("visibility", 0) / 1000)} km"
-				weather = hour.get("weather", [""])[0]
-				shortDesc = longDesc = weather.get("description", "")
-				currtime = datetime.fromisoformat(isotime)
-				isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
-				yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
-				iconfile = join(iconpath, f"{yahoocode}.png")
-				iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
-				hourData.append([timestr, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
-				timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
-				if timeday > currday:  # is a new day?
-					currday = timeday
-					dayList.append(hourData)
-					hourData = []
-					self.sunList.append((sunrisestr, sunsetstr))
-		self.dayList = dayList
+		if fulldata:
+			city = fulldata.get("city", {})
+			sunriseTs, sunsetTs = city.get("sunrise", 0), city.get("sunset", 0)  # OM only supports sunris/sunset of today
+			sunrisestr = datetime.fromtimestamp(sunriseTs).isoformat() if sunriseTs else ""
+			sunsetstr = datetime.fromtimestamp(sunsetTs).isoformat() if sunsetTs else ""
+			self.sunList, self.moonList = [], []  # OMW does not support moonrise / moonset at all
+			hourData = []
+			tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
+			timeTs = fulldata.get("dt", 0)  # collect latest available data
+			timestr = datetime.fromtimestamp(timeTs).strftime("%H:%M") if timeTs else ""
+			main = fulldata.get("main", {})
+			hourly = fulldata.get("list", {})
+			press = f"{round(main.get('pressure', 0))} mbar"
+			temp = f"{round(main.get('temp', 0))} {tempunit}"
+			feels = f"{round(main.get('feels_like', 0))} {tempunit}"
+			humid = f"{round(main.get('humidity', 0))} %"
+			precip = f"{round(hourly[0].get('pop', 0) * 100)} %"
+			wind = fulldata.get('wind', {})
+			windSpd = f"{round(wind.get('speed', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+			windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get('deg', 0))))}"
+			windGusts = f"{round(hourly[0].get('wind', {}).get('gust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+			uvIndex = ""  # OWM does not support UV-index at all
+			visibility = f"{round(fulldata.get('visibility', 0) / 1000)} km"
+			weather = fulldata.get("weather", [""])[0]
+			shortDesc = weather.get("description", "")
+			longDesc = ""  # OWM does not support long descriptions at all
+			currtime = datetime.fromtimestamp(timeTs)
+			isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
+			yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
+			iconfile = join(iconpath, f"{yahoocode}.png")
+			iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
+			hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
+			dayList = []
+			if hourly:
+				currday = datetime.fromisoformat(hourly[0].get("dt_txt", "1900-01-01 00:00:00")).replace(hour=0, minute=0, second=0, microsecond=0)
+				for hour in hourly:  # collect data on future hours of current day
+					isotime = hour.get("dt_txt", "1900-01-01 00:00:00")
+					timestr = isotime[11:16]
+					main = hour.get("main", {})
+					press = f"{round(main.get('pressure', 0))} mbar"
+					temp = f"{round(main.get('temp', 0))} {tempunit}"
+					feels = f"{round(main.get('feels_like', 0))} {tempunit}"
+					humid = f"{round(main.get('humidity', 0))} %"
+					precip = f"{round(hour.get('pop', 0) * 100)} %"
+					wind = hour.get("wind", {})
+					windSpd = f"{round(wind.get('speed', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+					windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get("deg", 0))))}"
+					windGusts = f"{round(wind.get('gust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+					uvIndex = ""  # OWM does not support UV-index at all
+					visibility = f"{round(hour.get('visibility', 0) / 1000)} km"
+					weather = hour.get("weather", [""])[0]
+					shortDesc = weather.get("description", "")
+					longDesc = ""  # OWM does not support long descriptions at all
+					currtime = datetime.fromisoformat(isotime)
+					isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
+					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
+					iconfile = join(iconpath, f"{yahoocode}.png")
+					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
+					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
+					timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
+					if timeday > currday:  # is a new day?
+						currday = timeday
+						dayList.append(hourData)
+						hourData = []
+						self.sunList.append((sunrisestr, sunsetstr))
+			self.dayList = dayList
 
 	def getIsNight(self, currtime, sunrisestr, sunsetstr):
 		if sunrisestr and sunsetstr:
@@ -801,6 +881,22 @@ class OAWeatherDetailview(Screen):
 		if favorite is not None:
 			callInThread(weatherhandler.reset, favorite[1], callback=self.parseData)
 
+	def prevEntry(self):
+		self["detailList"].up()
+		self.updateDetailFrame()
+
+	def nextEntry(self):
+		self["detailList"].down()
+		self.updateDetailFrame()
+
+	def pageDown(self):
+		self["detailList"].pageDown()
+		self.updateDetailFrame()
+
+	def pageUp(self):
+		self["detailList"].pageUp()
+		self.updateDetailFrame()
+
 	def prevDay(self):
 		self.currdaydelta = (self.currdaydelta - 1) % len(self.dayList)
 		self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0) + timedelta(days=self.currdaydelta)
@@ -813,13 +909,26 @@ class OAWeatherDetailview(Screen):
 
 	def config(self):
 		self.old_weatherservice = config.plugins.OAWeather.weatherservice.value
-		self.session.openWithCallback(self.setupFinished, WeatherSettingsView)
+		if self.detailFrameActive:
+			self.detailFrame.hideFrame()
+		self.session.openWithCallback(self.configFinished, WeatherSettingsView)
 
-	def setupFinished(self, result=None):
+	def configFinished(self, result=None):
+		self.detailLevelIdx = config.plugins.OAWeather.detailLevel.getIndex()
+		if self.detailFrameActive:
+			self.detailFrame.showFrame()
 		if self.old_weatherservice != config.plugins.OAWeather.weatherservice.value:
 			callInThread(weatherhandler.reset, callback=self.parseData)
 		else:
 			self.startRun()
+
+	def exit(self):
+		if self.detailFrameActive:
+			self.detailFrame.hide()
+			self.detailFrameActive = False
+		else:
+			self.session.deleteDialog(self.detailFrame)
+			self.close()
 
 
 class OAWeatherFavorites(Screen):
@@ -919,11 +1028,11 @@ class OAWeatherFavorites(Screen):
 		self.newFavList = newFavList
 
 	def keyRed(self):
-		current = self["favoriteList"].index
+		current = self["favoriteList"].getCurrentIndex()
 		if self.newFavList and current is not None:
 			self.currFavorite = self.newFavList[current]
 			if weatherhelper.isDifferentLocation(self.currFavorite, config.plugins.OAWeather.weatherlocation.value):
-				msgtxt = _("Do you really want do delete favorite\n'%s'?") % self.currFavorite[0]
+				msgtxt = _("Do you really want do delete favorite\n'%s'?" % self.currFavorite[0])
 				self.session.openWithCallback(self.returnKeyRed, MessageBox, msgtxt, MessageBox.TYPE_YESNO, timeout=10, default=False)
 			else:
 				msgtxt = _("The favorite '%s' corresponds to the set weather city name and therefore cannot be deleted." % self.currFavorite[0])
@@ -935,7 +1044,7 @@ class OAWeatherFavorites(Screen):
 			self.updateFavoriteList()
 
 	def keyYellow(self):
-		self.currindex = self["favoriteList"].index
+		self.currindex = self["favoriteList"].getCurrentIndex()
 		if self.newFavList and self.currindex is not None:
 			weathercity = weatherhelper.isolateCityname(self.newFavList[self.currindex][0])
 			self.session.openWithCallback(self.returnCityname, VirtualKeyBoard, title=_("Weather cityname (at least 3 letters):"), text=weathercity)
@@ -952,7 +1061,7 @@ class OAWeatherFavorites(Screen):
 		self.session.openWithCallback(self.returnCityname, VirtualKeyBoard, title=_("Weather cityname (at least 3 letters):"), text="")
 
 	def keyOk(self):
-		current = self["favoriteList"].index
+		current = self["favoriteList"].getCurrentIndex()
 		returnFavorite = self.newFavList[current] if self.newFavList and current is not None else None
 		self.checkChanges(returnFavorite)
 
