@@ -2,7 +2,7 @@ from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 import gettext
 
-__version__ = "1.4"
+__version__ = "2.0"
 
 PluginLanguageDomain = "OAWeather"
 PluginLanguagePath = "Extensions/OAWeather/locale"
