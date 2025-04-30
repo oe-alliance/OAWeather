@@ -76,7 +76,9 @@ class OAWeather(Converter, object):
 		if self.mode:
 			try:
 				if self.index is not None:
-					if self.mode == "temperature_high":
+					if self.mode == "pressure_average":
+						return self.source.getAveragePressure(self.index)
+					elif self.mode == "temperature_high":
 						return self.source.getMaxTemp(self.index)
 					elif self.mode == "temperature_low":
 						return self.source.getMinTemp(self.index)
@@ -142,8 +144,14 @@ class OAWeather(Converter, object):
 					return self.source.getSunrise()
 				elif self.mode == "sunset":
 					return self.source.getSunset()
+				elif self.mode == "moonrise":
+					return self.source.getMoonrise()
+				elif self.mode == "moonset":
+					return self.source.getMoonset()
 				elif self.mode == "isnight":
 					return self.source.getIsNight()
+				elif self.mode == "pressure_current":
+					return self.source.getPressure()
 				elif self.mode == "temperature_current":
 					return self.source.getTemperature()
 				elif self.mode == "feelslike":
@@ -176,6 +184,12 @@ class OAWeather(Converter, object):
 					return self.source.getUVindex()
 				elif self.mode == "visibility":
 					return self.source.getVisibility()
+				elif self.mode == "moonillumination":
+					return self.source.getMoonIllumination()
+				elif self.mode == "moondistance":
+					return self.source.getMoonDistance()
+				elif self.mode == "moonphaseicon":
+					return self.source.getMoonPixFilename()
 				else:
 					return self.source.getVal(self.mode)
 			except Exception as err:
@@ -209,6 +223,13 @@ class OAWeather(Converter, object):
 					return path
 			except Exception:
 				return ""
+		if self.mode == "moonphaseicon":
+			try:
+				path = join(self.source.pluginpath, "Images/moonphases/", self.source.getMoonPixFilename())
+				if isfile(path):
+					return path
+			except Exception:
+				return ""
 		if self.index in (self.CURRENT, self.DAY1, self.DAY2, self.DAY3, self.DAY4, self.DAY5):
 			path = self.source.iconpath
 			if self.path:
@@ -222,8 +243,8 @@ class OAWeather(Converter, object):
 			self.debug("getIconFilename not found mode:%s index:%s self.path:%s path:%s" % (self.mode, self.index, self.path, path))
 		return ""
 
+	iconfilename = property(getIconFilename)
+
 	def debug(self, text: str):
 		if self.enabledebug:
 			print("[OAWeather] Converter DEBUG %s" % text)
-
-	iconfilename = property(getIconFilename)

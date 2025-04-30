@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: OAWeather 1.1\n"
+"Project-Id-Version: OAWeather v1.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 23:00+0100\n"
+"POT-Creation-Date: 2025-04-27 14:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,12 @@ msgid "Choose the icon set. You need to create an additional set here: /usr/shar
 msgstr ""
 
 msgid "Choose whether the 'night switch' should be activated or not. Some icons are then displayed as night icons with moon."
+msgstr ""
+
+msgid "Show trend arrows for moon data"
+msgstr ""
+
+msgid "Show trend arrows for moon illumination and moon distance to see the current trend of the data."
 msgstr ""
 
 msgid "Chose favorite"
@@ -88,6 +94,12 @@ msgstr ""
 msgid "Error in Weatherinfo"
 msgstr ""
 
+msgid "More Details / Smaller font"
+msgstr ""
+
+msgid "Less details / Larger font"
+msgstr ""
+
 msgid "Fahrenheit"
 msgstr ""
 
@@ -118,7 +130,13 @@ msgstr ""
 msgid "Day +/-"
 msgstr ""
 
+msgid "Details +/-"
+msgstr ""
+
 msgid "Settings"
+msgstr ""
+
+msgid "Glass"
 msgstr ""
 
 msgid "Manage your favorites"
@@ -175,6 +193,12 @@ msgstr ""
 msgid "Select the temperature unit to be used for temperature displays."
 msgstr ""
 
+msgid "Detail level in detail view"
+msgstr ""
+
+msgid "Select the detail level in the detail view. You have the choice between a comprehensive presentation in a smaller font and a reduced presentation with a larger font."
+msgstr ""
+
 msgid "Select this option to save that last obtained weather data locally. This is used to initialize the data immediately after restart while updated data is being fetched."
 msgstr ""
 
@@ -200,6 +224,9 @@ msgid "Specify how often Weather retrieves its data from the server. 'Once' mean
 msgstr ""
 
 msgid "Temperature unit"
+msgstr ""
+
+msgid "Detail level in detail view"
 msgstr ""
 
 msgid "The city name is too short. More than 2 characters are needed for search."
@@ -258,4 +285,25 @@ msgid "m/s"
 msgstr ""
 
 msgid "n/a"
+msgstr ""
+
+msgid "↓ N"
+msgstr ""
+
+msgid "↙ NE"
+msgstr ""
+
+msgid "← E"
+msgstr ""
+
+msgid "↖ SE"
+msgstr ""
+
+msgid "↑ S"
+msgstr ""
+
+msgid "→ W"
+msgstr ""
+
+msgid "↘ NW"
 msgstr ""
