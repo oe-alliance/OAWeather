@@ -38,7 +38,7 @@ from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, SCOPE_FONTS, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Weatherinfo import Weatherinfo
-from twisted.internet.reactor import callInThread
+# from twisted.internet.reactor import callInThread
 from . import _
 
 
@@ -664,7 +664,7 @@ class OAWeatherDetailview(Screen):
 			feels = f"{round(current.get('feels', 0))} {tempunit}"
 			humid = f"{round(current.get('rh', 0))} %"
 			hourly = today["hourly"]
-			precip = f"{round(hourly[0]["precip"])} %" if len(hourly) else self.na  # workaround: use value from next hour if available
+			precip = f"{round(hourly[0]['precip'])} %" if len(hourly) else self.na  # workaround: use value from next hour if available
 			windSpd = f"{round(current.get('windSpd', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
 			windDir = f"{_(weatherhandler.WI.directionsign(round(current.get('windDir', 0))))}"
 			windGusts = f"{round(current.get('windGust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
@@ -830,7 +830,7 @@ class OAWeatherDetailview(Screen):
 					precip = f"{round(hour.get('pop', 0) * 100)} %"
 					wind = hour.get("wind", {})
 					windSpd = f"{round(wind.get('speed', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-					windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get("deg", 0))))}"
+					windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get('deg', 0))))}"
 					windGusts = f"{round(wind.get('gust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
 					uvIndex = ""  # OWM does not support UV-index at all
 					visibility = f"{round(hour.get('visibility', 0) / 1000)} km"
@@ -839,7 +839,7 @@ class OAWeatherDetailview(Screen):
 					longDesc = ""  # OWM does not support long descriptions at all
 					currtime = datetime.fromisoformat(isotime)
 					isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
-					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
+					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)
 					iconfile = join(iconpath, f"{yahoocode}.png")
 					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
 					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
