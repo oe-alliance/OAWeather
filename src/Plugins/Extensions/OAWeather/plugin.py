@@ -38,7 +38,7 @@ from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, SCOPE_FONTS, resolveFilename
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Weatherinfo import Weatherinfo
-# from twisted.internet.reactor import callInThread
+
 from . import _
 
 
@@ -839,7 +839,7 @@ class OAWeatherDetailview(Screen):
 					longDesc = ""  # OWM does not support long descriptions at all
 					currtime = datetime.fromisoformat(isotime)
 					isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
-					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)
+					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
 					iconfile = join(iconpath, f"{yahoocode}.png")
 					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
 					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
