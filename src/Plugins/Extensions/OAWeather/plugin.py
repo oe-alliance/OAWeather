@@ -528,6 +528,7 @@ class OAWeatherDetailview(Screen):
 		self["key_info"] = StaticText(_("Details +/-"))
 		self["key_ok"] = StaticText(_("Glass"))
 		self["actions"] = ActionMap(["OAWeatherActions",
+									"DirectionActions",
 									"ColorActions",
 									"InfoActions"], {
 													"ok": self.toggleDetailframe,
