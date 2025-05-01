@@ -39,12 +39,11 @@ from Tools.Directories import SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_SKINS, SCOPE_FO
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Weatherinfo import Weatherinfo
 
-from . import _
+from . import __version__, _
 
 
 class WeatherHelper():
 	def __init__(self):
-		self.version = "v2.0"
 		self.favoritefile = resolveFilename(SCOPE_CONFIG, "oaweather_fav.dat")
 		self.locationDefault = ("Hamburg, DE", 10.00065, 53.55034)
 		self.favoriteList = []
@@ -369,7 +368,7 @@ class OAWeatherOverview(Screen):
 		self.data = {}
 		self.na = _("n/a")
 		self.title = _("Weather Plugin Overview")
-		self["version"] = StaticText(f"OA-Weather {weatherhelper.version}")
+		self["version"] = StaticText(f"OA-Weather {__version__}")
 		self["statustext"] = StaticText()
 		self["update"] = Label(_("Update"))
 		self["current"] = Label(_("Current Weather"))
@@ -510,7 +509,7 @@ class OAWeatherDetailview(Screen):
 		self.moonList = []
 		self.na = _("n/a")
 		self.title = _("Weather Plugin Detailview")
-		self["version"] = StaticText(f"OA-Weather {weatherhelper.version}")
+		self["version"] = StaticText(f"OA-Weather {__version__}")
 		self["detailList"] = List()
 		self["update"] = Label(_("Update"))
 		self["currdatetime"] = Label(self.currdatehour.strftime("%a %d %b"))
@@ -528,6 +527,7 @@ class OAWeatherDetailview(Screen):
 		self["key_info"] = StaticText(_("Details +/-"))
 		self["key_ok"] = StaticText(_("Glass"))
 		self["actions"] = ActionMap(["OAWeatherActions",
+									"DirectionActions",
 									"ColorActions",
 									"InfoActions"], {
 													"ok": self.toggleDetailframe,
