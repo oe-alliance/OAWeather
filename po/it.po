@@ -1,9 +1,15 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the OAWeather package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-04-03 12:44+0200\n"
+"PO-Revision-Date: 2025-05-02 08:25+0200\n"
 "Last-Translator: Madhouse <anonm4d@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "it/>\n"
@@ -11,11 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.5\n"
-"X-SourceCharset: UTF-8\n"
 
-#, python-format
 msgid "%d Minutes"
 msgstr "%d Minuti"
 
@@ -42,10 +45,19 @@ msgstr ""
 "Scegli se attivare o meno la modalità 'notturno'. Alcune icone vengono "
 "quindi visualizzate come icone notturne con la luna."
 
+msgid "Show trend arrows for moon data"
+msgstr "Mostra le frecce di tendenza per i dati lunari"
+
+msgid ""
+"Show trend arrows for moon illumination and moon distance to see the current "
+"trend of the data."
+msgstr ""
+"Mostra le frecce di tendenza per l'illuminazione lunare e la distanza della "
+"luna per vedere l'andamento attuale dei dati."
+
 msgid "Chose favorite"
 msgstr "Scegli il preferito"
 
-#, python-format
 msgid "City '%s' not found! Please try another wording."
 msgstr "Città '%s' non trovata! Si prega di provare un'altra formulazione."
 
@@ -91,14 +103,20 @@ msgid ""
 "Enter the location for your weather forecasts. To include your location, "
 "expand your favorites list with 'Manage your favorites'."
 msgstr ""
-"Inserisci la posizione per le tue previsioni meteo. Per includere la tua posizione, "
-"espandi l'elenco dei preferiti con 'Gestisci i tuoi preferiti'."
+"Inserisci la posizione per le tue previsioni meteo. Per includere la tua "
+"posizione, espandi l'elenco dei preferiti con 'Gestisci i tuoi preferiti'."
 
 msgid "Error getting City ID"
 msgstr "Errore durante l'ottenimento dell'ID città"
 
 msgid "Error in Weatherinfo"
 msgstr "Errore nelle Informazioni meteo"
+
+msgid "More Details / Smaller font"
+msgstr "Maggiori dettagli / Carattere più piccolo"
+
+msgid "Less details / Larger font"
+msgstr "Meno dettagli / Carattere più grande"
 
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
@@ -124,16 +142,20 @@ msgstr "Unità metrica per la velocità del vento"
 msgid "Next favorite"
 msgstr "Prossimo preferito"
 
-#, fuzzy
-#| msgid "Exit details"
 msgid "View details"
 msgstr "Visualizza dettagli"
 
 msgid "Day +/-"
 msgstr "Giono +/-"
 
+msgid "Details +/-"
+msgstr "Dettagli +/-"
+
 msgid "Settings"
 msgstr "Impostazioni"
+
+msgid "Glass"
+msgstr ""
 
 msgid "Manage your favorites"
 msgstr "Gestisci i tuoi preferiti"
@@ -168,8 +190,6 @@ msgstr "Intervallo aggiornamento"
 msgid "Save"
 msgstr "Salva"
 
-#, fuzzy
-#| msgid "Search for your City"
 msgid "Search for your city"
 msgstr "Cerca la tua città"
 
@@ -179,8 +199,6 @@ msgstr "Seleziona 'Si' per abilitare il debug nel file log."
 msgid "Select 'Yes' to enable the addition of Weather."
 msgstr "Seleziona 'Si' per abilitare l'aggiunta del Meteo."
 
-#, fuzzy
-#| msgid "Select Your Location"
 msgid "Select desired location"
 msgstr "Seleziona la posizione desiderata"
 
@@ -200,17 +218,27 @@ msgstr ""
 "Seleziona l'unità di temperatura da utilizzare per la visualizzazione della "
 "temperatura."
 
+msgid "Detail level in detail view"
+msgstr "Livello di dettaglio nella vista dettagliata"
+
+msgid ""
+"Select the detail level in the detail view. You have the choice between a "
+"comprehensive presentation in a smaller font and a reduced presentation with "
+"a larger font."
+msgstr ""
+"Seleziona il livello di dettaglio nella vista dettagliata. Puoi scegliere "
+"tra una presentazione completa con un carattere più piccolo e una "
+"presentazione ridotta con un carattere più grande."
+
 msgid ""
 "Select this option to save that last obtained weather data locally. This is "
 "used to initialize the data immediately after restart while updated data is "
 "being fetched."
 msgstr ""
-"Seleziona per salvare localmente gli ultimi dati meteorologici ottenuti. "
-"Viene utilizzato per inizializzare i dati immediatamente dopo il riavvio "
-"durante il recupero dei dati aggiornati."
+"Seleziona questa opzione per salvare localmente gli ultimi dati meteo "
+"ottenuti. Questa opzione viene utilizzata per inizializzare i dati subito "
+"dopo il riavvio, mentre vengono recuperati i dati aggiornati."
 
-#, fuzzy
-#| msgid "Select Your Location"
 msgid "Select your location"
 msgstr "Seleziona la tua località"
 
@@ -251,8 +279,8 @@ msgid ""
 "The favorite '%s' corresponds to the set weather city name and therefore "
 "cannot be deleted."
 msgstr ""
-"Il preferito '%s' corrisponde al nome della città meteorologica impostata e quindi "
-"non può essere cancellato."
+"Il preferito '%s' corrisponde al nome della città meteorologica impostata e "
+"quindi non può essere cancellato."
 
 msgid "Today"
 msgstr "Oggi"
@@ -263,13 +291,9 @@ msgstr "Aggiornato"
 msgid "Weather Plugin"
 msgstr "Weather Plugin"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Detailview"
 msgstr "Weather Plugin"
 
-#, fuzzy
-#| msgid "Weather Plugin"
 msgid "Weather Plugin Overview"
 msgstr "Weather Plugin"
 
@@ -291,7 +315,6 @@ msgstr "Percorso icone"
 msgid "Weather service"
 msgstr "Servizio Meteo"
 
-#, fuzzy
 #| msgid "Weather API key"
 msgid "Weather API key v2.5"
 msgstr "Chiave API v.2.5 Meteo"
@@ -310,3 +333,24 @@ msgstr "m/s"
 
 msgid "n/a"
 msgstr "n/a"
+
+msgid "↓ N"
+msgstr ""
+
+msgid "↙ NE"
+msgstr ""
+
+msgid "← E"
+msgstr ""
+
+msgid "↖ SE"
+msgstr ""
+
+msgid "↑ S"
+msgstr ""
+
+msgid "→ W"
+msgstr ""
+
+msgid "↘ NW"
+msgstr ""
