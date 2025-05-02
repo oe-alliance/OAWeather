@@ -231,7 +231,6 @@
 
 	<screen name="OAWeatherDetailFrame" position="center,154" size="352,372" zPosition="2" resolution="1280,720" title="Weather Detailframe" flags="wfNoBorder">
 		<eLabel position="0,0" size="352,372" backgroundColor="grey" zPosition="-2" />
-<!-- 		<eLabel position="6,6" size="348,378" backgroundColor="#16000000" zPosition="-1" /> -->
 		<ePixmap pixmap="{picpath}/background_detail.png" position="1,1" size="350,370" zPosition="-1" transparent="1" alphatest="blend" scale="1" />
 		<widget name="icon" position="20,10" size="64,64" alphatest="blend" scaleFlags="scale" zPosition="1" />
 		<widget source="time" render="Label" position="100,24" size="140,42" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#16000000" transparent="1" zPosition="1" halign="left" valign="center" />
@@ -260,9 +259,7 @@
 	</screen>
 
 <screen name="OAWeatherDetailview" position="0,0" size="1280,720" resolution="1280,720" title="Weather Detailview" flags="wfNoBorder">
-		<!-- <eLabel name="Background" position="20,20" size="1240,682" backgroundColor="#16000000" zPosition="-2" /> -->
 		<ePixmap pixmap="{picpath}/background_detail.png" position="0,0" size="1280,720" zPosition="-2" transparent="1" alphatest="blend" scale="1" />
-		<!-- <ePixmap pixmap="{picpath}/background.png" position="0,0" size="1280,720" zPosition="-2" transparent="1" alphatest="blend" scale="1" /> -->
 		<widget source="version" render="Label" position="60,17" size="240,18" font="Regular; 14" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
 		<widget name="currdatetime" font="Regular;26" position="60,30" size="240,34" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
 			<ePixmap pixmap="{picpath}/update.png" position="1046,82" size="24,24" zPosition="3" transparent="1" alphatest="blend" scale="1" />
@@ -337,7 +334,7 @@
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1084,416" size="36,36" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
 			<convert type="OAWeather">moonphaseicon</convert>
 		</widget>
-		<widget noWrap="1" font="LS-Regular;22" position="1124,418" size="80,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
+		<widget noWrap="1" font="LS-Regular;22" position="1114,418" size="100,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">moonillumination</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/moondist.png" position="1086,490" size="96,32" zPosition="3" transparent="1" alphatest="blend" scale="1" />
