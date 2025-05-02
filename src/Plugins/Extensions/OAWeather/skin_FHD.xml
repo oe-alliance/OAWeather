@@ -334,7 +334,7 @@
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1626,624" size="54,54" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
 			<convert type="OAWeather">moonphaseicon</convert>
 		</widget>
-		<widget noWrap="1" font="LS-Regular;33" position="1686,627" size="120,48" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
+		<widget noWrap="1" font="LS-Regular;33" position="1671,627" size="150,48" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">moonillumination</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/moondist.png" position="1629,735" size="144,48" zPosition="3" transparent="1" alphatest="blend" scale="1" />

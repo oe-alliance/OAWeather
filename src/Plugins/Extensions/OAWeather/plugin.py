@@ -573,7 +573,8 @@ class OAWeatherDetailview(Screen):
 		callInThread(self.parseData)
 
 	def updateSkinList(self):
-		weekday = _('Today') if self.currdatehour.weekday() == datetime.today().weekday() else self.currdatehour.strftime("%a")
+		todaydate = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+		weekday = _('Today') if self.currdatehour.replace(hour=0) == todaydate else self.currdatehour.strftime("%a")
 		self["currdatetime"].setText(f"{weekday} {self.currdatehour.strftime('%d %b')}")
 		uvIndexPix = self.uvIndexPix if config.plugins.OAWeather.weatherservice.value != "openweather" else None  # OWM does not support UV-index at all
 		iconpix = [self.pressPix, self.tempPix, self.feelPix, self.humidPix, self.precipPix, self.WindSpdPpix, self.WindDirPix, self.WindGustPix, uvIndexPix, self.visiblePix]
