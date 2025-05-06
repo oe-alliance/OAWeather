@@ -128,7 +128,7 @@ weatherhelper.convertOldLocation()  # deprecated: will be removed at end of 2025
 config.plugins.OAWeather.detailLevel = ConfigSelection(default="default", choices=[("default", _("More Details / Smaller font")), ("reduced", _("Less details / Larger font"))])
 config.plugins.OAWeather.tempUnit = ConfigSelection(default="Celsius", choices=[("Celsius", _("Celsius")), ("Fahrenheit", _("Fahrenheit"))])
 config.plugins.OAWeather.windspeedMetricUnit = ConfigSelection(default="km/h", choices=[("km/h", _("km/h")), ("m/s", _("m/s"))])
-config.plugins.OAWeather.trendarrows = ConfigYesNo(default=True)
+config.plugins.OAWeather.trendarrows = ConfigSelection(default=1, choices=[(0, _("Disabled")), (1, "▲▼"), (2, "∆∇"), (3, "↑↓"), (4, "↥↧"), (5, "⇧⇩"), (6, "⇑⇓"), (7, "∧∨"), (8, "<>"), (9, "+-")])
 config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("openweather", _("OpenWeatherMap"))])
 config.plugins.OAWeather.debug = ConfigYesNo(default=False)
 
@@ -136,9 +136,9 @@ MODULE_NAME = "OAWeather"
 CACHEFILE = resolveFilename(SCOPE_CONFIG, "OAWeather.dat")
 PLUGINPATH = join(resolveFilename(SCOPE_PLUGINS), 'Extensions/OAWeather')
 
-fontFile = resolveFilename(SCOPE_FONTS, "LiberationSans-Regular.ttf")
+fontFile = resolveFilename(SCOPE_FONTS, "fallback.font")
 if isfile(fontFile):
-	addFont(fontFile, "LS-Regular", 100, -1, 0)
+	addFont(fontFile, "OAWeatherFont", 100, -1, 0)
 elif config.plugins.OAWeather.debug.value:
 	print("[%s] OAWeatherDetailview__init__: %s" % (MODULE_NAME, fontFile))
 
@@ -177,6 +177,8 @@ class WeatherSettingsView(Setup):
 		if self.old_weatherlocation != config.plugins.OAWeather.weatherlocation.value:
 			config.plugins.OAWeather.weatherlocation.save()
 			weatherhandler.reset(newLocation=config.plugins.OAWeather.weatherlocation.value)
+		if config.plugins.OAWeather.trendarrows.isChanged():
+			self.session.screen["OAWeather"].changed((1,))  # (1,) = refresh all source widgets
 		Setup.keySave(self)
 
 	def keyYellow(self, SAVE=False):

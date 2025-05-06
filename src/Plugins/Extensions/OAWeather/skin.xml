@@ -334,11 +334,11 @@
 		<widget alphatest="blend" render="OAWeatherPixmap" position="1084,416" size="36,36" source="session.OAWeather" transparent="1" zPosition="3" scale="1">
 			<convert type="OAWeather">moonphaseicon</convert>
 		</widget>
-		<widget noWrap="1" font="LS-Regular;22" position="1114,418" size="100,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
+		<widget noWrap="1" font="OAWeatherFont;20" position="1118,418" size="100,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">moonillumination</convert>
 		</widget>
 		<ePixmap pixmap="{picpath}/moondist.png" position="1086,490" size="96,32" zPosition="3" transparent="1" alphatest="blend" scale="1" />
-		<widget noWrap="1" font="LS-Regular;20" position="1088,526" size="124,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
+		<widget noWrap="1" font="OAWeatherFont;18" position="1088,526" size="124,32" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" render="Label" source="session.OAWeather">
 			<convert type="OAWeather">moondistance</convert>
 		</widget>
 		<eLabel name="line" position="30,66" size="1220,1" backgroundColor="grey" />
