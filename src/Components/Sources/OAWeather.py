@@ -286,10 +286,11 @@ class OAWeather(Source):
 	def getMoonIllumination(self):
 		moonIllum = self.moonIllumination(self.moonPosition(datetime.today()))
 		if config.plugins.OAWeather.trendarrows.value:
+			ta = config.plugins.OAWeather.trendarrows.getText()
 			if moonIllum > 0:
-				illumArrow = "▲" if self.moonIllumination(self.moonPosition(datetime.today() - timedelta(hours=1))) < moonIllum else "▼"
+				illumArrow = f"{ta[1][1]} " if self.moonIllumination(self.moonPosition(datetime.today() - timedelta(hours=1))) < moonIllum else f"{ta[1][0]} "
 			else:
-				illumArrow = "●"
+				illumArrow = "● "
 		else:
 			illumArrow = ""
 		return "%s%s %s" % (illumArrow, round(moonIllum, 1), "%")
@@ -297,7 +298,8 @@ class OAWeather(Source):
 	def getMoonDistance(self):
 		moonDist = self.moonDistance(datetime.today())
 		if config.plugins.OAWeather.trendarrows.value:
-			distArrow = "▲" if self.moonDistance(datetime.today() - timedelta(hours=1)) < moonDist else "▼"
+			ta = config.plugins.OAWeather.trendarrows.getText()
+			distArrow = f"{ta[1][1]} " if self.moonDistance(datetime.today() - timedelta(hours=1)) < moonDist else f"{ta[1][0]} "
 		else:
 			distArrow = ""
 		return "%s%s %s" % (distArrow, round(moonDist), "km")
