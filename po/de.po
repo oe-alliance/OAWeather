@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OAWeather\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-04-03 12:42+0200\n"
+"POT-Creation-Date: 2025-04-27 14:27+0100\n"
+"PO-Revision-Date: 2025-05-06 23:30+0200\n"
 "Last-Translator: Mr.Servo <mrservo via GitHub.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "de/>\n"
@@ -41,6 +41,16 @@ msgid ""
 msgstr ""
 "Wählen Sie, ob der Nachtschaltung aktiviert werden soll oder nicht. Einige "
 "Symbole werden dann als Nachtsymbole mit Mond angezeigt."
+
+msgid "Show trend arrows for moon data"
+msgstr "Zeige Trendpfeile für Monddaten"
+
+msgid ""
+"Show trend arrows for moon illumination and moon distance to see the current "
+"trend of the data."
+msgstr ""
+"Zeigen Sie Trendpfeile für Mondbeleuchtung und Mondabstand an, um den "
+"aktuellen Trend der Daten zu sehen."
 
 msgid "Chose favorite"
 msgstr "Wähle Favorit"
@@ -104,6 +114,12 @@ msgstr "Fehler beim Abrufen der City ID"
 msgid "Error in Weatherinfo"
 msgstr "Fehler in Weatherinfo"
 
+msgid "More Details / Smaller font"
+msgstr "Mehr Details / Kleinere Schrift"
+
+msgid "Less details / Larger font"
+msgstr "Weniger Details / Größere Schrift"
+
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
@@ -134,8 +150,14 @@ msgstr "Zeige Details"
 msgid "Day +/-"
 msgstr "Tag +/-"
 
+msgid "Details +/-"
+msgstr "Details +/-"
+
 msgid "Settings"
 msgstr "Einstellungen"
+
+msgid "Glass"
+msgstr "Lupe"
 
 msgid "Manage your favorites"
 msgstr "Favoriten verwalten"
@@ -199,6 +221,18 @@ msgid "Select the temperature unit to be used for temperature displays."
 msgstr ""
 "Wählen Sie die Temperatureinheit, die für die Temperaturanzeige verwendet "
 "werden soll."
+
+msgid "Detail level in detail view"
+msgstr "Detailierungsgrad in Detailansicht"
+
+msgid ""
+"Select the detail level in the detail view. You have the choice between a "
+"comprehensive presentation in a smaller font and a reduced presentation with "
+"a larger font."
+msgstr ""
+"Wählen Sie den Detailierungsgrad in der Detailansicht. Sie haben die Wahl "
+"zwischen einer umfassenden Darstellung in kleinerer Schrift und einer "
+"reduzierten Darstellung mit größerer Schrift."
 
 msgid ""
 "Select this option to save that last obtained weather data locally. This is "
@@ -265,7 +299,7 @@ msgid "Weather Plugin Detailview"
 msgstr "Wetter Plugin Detailansicht"
 
 msgid "Weather Plugin Overview"
-msgstr "Wetter Plugin Detailansicht"
+msgstr "Wetter Plugin Übersicht"
 
 msgid "Weather Settings Actions"
 msgstr "Wettereinstellungen Aktionen"
@@ -302,3 +336,24 @@ msgstr "m/s"
 
 msgid "n/a"
 msgstr "n/a"
+
+msgid "↓ N"
+msgstr "↓ N"
+
+msgid "↙ NE"
+msgstr "↙ NO"
+
+msgid "← E"
+msgstr "← O"
+
+msgid "↖ SE"
+msgstr "↖ SO"
+
+msgid "↑ S"
+msgstr "↑ S"
+
+msgid "→ W"
+msgstr "→ W"
+
+msgid "↘ NW"
+msgstr "↘ NW"

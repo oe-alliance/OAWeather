@@ -13,7 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with OAWeather.  If not, see <http://www.gnu.org/licenses/>.
 
-from datetime import datetime
+from datetime import datetime, timedelta
+from math import pi, floor, cos
 from Components.config import config
 from Components.Sources.Source import Source
 from Plugins.Extensions.OAWeather.plugin import weatherhandler
@@ -41,6 +42,7 @@ class OAWeather(Source):
 		self.valid = weatherhandler.getValid()
 		self.skydirs = weatherhandler.getSkydirs()
 		self.na = _("n/a")
+		self.pressunit = self.getVal("pressunit")
 		self.tempunit = self.getVal("tempunit")
 		self.windunit = self.getVal("windunit")
 		self.visibilityunit = self.getVal("visibiliyunit")
@@ -59,6 +61,7 @@ class OAWeather(Source):
 		self.debug("callbackUpdate: %s" % str(data))
 		self.data = data or {}
 		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		self.pressunit = self.getVal("pressunit")
 		self.tempunit = self.getVal("tempunit")
 		self.windunit = self.getVal("windunit")
 		self.visibilityunit = self.getVal("visibiliyunit")
@@ -125,13 +128,21 @@ class OAWeather(Source):
 		val = self.getCurrentVal("sunrise", "")
 		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
 
-	def getDate(self, day: int):
-		val = self.getKeyforDay("date", day, "")
-		return datetime.fromisoformat(val).strftime("%d. %b") if val else self.na
-
 	def getSunset(self):
 		val = self.getCurrentVal("sunset", "")
 		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+
+	def getMoonrise(self):
+		val = self.getCurrentVal("moonrise", "")
+		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+
+	def getMoonset(self):
+		val = self.getCurrentVal("moonset", "")
+		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+
+	def getDate(self, day: int):
+		val = self.getKeyforDay("date", day, "")
+		return datetime.fromisoformat(val).strftime("%d. %b") if val else self.na
 
 	def getIsNight(self):
 		return str(self.getCurrentVal("isNight", "False")) == "True"
@@ -188,6 +199,12 @@ class OAWeather(Source):
 
 	def getVisibility(self):
 		return "%s %s" % (self.getCurrentVal("visibility", self.na), self.visibilityunit)
+
+	def getPressure(self):
+		return "%s %s" % (self.getCurrentVal("pressure", self.na), self.pressunit)
+
+	def getAveragePressure(self, day: int):
+		return "%s %s" % (self.getKeyforDay("pressure", day), self.pressunit)
 
 	def getMaxTemp(self, day: int):
 		return "%s %s" % (self.getKeyforDay("maxTemp", day), self.tempunit)
@@ -265,6 +282,60 @@ class OAWeather(Source):
 		else:
 			self.METEOdayswitch.get(iconcode, iconcode)
 		return iconcode
+
+	def getMoonIllumination(self):
+		moonIllum = self.moonIllumination(self.moonPosition(datetime.today()))
+		if config.plugins.OAWeather.trendarrows.value:
+			ta = config.plugins.OAWeather.trendarrows.getText()
+			if moonIllum > 0 and ta and len(ta) > 0:
+				illumArrow = f"{ta[0]} " if self.moonIllumination(self.moonPosition(datetime.today() - timedelta(hours=1))) < moonIllum else f"{ta[1]} "
+			else:
+				illumArrow = "● "
+		else:
+			illumArrow = ""
+		return "%s%s %s" % (illumArrow, round(moonIllum, 1), "%")
+
+	def getMoonDistance(self):
+		moonDist = self.moonDistance(datetime.today())
+		if config.plugins.OAWeather.trendarrows.value:
+			ta = config.plugins.OAWeather.trendarrows.getText()
+			distArrow = f"{ta[0]} " if self.moonDistance(datetime.today() - timedelta(hours=1)) < moonDist else f"{ta[1]} "
+		else:
+			distArrow = ""
+		return "%s%s %s" % (distArrow, round(moonDist), "km")
+
+	def getMoonPixFilename(self):
+		moonPhases = ["new_moon", "waxing_crescent", "first_quarter", "waxing_gibbous", "full_moon", "waning_gibbous", "last_quarter", "waning_crescent"]
+		return "%s.png" % moonPhases[self.moonPhase(self.moonPosition(datetime.today()))]
+
+	def moonIllumination(self, pos):
+		illum = 100 - abs((cos(pi * pos) + 0j) ** 1.7 * 100)
+		return abs(illum - 1) / .99 if illum - 1 > 0 else 0.0
+
+	# Author: Sean B. Palmer, Source: http://inamidst.com/code/moonphase.py
+	def moonPosition(self, now=None):
+		if now is None:
+			now = datetime.today()
+		diff = now - datetime(2001, 1, 1)
+		days = diff.days + diff.seconds / 86400
+		lunations = 0.20439731 + days * 0.03386319269
+		return lunations % float(1)
+
+	def moonPhase(self, pos):
+		index = (pos * float(8)) + float("0.5")
+		index = floor(index)
+		return int(index) & 7
+
+	# series expansion of the moon orbital elements from Chapront und Chapront-Touzé
+	# Sources: htps://de.wikipedia.org/wiki/Mondbahn, http://articles.adsabs.harvard.edu/full/1994A%26A...282..663S
+	def moonDistance(self, now=None):
+		if now is None:
+			now = datetime.today()
+		diff = now - datetime(2000, 1, 1, 12, 0, 0)
+		t = diff.days + diff.seconds / 86400
+		GM = (134.96341138 + 13.064992953630 * t) * pi / 180
+		DD = (297.85020420 + 12.190749117502 * t) * pi / 90
+		return 385000.5584 - 20905.3550 * cos(GM) - 3699.1109 * cos(DD - GM) - 2955.9676 * cos(DD) - 569.9251 * cos(2 * GM)
 
 	def getKeyforDay(self, key: str, day: int, default: str = _("n/a")):
 		self.debug("getKeyforDay key:%s day:%s default:%s" % (key, day, default))
