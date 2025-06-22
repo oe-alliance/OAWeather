@@ -301,6 +301,51 @@ msgstr "м/c"
 msgid "n/a"
 msgstr "n/a"
 
+msgid "Show trend arrows for moon data"
+msgstr "Отображение стрелок тренда для лунных данных"
+
+msgid "Show trend arrows for moon illumination and moon distance to see the current trend of the data."
+msgstr "Показ стрелки тренда для освещения Луны и расстояния до нее, чтобы увидеть текущую динамику данных."
+
+msgid "More Details / Smaller font"
+msgstr "Более подробная информация / Мелкий шрифт"
+
+msgid "Less details / Larger font"
+msgstr "Меньше информация / Крупный шрифт"
+
+msgid "Details +/-"
+msgstr "Подробно +/-"
+
+msgid "Glass"
+msgstr "Зеркало"
+
+msgid "Detail level in detail view"
+msgstr "Уровень детализации в режиме детального просмотра"
+
+msgid "Select the detail level in the detail view. You have the choice between a comprehensive presentation in a smaller font and a reduced presentation with a larger font."
+msgstr "Выберите уровень детализации в режиме просмотра подробных сведений. У вас есть выбор между полным показом деталей выполненной более мелким шрифтом, и сокращенным показом деталей выполненной более крупным шрифтом."
+
+msgid "↓ N"
+msgstr "↓ С"
+
+msgid "↙ NE"
+msgstr "↙ СВ"
+
+msgid "← E"
+msgstr "← В"
+
+msgid "↖ SE"
+msgstr "↖ ЮВ"
+
+msgid "↑ S"
+msgstr "↑ Ю"
+
+msgid "→ W"
+msgstr "→ З"
+
+msgid "↘ NW"
+msgstr "↘ СЗ"
+
 #~ msgid ""
 #~ "Enter a personalized API key for use with OpenWeatherMap (https://"
 #~ "openweathermap.org/)."
