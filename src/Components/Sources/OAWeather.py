@@ -18,14 +18,17 @@ from math import pi, floor, cos
 from Components.config import config
 from Components.Sources.Source import Source
 from Plugins.Extensions.OAWeather.plugin import weatherhandler
+import gettext
+_ = gettext.gettext
+CITY_AREA_FORMAT = "%s, %s"
 
 
 class OAWeather(Source):
 
 	YAHOOnightswitch = {
-					"3": "47", "4": "47", "11": "45", "12": "45", "13": "46", "14": "46", "15": "46", "16": "46", "28": "27",
-					"30": "29", "32": "31", "34": "33", "37": "47", "38": "47", "40": "45", "41": "46", "42": "46", "43": "46"
-					}
+		"3": "47", "4": "47", "11": "45", "12": "45", "13": "46", "14": "46", "15": "46", "16": "46", "28": "27",
+		"30": "29", "32": "31", "34": "33", "37": "47", "38": "47", "40": "45", "41": "46", "42": "46", "43": "46"
+	}
 	METEOnightswitch = {"1": "2", "3": "4", "B": "C", "H": "I", "J": "K"}
 
 	YAHOOdayswitch = {"27": "28", "29": "30", "31": "32", "33": "34", "45": "39", "46": "16", "47": "4"}
@@ -60,7 +63,8 @@ class OAWeather(Source):
 	def callbackUpdate(self, data):
 		self.debug("callbackUpdate: %s" % str(data))
 		self.data = data or {}
-		self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		if hasattr(config.plugins, 'OAWeather'):
+			self.logo = self.services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.pressunit = self.getVal("pressunit")
 		self.tempunit = self.getVal("tempunit")
 		self.windunit = self.getVal("windunit")
@@ -89,7 +93,7 @@ class OAWeather(Source):
 		components = self.getCurrentVal("observationPoint").split(", ")
 		len_components = len(components)
 		if len_components > 1:
-			return "%s, %s" % (components[0], components[1])
+			return CITY_AREA_FORMAT % (components[0], components[1])
 		if len_components == 1:
 			return "%s" % components[0]
 		else:
@@ -99,7 +103,7 @@ class OAWeather(Source):
 		components = self.getCurrentVal("observationPoint").split(", ")
 		len_components = len(components)
 		if len_components > 1:
-			return "%s, %s" % (components[0], components[1])
+			return CITY_AREA_FORMAT % (components[0], components[1])
 		if len_components == 1:
 			return "%s" % components[0]
 		else:
@@ -120,17 +124,42 @@ class OAWeather(Source):
 	def getCityAreaCountry(self):
 		return self.getCurrentVal("observationPoint")
 
+	# this fix for cash error on debug on atv..
 	def getObservationTime(self):
 		val = self.getCurrentVal("observationTime", "")
-		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+		if val:
+			try:
+				return datetime.fromisoformat(val).strftime("%H:%M")
+			except (TypeError, ValueError):
+				try:
+					return datetime.strptime(val, "%Y-%m-%d %H:%M:%S").strftime("%H:%M")
+				except:
+					return self.na
+		return self.na
 
 	def getSunrise(self):
 		val = self.getCurrentVal("sunrise", "")
-		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+		if val:
+			try:
+				return datetime.fromisoformat(val).strftime("%H:%M")
+			except (TypeError, ValueError):
+				try:
+					return datetime.strptime(val, "%Y-%m-%d %H:%M:%S").strftime("%H:%M")
+				except:
+					return self.na
+		return self.na
 
 	def getSunset(self):
 		val = self.getCurrentVal("sunset", "")
-		return datetime.fromisoformat(val).strftime("%H:%M") if val else self.na
+		if val:
+			try:
+				return datetime.fromisoformat(val).strftime("%H:%M")
+			except (TypeError, ValueError):
+				try:
+					return datetime.strptime(val, "%Y-%m-%d %H:%M:%S").strftime("%H:%M")
+				except:
+					return self.na
+		return self.na
 
 	def getMoonrise(self):
 		val = self.getCurrentVal("moonrise", "")
@@ -142,7 +171,15 @@ class OAWeather(Source):
 
 	def getDate(self, day: int):
 		val = self.getKeyforDay("date", day, "")
-		return datetime.fromisoformat(val).strftime("%d. %b") if val else self.na
+		if val:
+			try:
+				return datetime.fromisoformat(val).strftime("%d. %b")
+			except (TypeError, ValueError):
+				try:
+					return datetime.strptime(val, "%Y-%m-%d").strftime("%d. %b")
+				except:
+					return self.na
+		return self.na
 
 	def getIsNight(self):
 		return str(self.getCurrentVal("isNight", "False")) == "True"
@@ -162,8 +199,8 @@ class OAWeather(Source):
 		return self.getCurrentVal("raintext", "")
 
 	def getWindSpeed(self):
-		windSpeed, windunit = self.getCurrentVal("windSpeed"), self.windunit
-		if windunit == "km/h" and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
+		windSpeed, windunit = self.getCurrentVal("windSpeed"), self.getVal("windunit")
+		if windunit == "km/h" and hasattr(config.plugins, 'OAWeather') and config.plugins.OAWeather.windspeedMetricUnit.value == "m/s":
 			windSpeed, windunit = str(round(int(windSpeed) / 3.6, 1)), "m/s"
 		return "%s %s" % (windSpeed, windunit)
 
@@ -178,7 +215,10 @@ class OAWeather(Source):
 		skydirection = self.getCurrentVal("windDirSign", "* *")
 		if skydirection:
 			skydirection = skydirection.split(" ")
-			return self.skydirs.get(skydirection[1], skydirection[1])
+			if len(skydirection) > 1:
+				return self.skydirs.get(skydirection[1], skydirection[1])
+			else:
+				return "Unknown direction"
 		else:
 			return self.na
 
@@ -186,7 +226,11 @@ class OAWeather(Source):
 		return self.getCurrentVal("windDirSign", " ").split(" ")[0]
 
 	def getWindDirShort(self):
-		return self.getCurrentVal("windDirSign", " ").split(" ")[1]
+		wind_dir_sign = self.getCurrentVal("windDirSign", " ")
+		parts = wind_dir_sign.split(" ")
+		if len(parts) > 1:
+			return parts[1]
+		return ""
 
 	def getWindGusts(self):
 		windGusts, windunit = self.getCurrentVal("windGusts"), self.windunit
@@ -272,12 +316,15 @@ class OAWeather(Source):
 
 	def getYahooCode(self, day: int):
 		iconcode = self.getKeyforDay("yahooCode", day, "")
-		nightSwitch = day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight()
-		return self.YAHOOnightswitch.get(iconcode, iconcode) if nightSwitch else self.YAHOOdayswitch.get(iconcode, iconcode)
+		if day == 0 and hasattr(config.plugins, 'OAWeather') and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.YAHOOnightswitch:
+			iconcode = self.YAHOOnightswitch[iconcode]
+		else:
+			self.YAHOOdayswitch.get(iconcode, iconcode)
+		return iconcode
 
 	def getMeteoCode(self, day: int):
 		iconcode = self.getKeyforDay("meteoCode", day, "")
-		if day == 0 and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.METEOnightswitch:
+		if day == 0 and hasattr(config.plugins, 'OAWeather') and config.plugins.OAWeather.nighticons.value and self.getIsNight() and iconcode in self.METEOnightswitch:
 			iconcode = self.METEOnightswitch[iconcode]
 		else:
 			self.METEOdayswitch.get(iconcode, iconcode)
