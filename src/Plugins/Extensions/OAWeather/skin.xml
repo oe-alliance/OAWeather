@@ -16,6 +16,7 @@
 -->
 <skin>
 	<screen name="OAWeatherOverview" position="0,0" size="1280,720" resolution="1280,720" title="Weather Overview" flags="wfNoBorder" backgroundColor="#80000000">
+		<widget name="description" backgroundColor="#00313040" font="Regular; 24" position="0,750" size="1280,30" transparent="1" halign="center" valign="center" zPosition="2" foregroundColor="#0000ff00" />
 		<ePixmap pixmap="{picpath}/background.png" position="0,0" size="1280,720" zPosition="-2" transparent="1" alphatest="blend" scale="1" />
 		<widget source="version" render="Label" position="60,17" size="240,18" font="Regular; 14" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
 		<widget name="current" font="Regular;26" position="60,30" size="240,34" backgroundColor="#363b38" zPosition="3" transparent="1" halign="center" valign="center" />
