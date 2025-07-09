@@ -56,7 +56,7 @@ class WeatherHelper():
 		else:
 			self.setFavoriteList([self.locationDefault])
 			with open(self.favoritefile, "wb") as fd:
-				dump(self.favoriteList, fd, -1)
+				dump(self.favoriteList, fd, protocol=5)  # Force version 5 to be compatible with python < 3.13
 
 	def setFavoriteList(self, favoriteList):
 		self.favoriteList = favoriteList
@@ -298,7 +298,7 @@ class WeatherHandler():
 		# TODO write cache only on close
 		if config.plugins.OAWeather.cachedata.value and self.currLocation == config.plugins.OAWeather.weatherlocation.value:
 			with open(CACHEFILE, "wb") as fd:
-				dump(data, fd, -1)
+				dump(data, fd, protocol=5)  # Force version 5 to be compatible with python < 3.13
 		if self.refreshCallback:
 			self.refreshCallback()
 			self.refreshCallback = None
@@ -1056,7 +1056,7 @@ class OAWeatherFavorites(Screen):
 		config.plugins.OAWeather.weatherlocation.setChoices([(item, item[0]) for item in self.newFavList])
 		weatherhelper.setFavoriteList(self.newFavList)
 		with open(weatherhelper.favoritefile, "wb") as fd:
-			dump(self.newFavList, fd, -1)
+			dump(self.newFavList, fd, protocol=5)  # Force version 5 to be compatible with python < 3.13
 		self.session.open(MessageBox, _("Favorites have been successfully saved!"), MessageBox.TYPE_INFO, timeout=2)
 
 	def keyBlue(self):
