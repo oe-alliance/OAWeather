@@ -576,7 +576,7 @@ class OAWeatherDetailview(Screen):
 
 	def updateSkinList(self):
 		todaydate = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
-		weekday = _('Today') if self.currdatehour.replace(hour=0) == todaydate else self.currdatehour.strftime("%a")
+		weekday = _("Today") if self.currdatehour.replace(hour=0) == todaydate else self.currdatehour.strftime("%a")
 		self["currdatetime"].setText(f"{weekday} {self.currdatehour.strftime('%d %b')}")
 		uvIndexPix = self.uvIndexPix if config.plugins.OAWeather.weatherservice.value != "openweather" else None  # OWM does not support UV-index at all
 		iconpix = [self.pressPix, self.tempPix, self.feelPix, self.humidPix, self.precipPix, self.WindSpdPpix, self.WindDirPix, self.WindGustPix, uvIndexPix, self.visiblePix]
@@ -989,7 +989,7 @@ class OAWeatherFavorites(Screen):
 				geodataList = WI.getCitylist(weathercity, config.osd.language.value.replace('_', '-').lower(), count=15)
 				if WI.error or geodataList is None or len(geodataList) == 0:
 					print("[WeatherSettingsView] Error in module 'citySearch': %s" % WI.error)
-					self.cityChoice((False, _("Error getting City ID"), _("City '%s' not found! Please try another wording." % weathercity)))
+					self.cityChoice((False, _("Error getting City ID"), _("City '%s' not found! Please try another wording.") % weathercity))
 				else:
 					cityList = []
 					for item in geodataList:
@@ -1035,10 +1035,10 @@ class OAWeatherFavorites(Screen):
 		if self.newFavList and current is not None:
 			self.currFavorite = self.newFavList[current]
 			if weatherhelper.isDifferentLocation(self.currFavorite, config.plugins.OAWeather.weatherlocation.value):
-				msgtxt = _("Do you really want do delete favorite\n'%s'?" % self.currFavorite[0])
+				msgtxt = _("Do you really want do delete favorite\n'%s'?") % self.currFavorite[0]
 				self.session.openWithCallback(self.returnKeyRed, MessageBox, msgtxt, MessageBox.TYPE_YESNO, timeout=10, default=False)
 			else:
-				msgtxt = _("The favorite '%s' corresponds to the set weather city name and therefore cannot be deleted." % self.currFavorite[0])
+				msgtxt = _("The favorite '%s' corresponds to the set weather city name and therefore cannot be deleted.") % self.currFavorite[0]
 				self.session.open(MessageBox, msgtxt, MessageBox.TYPE_WARNING, timeout=3)
 
 	def returnKeyRed(self, answer):
