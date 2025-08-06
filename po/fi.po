@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OAWeather 1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-04 10:00+0100\n"
-"PO-Revision-Date: 2025-05-04 12:10+0300\n"
+"PO-Revision-Date: 2025-08-06 20:40+0300\n"
 "Last-Translator: Orlandox\n"
 "Language-Team: tomppaa, Orlandox\n"
 "Language: fi\n"
@@ -139,7 +139,7 @@ msgid "Settings"
 msgstr "Asetukset"
 
 msgid "Glass"
-msgstr "Lasi"
+msgstr "Suurennuslasi"
 
 msgid "Manage your favorites"
 msgstr "Hallinnoi suosikkejasi"
@@ -306,3 +306,4 @@ msgstr "→ W"
 
 msgid "↘ NW"
 msgstr "↘ NW"
+
