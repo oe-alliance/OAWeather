@@ -178,7 +178,7 @@ msgid "Select 'Yes' to enable add debug output to log."
 msgstr "Wybierz „Tak”, aby włączyć dodawanie danych wyjściowych debugowania do logów."
 
 msgid "Select 'Yes' to enable the addition of Weather."
-msgstr "Wybierz „Tak”, aby włączyć dodawanie pogody."
+msgstr "Wybierz „Tak”, aby włączyć pogodę."
 
 msgid "Select desired location"
 msgstr "Wybierz żądaną lokalizację"
@@ -223,7 +223,7 @@ msgid "Southwest"
 msgstr "Południowy zachód"
 
 msgid "Specify how often Weather retrieves its data from the server. 'Once' means the data will loaded only once after a GUI or system start."
-msgstr "Określ, jak często Weather pobiera dane z serwera. „Raz” oznacza, że dane zostaną załadowane tylko raz po uruchomieniu GUI lub systemu."
+msgstr "Określ, jak często pobiera dane z serwera. „Raz” oznacza, że dane zostaną załadowane tylko raz po uruchomieniu GUI lub systemu."
 
 msgid "Temperature unit"
 msgstr "Jednostka temperatury"
@@ -245,28 +245,28 @@ msgid "Weather Plugin"
 msgstr "Wtyczka Pogody"
 
 msgid "Weather Plugin Detailview"
-msgstr "Szczegółowy widok wtyczki pogodowej"
+msgstr "Szczegółowy widok pogody"
 
 msgid "Weather Plugin Overview"
-msgstr "Przegląd wtyczki pogodowej"
+msgstr "Przegląd pogody"
 
 msgid "Weather Settings Actions"
 msgstr "Akcje ustawień pogodowych"
 
 msgid "Weather city name"
-msgstr "Nazwa miasta MetrixWeather"
+msgstr "Nazwa miasta"
 
 msgid "Weather cityname (at least 3 letters):"
 msgstr "Nazwa miasta (co najmniej 3 litery):"
 
 msgid "Weather icon night switch"
-msgstr "Przełącznik nocny ikony pogody"
+msgstr "Przełącznik nocnych ikon pogody"
 
 msgid "Weather icon set"
 msgstr "Zestaw ikon pogody"
 
 msgid "Weather service"
-msgstr "Usługa MetrixWeather"
+msgstr "Dostawca pogody"
 
 msgid "Weather API key v2.5"
 msgstr "Klucz API v2.5"
