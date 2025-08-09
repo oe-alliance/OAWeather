@@ -353,7 +353,7 @@ def sessionstart(session, **kwargs):
 def Plugins(**kwargs):
 	pluginList = []
 	pluginList.append(PluginDescriptor(name="OAWeather", where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=sessionstart, needsRestart=False))
-	pluginList.append(PluginDescriptor(name="Weather Plugin", description=_("Show Weather Forecast"), icon="plugin.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main))
+	pluginList.append(PluginDescriptor(name=_("Weather Plugin"), description=_("Show Weather Forecast"), icon="plugin.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main))
 	return pluginList
 
 
