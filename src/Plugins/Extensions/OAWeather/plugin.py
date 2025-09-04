@@ -129,7 +129,7 @@ config.plugins.OAWeather.detailLevel = ConfigSelection(default="default", choice
 config.plugins.OAWeather.tempUnit = ConfigSelection(default="Celsius", choices=[("Celsius", _("Celsius")), ("Fahrenheit", _("Fahrenheit"))])
 config.plugins.OAWeather.windspeedMetricUnit = ConfigSelection(default="km/h", choices=[("km/h", _("km/h")), ("m/s", _("m/s"))])
 config.plugins.OAWeather.trendarrows = ConfigSelection(default=1, choices=[(0, _("Disabled")), (1, "▲▼"), (2, "∆∇"), (3, "↑↓"), (4, "↥↧"), (5, "⇧⇩"), (6, "⇑⇓"), (7, "∧∨"), (8, "<>"), (9, "+-")])
-config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("openweather", _("OpenWeatherMap"))])
+config.plugins.OAWeather.weatherservice = ConfigSelection(default="MSN", choices=[("MSN", _("MSN weather")), ("OpenMeteo", _("Open-Meteo Wetter")), ("OpenWeather", _("OpenWeatherMap"))])
 config.plugins.OAWeather.debug = ConfigYesNo(default=False)
 
 MODULE_NAME = "OAWeather"
@@ -202,7 +202,7 @@ class WeatherHandler():
 	def __init__(self):
 		self.session = None
 		self.enabledebug = config.plugins.OAWeather.debug.value
-		mode = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		mode = {"MSN": "msn", "OpenMeteo": "omw", "OpenWeather": "owm"}.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.WI = Weatherinfo(mode, config.plugins.OAWeather.apikey.value)
 		self.currCity = ""
 		self.currLocation = config.plugins.OAWeather.weatherlocation.value
@@ -310,7 +310,7 @@ class WeatherHandler():
 		self.refreshTimer.stop()
 		if isfile(CACHEFILE):
 			remove(CACHEFILE)
-		mode = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}.get(config.plugins.OAWeather.weatherservice.value, "msn")
+		mode = {"MSN": "msn", "OpenMeteo": "omw", "OpenWeather": "owm"}.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		self.WI.setmode(mode, config.plugins.OAWeather.apikey.value)
 		if self.WI.error:
 			print(self.WI.error)
@@ -575,27 +575,33 @@ class OAWeatherDetailview(Screen):
 		callInThread(self.parseData)
 
 	def updateSkinList(self):
+		weatherService = config.plugins.OAWeather.weatherservice.value
 		todaydate = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
 		weekday = _("Today") if self.currdatehour.replace(hour=0) == todaydate else self.currdatehour.strftime("%a")
 		self["currdatetime"].setText(f"{weekday} {self.currdatehour.strftime('%d %b')}")
-		uvIndexPix = self.uvIndexPix if config.plugins.OAWeather.weatherservice.value != "openweather" else None  # OWM does not support UV-index at all
+		uvIndexPix = self.uvIndexPix if weatherService != "OpenWeather" else None  # OWM does not support UV-index at all
 		iconpix = [self.pressPix, self.tempPix, self.feelPix, self.humidPix, self.precipPix, self.WindSpdPpix, self.WindDirPix, self.WindGustPix, uvIndexPix, self.visiblePix]
 		if self.dayList:
 			hourData = self.dayList[self.currdaydelta]
 			skinList = []
 			for hour in hourData:  # add set of icons to each hourly-entry
 				skinList.append(tuple(hour + iconpix))
-			currHour = self.currdatehour.strftime("%H:00 h")
 			found, index = False, 0
-			for index, hourData in enumerate(skinList):
-				if currHour in hourData[0]:
-					found = True
-					break
-			self["detailList"].setCurrentIndex(index if found else 0)
+			if weatherService == "OpenMeteo":  # remain at current index
+				found, index = True, self["detailList"].index
+			else:
+				currdatehourtime = self.currdatehour.time()
+				for index, hourData in enumerate(skinList):  # set index to current time
+					if datetime.strptime(hourData[0][:5], "%H:%M").time() > currdatehourtime:
+						found = True
+						index -= 1
+						break
+			self["detailList"].updateList(skinList)
+			self["detailList"].setIndex(index if found else 0)
 		else:
 			hourData = ["", "", "", "", "", "", "", "", "", "", "", _("No data available."), _("No data available for this period."), None]
 			skinList = [tuple(hourData + iconpix)]
-		self["detailList"].updateList(skinList)
+			self["detailList"].updateList(skinList)
 		self.skinList = skinList
 		self.updateDetailFrame()
 
@@ -638,8 +644,8 @@ class OAWeatherDetailview(Screen):
 
 	def parseData(self):
 		weatherservice = config.plugins.OAWeather.weatherservice.value
-		if weatherservice in ["MSN", "OpenMeteo", "openweather"]:
-			parser = {"MSN": self.msnparser, "OpenMeteo": self.omwparser, "openweather": self.owmparser}
+		if weatherservice in ["MSN", "OpenMeteo", "OpenWeather"]:
+			parser = {"MSN": self.msnparser, "OpenMeteo": self.omwparser, "OpenWeather": self.owmparser}
 			parser[weatherservice]()
 			self.updateSkinList()
 			self.updateMoonData()
@@ -757,6 +763,12 @@ class OAWeatherDetailview(Screen):
 				hourData = []
 				for idx, isotime in enumerate(timeList):
 					currtime = datetime.fromisoformat(isotime)
+					timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
+					if timeday > currday:  # is a new day?
+						currday = timeday
+						daycount += 1
+						dayList.append(hourData)
+						hourData = []
 					timestr = currtime.strftime("%H:%M h")
 					press = f"{round(pressList[idx])} mbar"
 					tempunit = "°C" if config.plugins.OAWeather.tempUnit.value == "Celsius" else "°F"
@@ -775,12 +787,6 @@ class OAWeatherDetailview(Screen):
 					iconfile = join(iconpath, f"{yahoocode}.png")
 					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
 					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
-					timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
-					if timeday > currday:  # is a new day?
-						currday = timeday
-						daycount += 1
-						dayList.append(hourData)
-						hourData = []
 			self.dayList = dayList
 
 	def owmparser(self):
@@ -824,34 +830,35 @@ class OAWeatherDetailview(Screen):
 				currday = datetime.fromisoformat(hourly[0].get("dt_txt", "1900-01-01 00:00:00")).replace(hour=0, minute=0, second=0, microsecond=0)
 				for hour in hourly:  # collect data on future hours of current day
 					isotime = hour.get("dt_txt", "1900-01-01 00:00:00")
-					timestr = isotime[11:16]
-					main = hour.get("main", {})
-					press = f"{round(main.get('pressure', 0))} mbar"
-					temp = f"{round(main.get('temp', 0))} {tempunit}"
-					feels = f"{round(main.get('feels_like', 0))} {tempunit}"
-					humid = f"{round(main.get('humidity', 0))} %"
-					precip = f"{round(hour.get('pop', 0) * 100)} %"
-					wind = hour.get("wind", {})
-					windSpd = f"{round(wind.get('speed', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-					windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get('deg', 0))))}"
-					windGusts = f"{round(wind.get('gust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
-					uvIndex = ""  # OWM does not support UV-index at all
-					visibility = f"{round(hour.get('visibility', 0) / 1000)} km"
-					weather = hour.get("weather", [""])[0]
-					shortDesc = weather.get("description", "")
-					longDesc = ""  # OWM does not support long descriptions at all
 					currtime = datetime.fromisoformat(isotime)
-					isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
-					yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
-					iconfile = join(iconpath, f"{yahoocode}.png")
-					iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
-					hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
-					timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
-					if timeday > currday:  # is a new day?
-						currday = timeday
-						dayList.append(hourData)
-						hourData = []
-						self.sunList.append((sunrisestr, sunsetstr))
+					if currtime > datetime.fromtimestamp(timeTs):  # only future values
+						timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
+						if timeday > currday:  # is a new day?
+							currday = timeday
+							dayList.append(hourData)
+							hourData = []
+							self.sunList.append((sunrisestr, sunsetstr))
+						main = hour.get("main", {})
+						timestr = isotime[11:16]
+						press = f"{round(main.get('pressure', 0))} mbar"
+						temp = f"{round(main.get('temp', 0))} {tempunit}"
+						feels = f"{round(main.get('feels_like', 0))} {tempunit}"
+						humid = f"{round(main.get('humidity', 0))} %"
+						precip = f"{round(hour.get('pop', 0) * 100)} %"
+						wind = hour.get("wind", {})
+						windSpd = f"{round(wind.get('speed', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+						windDir = f"{_(weatherhandler.WI.directionsign(round(wind.get('deg', 0))))}"
+						windGusts = f"{round(wind.get('gust', 0))} {'km/h' if config.plugins.OAWeather.windspeedMetricUnit.value == 'km/h' else 'm/s'}"
+						uvIndex = ""  # OWM does not support UV-index at all
+						visibility = f"{round(hour.get('visibility', 0) / 1000)} km"
+						weather = hour.get("weather", [""])[0]
+						shortDesc = weather.get("description", "")
+						longDesc = ""  # OWM does not support long descriptions at all
+						isNight = self.getIsNight(currtime, sunrisestr, sunsetstr)
+						yahoocode = self.nightSwitch(weatherhandler.WI.convert2icon("OWM", weather.get("id", "n/a")).get("yahooCode"), isNight)  # e.g. '801' -> {'yahooCode': '34', 'meteoCode': 'B'}
+						iconfile = join(iconpath, f"{yahoocode}.png")
+						iconpix = LoadPixmap(cached=True, path=iconfile) if iconfile and exists(iconfile) else None
+						hourData.append([timestr, press, temp, feels, humid, precip, windSpd, windDir, windGusts, uvIndex, visibility, shortDesc, longDesc, iconpix])
 			self.dayList = dayList
 
 	def getIsNight(self, currtime, sunrisestr, sunsetstr):
@@ -975,7 +982,7 @@ class OAWeatherFavorites(Screen):
 			callInThread(self.citySearch, weathercity)
 
 	def citySearch(self, weathercity):
-		services = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}
+		services = {"MSN": "msn", "OpenMeteo": "omw", "OpenWeather": "owm"}
 		service = services.get(config.plugins.OAWeather.weatherservice.value, "msn")
 		apikey = config.plugins.OAWeather.apikey.value
 		if service == "owm" and len(apikey) < 32:

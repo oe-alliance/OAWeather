@@ -32,7 +32,7 @@ class OAWeather(Source):
 
 	METEOdayswitch = {"2": "1", "3": "4", "C": "B", "I": "H", "K": "J"}
 
-	services = {"MSN": "msn", "OpenMeteo": "omw", "openweather": "owm"}
+	services = {"MSN": "msn", "OpenMeteo": "omw", "OpenWeather": "owm"}
 
 	def __init__(self):
 		Source.__init__(self)
