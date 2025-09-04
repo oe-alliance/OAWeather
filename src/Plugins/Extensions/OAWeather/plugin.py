@@ -830,8 +830,8 @@ class OAWeatherDetailview(Screen):
 				currday = datetime.fromisoformat(hourly[0].get("dt_txt", "1900-01-01 00:00:00")).replace(hour=0, minute=0, second=0, microsecond=0)
 				for hour in hourly:  # collect data on future hours of current day
 					isotime = hour.get("dt_txt", "1900-01-01 00:00:00")
-					if datetime.fromisoformat(isotime) > datetime.fromtimestamp(timeTs):  # only future values
-						currtime = datetime.fromisoformat(isotime)
+					currtime = datetime.fromisoformat(isotime)
+					if currtime > datetime.fromtimestamp(timeTs):  # only future values
 						timeday = currtime.replace(hour=0, minute=0, second=0, microsecond=0)
 						if timeday > currday:  # is a new day?
 							currday = timeday
