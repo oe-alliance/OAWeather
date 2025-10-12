@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 23:00+0100\n"
-"PO-Revision-Date: 2025-04-05 02:33+0300\n"
+"POT-Creation-Date: 2025-04-27 14:27+0100\n"
+"PO-Revision-Date: 2025-10-12 23:10+0300\n"
 "Last-Translator: MCelliotG <mcelliotg@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/openatv/metrixhd/"
 "el/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
 #, python-format
 msgid "%d Minutes"
@@ -46,12 +46,22 @@ msgstr ""
 "Επιλέξτε αν θα πρέπει να ενεργοποιηθεί ή όχι ο \"νυχτερινός διακόπτης\". "
 "Ορισμένα εικονίδια εμφανίζονται τότε ως εικονίδια νύχτας με φεγγάρι."
 
+msgid "Show trend arrows for moon data"
+msgstr "Εμφάνιση βελών τάσης για δεδομένα σελήνης"
+
+msgid ""
+"Show trend arrows for moon illumination and moon distance to see the current "
+"trend of the data."
+msgstr ""
+"Εμφάνιση βελών τάσης για τη λαμπρότητα και την απόσταση της σελήνης για "
+"προβολή της τρέχουσας τάσης δεδομένων."
+
 msgid "Chose favorite"
 msgstr "Επιλογή αγαπημένου"
 
 #, python-format
 msgid "City '%s' not found! Please try another wording."
-msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστε μια άλλη διατύπωση."
+msgstr "Η πόλη %s δεν βρέθηκε! Παρακαλώ δοκιμάστε διαφορετική διατύπωση."
 
 msgid "Current Weather"
 msgstr "Τρέχων καιρός"
@@ -106,6 +116,12 @@ msgstr "Σφάλμα εύρεσης αναγνωριστικού πόλης"
 msgid "Error in Weatherinfo"
 msgstr "Σφάλμα πληροφοριών καιρού"
 
+msgid "More Details / Smaller font"
+msgstr "Περισσότερες / Μικρότερη γραμματοσειρά"
+
+msgid "Less details / Larger font"
+msgstr "Λιγότερες / Μεγαλύτερη γραμματοσειρά"
+
 msgid "Fahrenheit"
 msgstr "Φαρενάιτ"
 
@@ -136,8 +152,14 @@ msgstr "Εμφάνιση λεπτομερειών"
 msgid "Day +/-"
 msgstr "Ημέρα +/-"
 
+msgid "Details +/-"
+msgstr "Πληροφορίες +/-"
+
 msgid "Settings"
 msgstr "Ρυθμίσεις"
+
+msgid "Glass"
+msgstr "Γυαλί"
 
 msgid "Manage your favorites"
 msgstr "Διαχείριση αγαπημένων"
@@ -198,6 +220,18 @@ msgstr "Επιλογή της προτιμώμενης υπηρεσίας παρ
 
 msgid "Select the temperature unit to be used for temperature displays."
 msgstr "Επιλογή μονάδας θερμοκρασίας για χρήση στις ενδείξεις θερμοκρασίας."
+
+msgid "Detail level in detail view"
+msgstr "Επίπεδο λεπτομερειών"
+
+msgid ""
+"Select the detail level in the detail view. You have the choice between a "
+"comprehensive presentation in a smaller font and a reduced presentation with "
+"a larger font."
+msgstr ""
+"Επιλέξτε το επίπεδο λεπτομερειών στην προβολή λεπτομερειών. Έχετε την "
+"επιλογή μεταξύ μίας αναλυτικότερης παρουσίασης με μικρότερη γραμματοσειρά "
+"και μίας συντομότερης με μεγαλύτερη γραμματοσειρά."
 
 msgid ""
 "Select this option to save that last obtained weather data locally. This is "
@@ -302,3 +336,24 @@ msgstr "μ/δ"
 
 msgid "n/a"
 msgstr "μ/δ"
+
+msgid "↓ N"
+msgstr "↓ Β"
+
+msgid "↙ NE"
+msgstr "↙ ΒΑ"
+
+msgid "← E"
+msgstr "← Α"
+
+msgid "↖ SE"
+msgstr "↖ ΝΑ"
+
+msgid "↑ S"
+msgstr "↑ Ν"
+
+msgid "→ W"
+msgstr "→ Δ"
+
+msgid "↘ NW"
+msgstr "↘ ΒΔ"
