@@ -3,7 +3,7 @@
 		<item level="0" text="Enabled" description="Select 'Yes' to enable the addition of Weather.">config.plugins.OAWeather.enabled</item>
 		<if conditional="config.plugins.OAWeather.enabled.value">
 			<item level="0" text="Weather service" description="Select the preferred weather service to supply the weather information.">config.plugins.OAWeather.weatherservice</item>
-			<item level="0" text="Weather API key v2.5" description="Enter a personalized API key v2.5 for use with OpenWeatherMap (https://openweathermap.org/)." conditional="config.plugins.OAWeather.weatherservice.value == 'openweather'">config.plugins.OAWeather.apikey</item>
+			<item level="0" text="Weather API key v2.5" description="Enter a personalized API key v2.5 for use with OpenWeatherMap (https://openweathermap.org/)." conditional="config.plugins.OAWeather.weatherservice.value == 'OpenWeather'">config.plugins.OAWeather.apikey</item>
 			<item level="0" text="Weather city name" description="Enter the location for your weather forecasts. To include your location, expand your favorites list with 'Manage your favorites'.">config.plugins.OAWeather.weatherlocation</item>
 			<item level="0" text="Detail level in detail view" description="Select the detail level in the detail view. You have the choice between a comprehensive presentation in a smaller font and a reduced presentation with a larger font.">config.plugins.OAWeather.detailLevel</item>
 			<item level="0" text="Temperature unit" description="Select the temperature unit to be used for temperature displays.">config.plugins.OAWeather.tempUnit</item>
