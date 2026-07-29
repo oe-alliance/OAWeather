@@ -287,11 +287,11 @@ class OAWeather(Source):
 		return iconcode
 
 	def getMoonIllumination(self):
-		moonIllum = self.moonIllumination(self.moonPosition(datetime.today()))
+		moonIllum = self.moonIllumination(self.moonPosition(datetime.now()))
 		if config.plugins.OAWeather.trendarrows.value:
 			ta = config.plugins.OAWeather.trendarrows.getText()
 			if moonIllum > 0 and ta and len(ta) > 0:
-				illumArrow = f"{ta[0]} " if self.moonIllumination(self.moonPosition(datetime.today() - timedelta(hours=1))) < moonIllum else f"{ta[1]} "
+				illumArrow = f"{ta[0]} " if self.moonIllumination(self.moonPosition(datetime.now() - timedelta(hours=1))) < moonIllum else f"{ta[1]} "
 			else:
 				illumArrow = "● "
 		else:
@@ -299,17 +299,17 @@ class OAWeather(Source):
 		return "%s%s %s" % (illumArrow, round(moonIllum, 1), "%")
 
 	def getMoonDistance(self):
-		moonDist = self.moonDistance(datetime.today())
+		moonDist = self.moonDistance(datetime.now())
 		if config.plugins.OAWeather.trendarrows.value:
 			ta = config.plugins.OAWeather.trendarrows.getText()
-			distArrow = f"{ta[0]} " if self.moonDistance(datetime.today() - timedelta(hours=1)) < moonDist else f"{ta[1]} "
+			distArrow = f"{ta[0]} " if self.moonDistance(datetime.now() - timedelta(hours=1)) < moonDist else f"{ta[1]} "
 		else:
 			distArrow = ""
 		return "%s%s %s" % (distArrow, round(moonDist), "km")
 
 	def getMoonPixFilename(self):
 		moonPhases = ["new_moon", "waxing_crescent", "first_quarter", "waxing_gibbous", "full_moon", "waning_gibbous", "last_quarter", "waning_crescent"]
-		return "%s.png" % moonPhases[self.moonPhase(self.moonPosition(datetime.today()))]
+		return "%s.png" % moonPhases[self.moonPhase(self.moonPosition(datetime.now()))]
 
 	def moonIllumination(self, pos):
 		illum = 100 - abs((cos(pi * pos) + 0j) ** 1.7 * 100)
@@ -318,7 +318,7 @@ class OAWeather(Source):
 	# Author: Sean B. Palmer, Source: http://inamidst.com/code/moonphase.py
 	def moonPosition(self, now=None):
 		if now is None:
-			now = datetime.today()
+			now = datetime.now()
 		diff = now - datetime(2001, 1, 1)
 		days = diff.days + diff.seconds / 86400
 		lunations = 0.20439731 + days * 0.03386319269
@@ -333,12 +333,12 @@ class OAWeather(Source):
 	# Sources: htps://de.wikipedia.org/wiki/Mondbahn, http://articles.adsabs.harvard.edu/full/1994A%26A...282..663S
 	def moonDistance(self, now=None):
 		if now is None:
-			now = datetime.today()
+			now = datetime.now()
 		diff = now - datetime(2000, 1, 1, 12, 0, 0)
-		t = diff.days + diff.seconds / 86400
-		GM = (134.96341138 + 13.064992953630 * t) * pi / 180
-		DD = (297.85020420 + 12.190749117502 * t) * pi / 90
-		return 385000.5584 - 20905.3550 * cos(GM) - 3699.1109 * cos(DD - GM) - 2955.9676 * cos(DD) - 569.9251 * cos(2 * GM)
+		t = diff.total_seconds() / 86400.0
+		GM = (134.96341138 + 13.064992953630 * t) * pi / 180.0
+		DD = (297.85020420 + 12.190749117502 * t) * pi / 180.0
+		return 385000.5584 - 20905.3550 * cos(GM) - 3699.1109 * cos(DD - GM) - 2955.9676 * cos(DD) - 569.9251 * cos(2.0 * GM)
 
 	def getKeyforDay(self, key: str, day: int, default: str = _("n/a")):
 		self.debug("getKeyforDay key:%s day:%s default:%s" % (key, day, default))
