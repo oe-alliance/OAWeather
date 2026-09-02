@@ -992,7 +992,7 @@ class OAWeatherFavorites(Screen):
 				print("[WeatherSettingsView] Error in module 'citySearch': %s" % WI.error)
 				self.cityChoice((False, _("Error in Weatherinfo"), WI.error))
 			else:
-				geodataList = WI.getCitylist(weathercity, config.osd.language.value.replace('_', '-').lower(), count=15)
+				geodataList = WI.get_citylist(weathercity, config.osd.language.value.replace('_', '-').lower(), count=15)
 				if WI.error or geodataList is None or len(geodataList) == 0:
 					print("[WeatherSettingsView] Error in module 'citySearch': %s" % WI.error)
 					self.cityChoice((False, _("Error getting City ID"), _("City '%s' not found! Please try another wording.") % weathercity))
