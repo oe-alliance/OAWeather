@@ -61,6 +61,9 @@ class WeatherHelper():
 	def setFavoriteList(self, favoriteList):
 		self.favoriteList = favoriteList
 
+	def getFavoriteIndex(self, location):
+		return self.favoriteList.index(location) if location in self.favoriteList else 0
+
 	def reduceCityname(self, weathercity):
 		components = list(dict.fromkeys(weathercity.split(', ')))  # remove duplicates from list
 		len_components = len(components)
@@ -366,7 +369,7 @@ class OAWeatherOverview(Screen):
 		if weatherLocation != weatherhandler.getCurrLocation():
 			weatherhandler.setCurrLocation(weatherLocation)
 			weatherhandler.refreshWeatherData()
-		self.currFavIdx = weatherhelper.favoriteList.index(weatherLocation) if weatherLocation in weatherhelper.favoriteList else 0
+		self.currFavIdx = weatherhelper.getFavoriteIndex(weatherLocation)
 		self.data = {}
 		self.na = _("n/a")
 		self.title = _("Weather Plugin Overview")
@@ -448,12 +451,14 @@ class OAWeatherOverview(Screen):
 
 	def returnFavoriteChoice(self, favorite):
 		if favorite is not None:
+			self.currFavIdx = weatherhelper.getFavoriteIndex(favorite[1])
 			callInThread(weatherhandler.reset, favorite[1], self.configFinished)
 
 	def config(self):
 		self.session.openWithCallback(self.configFinished, WeatherSettingsView)
 
 	def configFinished(self, result=None):
+		self.currFavIdx = weatherhelper.getFavoriteIndex(weatherhandler.getCurrLocation())
 		self.clearFields()
 		self.startRun()
 
@@ -499,7 +504,7 @@ class OAWeatherDetailview(Screen):
 		Screen.__init__(self, session)
 		self.detailFrame = self.session.instantiateDialog(OAWeatherDetailFrame)
 		self.detailFrameActive = False
-		self.currFavIdx = weatherhelper.favoriteList.index(currlocation) if currlocation in weatherhelper.favoriteList else 0
+		self.currFavIdx = weatherhelper.getFavoriteIndex(currlocation)
 		self.old_weatherservice = config.plugins.OAWeather.weatherservice.value
 		self.detailLevels = config.plugins.OAWeather.detailLevel.getChoices()
 		self.detailLevelIdx = config.plugins.OAWeather.detailLevel.getIndex()
@@ -888,6 +893,7 @@ class OAWeatherDetailview(Screen):
 
 	def returnFavoriteChoice(self, favorite):
 		if favorite is not None:
+			self.currFavIdx = weatherhelper.getFavoriteIndex(favorite[1])
 			callInThread(weatherhandler.reset, favorite[1], callback=self.parseData)
 
 	def prevEntry(self):
@@ -923,6 +929,7 @@ class OAWeatherDetailview(Screen):
 		self.session.openWithCallback(self.configFinished, WeatherSettingsView)
 
 	def configFinished(self, result=None):
+		self.currFavIdx = weatherhelper.getFavoriteIndex(weatherhandler.getCurrLocation())
 		self.detailLevelIdx = config.plugins.OAWeather.detailLevel.getIndex()
 		if self.detailFrameActive:
 			self.detailFrame.showFrame()
