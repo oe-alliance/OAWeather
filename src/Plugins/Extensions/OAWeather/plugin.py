@@ -913,14 +913,18 @@ class OAWeatherDetailview(Screen):
 		self.updateDetailFrame()
 
 	def prevDay(self):
-		self.currdaydelta = (self.currdaydelta - 1) % len(self.dayList)
-		self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0) + timedelta(days=self.currdaydelta)
-		callInThread(weatherhandler.reset, callback=self.parseData)
+		if self.dayList:
+			self.currdaydelta = (self.currdaydelta - 1) % len(self.dayList)
+			self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0) + timedelta(days=self.currdaydelta)
+			self.updateSkinList()
+			self.updateMoonData()
 
 	def nextDay(self):
-		self.currdaydelta = (self.currdaydelta + 1) % len(self.dayList)
-		self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0) + timedelta(days=self.currdaydelta)
-		callInThread(weatherhandler.reset, callback=self.parseData)
+		if self.dayList:
+			self.currdaydelta = (self.currdaydelta + 1) % len(self.dayList)
+			self.currdatehour = datetime.today().replace(minute=0, second=0, microsecond=0) + timedelta(days=self.currdaydelta)
+			self.updateSkinList()
+			self.updateMoonData()
 
 	def config(self):
 		self.old_weatherservice = config.plugins.OAWeather.weatherservice.value
