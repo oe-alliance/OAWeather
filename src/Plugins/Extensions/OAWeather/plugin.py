@@ -623,7 +623,11 @@ class OAWeatherDetailview(Screen):
 
 	def updateDetailFrame(self):
 		if self.detailFrameActive:
-			self.detailFrame.updateFrame(list(self["detailList"].getCurrent()))
+			current = self["detailList"].getCurrent()
+			if current:
+				self.detailFrame.updateFrame(list(current))
+			else:
+				self.detailFrame.hideFrame()
 
 	def toggleDetailframe(self):
 		if self.detailFrameActive:
